@@ -28,7 +28,7 @@
 \titleformat{\subsection}{\large\scshape}{}{0em}{}
 \titlespacing*{\subsection}{0em}{0em}{.2em}
 
-% Create command for dated sections  
+% Create command for dated sections
 \newcommand{\datedsection}[2]{
   \section[#1]{#1 \hfill #2}
 }
