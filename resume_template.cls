@@ -38,6 +38,6 @@
 \newcommand{\experience}[3]{
   \subsection[#1]{
     \hfill #3\\
-    \textbf{#1} \textbar #2
+    \textbf{#1 \textbar} #2
   }
 }
