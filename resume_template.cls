@@ -3,13 +3,13 @@
 \LoadClass{article}
 
 % Reformat margins
-\usepackage[letterpaper, portrait, margin=1in, top=0.5in, bottom=0.5in]{geometry}
+\RequirePackage[letterpaper, portrait, margin=1in, top=0.5in, bottom=0.5in]{geometry}
 % Remove numbering
 \pagenumbering{gobble}
 \RequirePackage{tabularx}
 
 % Setup microtype package
-\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\RequirePackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
 % activate={true,nocompatibility} - activate protrusion and expansion
 % final - enable microtype; use "draft" to disable
 % tracking=true, kerning=true, spacing=true - activate these techniques
