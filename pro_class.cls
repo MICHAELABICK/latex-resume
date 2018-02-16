@@ -1,11 +1,15 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{my_cv}[2016/09/01 custom CV class]
+\ProvidesClass{pro_class}[2016/09/01 custom resume class]
 \LoadClass{article}
 
 % Reformat margins
-\RequirePackage[letterpaper, portrait, margin=1in, top=0.5in, bottom=0.5in]{geometry}
+\RequirePackage[letterpaper, portrait, margin=1in, top=1.5in,
+  bottom=0.5in, headheight=0.9in, headsep=0.1in]{geometry}
 % Remove numbering
 \pagenumbering{gobble}
+
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
 \RequirePackage{tabularx}
 
 % Setup microtype package
@@ -16,6 +20,20 @@
 % factor=1100 - add 10% to the protrusion amount (default is 1000)
 % stretch=10, shrink=10 - reduce stretchability/shrinkability (default is 20/20)
 \SetTracking{encoding={*}, shape=sc}{0}
+
+\fancyhead{} % clear all fields
+\fancyhead[L]{
+  \begin{tabularx}{\textwidth}{Xlr}
+    \huge{\textsc{Michael A. Bick}}
+    & \begin{tabular}{l}350 Ferst Drive\\
+      329889 Georgia Tech Station\\
+      Atlanta, GA 30332-1295\\
+      US Citizen\end{tabular}
+    & \begin{tabular}{r}(747)-227-6723\\
+      michael.bick@gatech.edu\end{tabular}
+  \end{tabularx}
+}
+\renewcommand{\headrulewidth}{0.4pt}
 
 % Custom section formatting
 \RequirePackage{titlesec}
