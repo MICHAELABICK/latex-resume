@@ -1,45 +1,30 @@
-\documentclass[10pt]{letter}
+\documentclass[12pt]{letter}
 
-\usepackage[letterpaper, portrait, margin=1in, top=2in, bottom=0.5in, headheight=1.5in]{geometry}
+\input{../../pro_letterhead}
 
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
 
-% Setup microtype package
-\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
-% activate={true,nocompatibility} - activate protrusion and expansion
-% final - enable microtype; use "draft" to disable
-% tracking=true, kerning=true, spacing=true - activate these techniques
-% factor=1100 - add 10% to the protrusion amount (default is 1000)
-% stretch=10, shrink=10 - reduce stretchability/shrinkability (default is 20/20)
-\SetTracking{encoding={*}, shape=sc}{0}
-
-\fancyhead{} % clear all fields
-\fancyhead[L]{
-  \begin{tabularx}{\textwidth}{Xlr}
-    \huge{\textsc{Michael A. Bick}}
-    & \begin{tabular}{l}350 Ferst Drive\\
-      329889 Georgia Tech Station\\
-      Atlanta, GA 30332-1295\\
-      US Citizen\end{tabular}
-    & \begin{tabular}{r}(747)-227-6723\\
-      michael.bick@gatech.edu\end{tabular}
-  \end{tabularx}
-}
-\renewcommand{\headrulewidth}{0.4pt}
+\signature{Michael Bick}
+% \address{4329 Saint Clair Ave.\\ Studio City, CA, 91604}
+\longindentation=0pt
 
 \begin{document}
+  \begin{letter}{Apple}
 
-Dear Apple hiring manager,\\
-Your \textit{Technology Investigation Product Design Internship} posting found on the Georgia Tech CareerBuzz website interests me. A background on extra-curricular competition teams has given me extensive experience in 3D CAD, design for manufacture, and rapid prototyping, which would allow me to make meaningful contributions on your product design team.
+    \opening{Dear Apple hiring manager,}
 
-I taught myself to use CAD as a seventh grader on a high school FIRST robotics team. While the team had never used CAD before, I envisioned a role for myself to help design, manufacture, and iterate more efficiently and precisely using 3D CAD. Working with professional machine shops honed my ability to create unambiguous engineering drawings while the short, six-week build period taught me efficient design. In particular, I improved my ability to rapidly ideate and design for ease of manufacture. I became particularly adept in using Dassault Solidworks and both designing for and manufacturing with our in-house manual mill, manual lathe, and Haas CNC router. By my final year, at night I would design a prototype to solve a problem or test an idea, begin manufacturing on our CNC router at the next team meeting, and have a functioning concept by the meetings conclusion.
+    % Sets the current page style to fancy (must happen after "opening"
+    \thispagestyle{fancy}
 
-My work at Georgia Tech has cemented my desire to work in a design and development role. I thrived in "ME2110: Creative Designs and Design", a design competition class where my team created three complete iterations of our mechanism that placed 7th out of 60. By focusing our efforts on a CAD model that exploited laser-cut plywood, we were able to adjust and upgrade quickly and easily. I genuinely love design, iteration, design for manufacture.
+    Your \textit{Technology Investigation Product Design Internship} posting found on the Georgia Tech CareerBuzz website interests me. A background on extra-curricular competition teams has given me extensive experience in 3D CAD, design for manufacture, and rapid prototyping, which would allow me to make meaningful contributions on your product design team.
 
-Attached you will find my resume; it contains further descriptions of my work on Georgia Tech's FSAE and robotics teams and my high school robotics team. I would be happy to answer further questions by email at michael.bick@gatech.edu.
+    I taught myself to use CAD as a seventh grader on a high school FIRST robotics team. While the team had never used CAD before, I envisioned a role for myself to help design, manufacture, and iterate more efficiently and precisely using 3D CAD. Working with professional machine shops honed my ability to create unambiguous engineering drawings while the short, six-week build period taught me efficient design. In particular, I improved my ability to rapidly ideate and design for ease of manufacture. I became particularly adept in using Dassault Solidworks and both designing for and manufacturing with our in-house manual mill, manual lathe, and Haas CNC router. By my final year, at night I would design a prototype to solve a problem or test an idea, begin manufacturing on our CNC router at the next team meeting, and have a functioning concept by the meeting's conclusion.
 
-Sincerely,\\
-Michael Bick
+    My work at Georgia Tech has cemented my desire to work in a design and development role. I thrived in "ME2110: Creative Designs and Design", a design competition class where my team created three complete iterations of our mechanism that placed 7th out of 60. By focusing our efforts on a CAD model that exploited laser-cut plywood, we were able to adjust and upgrade quickly and easily. I genuinely love design, iteration, design for manufacture.
+
+    Attached you will find my resume; it contains further descriptions of my work on Georgia Tech's FSAE and robotics teams and my high school robotics team. I would be happy to answer further questions by email at \href{mailto:michael.bick@gatech.edu}{\nolinkurl{michael.bick@gatech.edu}}.
+
+    \closing{Sincerely,}
+
+  \end{letter}
 \end{document}

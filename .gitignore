@@ -4,4 +4,5 @@
 *.fdb_latexmk
 *.synctex
 *.synctex.gz
+*.out
 tags
