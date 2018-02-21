@@ -4,6 +4,10 @@
 
 \input{pro_letterhead}
 
+% Remove space between list items
+\RequirePackage{enumitem}
+\setlist{itemsep=-0.2em}
+
 % Custom section formatting
 \RequirePackage{titlesec}
 
