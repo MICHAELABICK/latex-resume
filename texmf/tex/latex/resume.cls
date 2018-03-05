@@ -4,7 +4,10 @@
 
 \input{pro_letterhead}
 
-% Custom section formatting
+% Load enumitem for custom list formatting
+\RequirePackage{enumitem}
+
+% Load titesec for custom section formatting
 \RequirePackage{titlesec}
 
 % Reformat sections
@@ -28,3 +31,17 @@
     \textbf{#1 \textbar} #2
   }
 }
+
+% Create a environment to list skills
+% https://tex.stackexchange.com/questions/61448/working-with-margins
+% https://tex.stackexchange.com/questions/130097/automatically-set-description-list-labelwidth-based-on-widest-label
+\newlength{\skillwd}
+\newlength{\skillindent}
+\setlength{\skillindent}{1em}
+\newenvironment{skills}[1]
+  {\settowidth{\skillwd}{\textbf{#1:}}%
+   \begin{description}[leftmargin=\dimexpr\skillwd+\skillindent+.5em\relax,
+     labelindent=0pt,labelsep=.5em,
+     labelwidth=\skillwd,align=right,
+     itemsep=-0.3em,itemindent=-\skillindent]}
+  {\end{description}}
