@@ -7,7 +7,7 @@
 % Load enumitem for custom list formatting
 \RequirePackage{enumitem}
 % Remove space between list items
-\setlist{itemsep=-0.2em}
+\setlist{itemsep=-0.3em}
 
 % Load titesec for custom section formatting
 \RequirePackage{titlesec}
