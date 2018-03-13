@@ -97,7 +97,48 @@
     <!-- </experience> -->
   </section>
 
-  <section >
+  <section>
     <title>Technical Skills</title>
+
+    <skills>
+      <longest>Microcontrollers</longest>
+
+      <skill>
+        <group>CAD</group>
+        <text>Solidworks(7 years), Autodesk~Inventor(8 years), Top-down~Design, Parametric~Design, Surface~Modeling, 2D~Engineering~Drawings</text>
+      </skill>
+
+      <skill>
+        <group>Manufacturing</group>
+        <text>Haas CNC, Manual Mill, Manual Lathe, Laser Cutter, Waterjet, 3D Printer</text>
+      </skill>
+
+      <skill>
+        <group>Programming</group>
+        <text>MatLab, Java, Python, HTML, CSS, SASS, Android, \LaTeX</text>
+      </skill>
+
+      <skill>
+        <group>Microcontrollers</group>
+        <text>Arduino, NI myRio/roboRio(LabView)</text>
+      </skill>
+
+      <skill>
+        <group>Software</group>
+        <text>Vim, Adobe Illustrator, Word, Excel</text>
+      </skill>
+    </skills>
+  </section>
+
+  <section>
+    <title>Awards \& Honors</title>
+
+    <awards>
+      <award>
+        <date></date>
+        <place></place>
+        <name></name>
+      </award>
+    </awards>
   </section>
 </resume>

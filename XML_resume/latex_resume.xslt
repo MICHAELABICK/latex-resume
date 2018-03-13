@@ -57,4 +57,17 @@
   <xsl:template match="item">
 \item <xsl:apply-templates />
   </xsl:template>
+
+  <xsl:template match="skills">
+    \begin{skills}{<xsl:value-of select="longest" />}
+<xsl:apply-templates />
+\end{skills}
+  </xsl:template>
+
+  <!-- ignore the skills/longest node, because it is already used -->
+  <xsl:template match="skills/longest" />
+
+  <xsl:template match="skill">
+    \item [<xsl:value-of select="group" />] <xsl:value-of select="text" />
+  </xsl:template>
 </xsl:stylesheet>
