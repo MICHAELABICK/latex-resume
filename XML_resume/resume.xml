@@ -3,20 +3,23 @@
   <section>
     <title>Education</title>
 
-    <school>
-      <!-- adjust these numbers each semester -->
-      <year>2\textsuperscript{nd} Year Junior</year>
-      <gpa>3.58</gpa>
+    <schools>
+      <school>
+        <!-- adjust these numbers each semester -->
+        <year>2\textsuperscript{nd} Year Junior</year>
+        <gpa>3.58</gpa>
 
-      <name>Georgia Institute of Technology</name>
-      <dates>
-        <from>Aug 2016</from>
-        <to>Present</to>
-      </dates>
-      <major>Mechanical Engineering</major>
-      <minor>Robotics</minor>
-      <graduation>June 2020</graduation>
-    </school>
+        <name>Georgia Institute of Technology</name>
+        <location>Atlanta, GA</location>
+        <dates>
+          <from>Aug 2016</from>
+          <to>Present</to>
+        </dates>
+        <major>Mechanical Engineering</major>
+        <minor>Robotics</minor>
+        <graduation>June 2020</graduation>
+      </school>
+    </schools>
   </section>
 
   <section>

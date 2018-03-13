@@ -31,6 +31,44 @@
   \subsection[#1]{#1 \hfill #2}
 }
 
+% Schools Environment
+% Create a environment to list schools
+% https://tex.stackexchange.com/questions/61448/working-with-margins
+% https://tex.stackexchange.com/questions/130097/automatically-set-description-list-labelwidth-based-on-widest-label
+\newlength{\schoolwd}
+\newlength{\schoolindent}
+\setlength{\schoolindent}{0em}
+\newenvironment{schools}[1]
+  {\settowidth{\schoolwd}{\textbf{#1:}}%
+   \begin{description}[leftmargin=\dimexpr\schoolwd+\schoolindent+.5em\relax,
+     labelindent=0pt,labelsep=.5em,
+     labelwidth=\schoolwd,align=right,
+     itemindent=-\schoolindent,
+     font=\normalfont\textsc]}
+  {\end{description}}
+
+% School Macro
+\define@key{school}{name}{\def\sch@name{#1}}
+\define@key{school}{loc}{\def\sch@loc{#1}}
+\define@key{school}{from}{\def\sch@from{#1}}
+\define@key{school}{to}{\def\sch@to{#1}}
+\define@key{school}{major}{\def\sch@major{#1}}
+\define@key{school}{minor}{\def\sch@minor{#1}}
+\define@key{school}{year}{\def\sch@year{#1}}
+\define@key{school}{gpa}{\def\sch@gpa{#1}}
+\define@key{school}{grad}{\def\sch@grad{#1}}
+\DeclareDocumentCommand{\school}{m}{
+  \begingroup
+  % Key Defaults + New Ones
+  \setkeys{school}{name={},loc={},from={},to={},major={},minor={},year={},gpa={},grad={},#1}
+  % Define the macro
+  \textsc{\sch@from} - \textsc{\sch@to} & \textbf{\sch@major Major, \sch@minor Minor \textbar} GPA \sch@gpa\newline
+  \textbf{\sch@name}, \sch@loc\newline
+  Awards and misc. go here\newline
+  2\textsuperscript{nd} Year Junior, Expected Graduation \sch@grad\\
+  \endgroup
+}
+
 % Create the experience macro, with keyval and xparse
 % https://tex.stackexchange.com/questions/120037/xparse-and-key-value-arguments
 % Key Definitions
@@ -40,13 +78,13 @@
 \define@key{experience}{to}{\def\exp@to{#1}}
 \DeclareDocumentCommand{\experience}{m}{
   \begingroup
-  % Key Defaults + New Ones
-  \setkeys{experience}{corp={},pos={},from={},to={},#1}
-  % Define the macro
-  \subsection[\exp@corp]{
-    \hfill \exp@from - \exp@to\\
-    \textbf{\exp@corp \textbar} \exp@pos
-  }
+    % Key Defaults + New Ones
+    \setkeys{experience}{corp={},pos={},from={},to={},#1}
+    % Define the macro
+    \subsection[\exp@corp]{
+      \hfill \exp@from - \exp@to\\
+      \textbf{\exp@corp \textbar} \exp@pos
+    }
   \endgroup
 }
 
@@ -68,5 +106,5 @@
    \begin{description}[leftmargin=\dimexpr\skillwd+\skillindent+.5em\relax,
      labelindent=0pt,labelsep=.5em,
      labelwidth=\skillwd,align=right,
-     itemsep=-0.3em,itemindent=-\skillindent]}
+     itemindent=-\skillindent]}
   {\end{description}}
