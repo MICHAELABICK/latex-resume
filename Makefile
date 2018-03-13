@@ -3,7 +3,7 @@ LIBDIR = /texmf/tex/latex
 RESDIR = resumes
 XMLDIR = XML_resume
 LETDIR = cover_letters
-LATEXSTYLE = $(XMLDIR)/latex_resume.xslt
+LATEXSTYLE = $(XMLDIR)/LaTeX_resume.xslt
 TEXTSTYLE = $(XMLDIR)/text_resume.xslt
 
 export TEXMFHOME=$(MAKEDIR)texmf
