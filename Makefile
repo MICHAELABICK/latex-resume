@@ -21,19 +21,22 @@ letpdf = $(patsubst %.tex,%.pdf,$(letters))
 all : $(respdf) $(letpdf) $(xmlpdf)
 $(respdf) $(letpdf) $(xmlpdf) : FORCE
 	latexmk -pdf -cd -use-make $(basename $@).tex
-$(letpdf) : $(respdf);
+$(letpdf) : $(respdf)
 .SECONDEXPANSION :
-$(xmlpdf) : $$(basename $$@).xml
-	xsltproc $(RESSTYLE) $@ > $<
+# TODO: Determine whether the -use-make option will call make
+#       on the tex file, make this next line unneccesary
+$(xmlpdf) : $$(basename $$@).tex
+$(xmltex) : $$(basename $$@).xml $(RESSTYLE)
+	xsltproc $(RESSTYLE) $< > $@
 # Assuming latexmk can find dependencies correctly, we can just force
 # latexmk to run every time a tex file needs to be generated, and we
 # dont actually need to track dependencies seperately
 # .SECONDEXPANSION :
 # $(RESDIR)/resume.pdf $(letpdf) : $$(basename $$@).tex
 # 	latexmk -pdf  -cd -use-make $<
-# $(resumes) : $(LIBDIR)/resume.cls;
-# $(letters) : $(LIBDIR)/cover_letter.cls;
-# $(LIBDIR)/resume.cls $(LIBDIR)/cover_letter.cls : $(LIBDIR)/pro_letterhead.tex;
+# $(resumes) : $(LIBDIR)/resume.cls
+# $(letters) : $(LIBDIR)/cover_letter.cls
+# $(LIBDIR)/resume.cls $(LIBDIR)/cover_letter.cls : $(LIBDIR)/pro_letterhead.tex
 cleanall :
 	latexmk -C
 clean :
