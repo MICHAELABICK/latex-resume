@@ -27,6 +27,8 @@
 \newcommand{\datedsubsection}[2]{
   \subsection[#1]{#1 \hfill #2}
 }
+
+% Create the experience environment
 \newcommand{\experience}[3]{
   \subsection[#1]{
     \hfill #3\\
