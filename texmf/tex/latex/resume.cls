@@ -47,7 +47,7 @@
      font=\normalfont\textsc]}
   {\end{description}}
 
-% School Macro
+% School  Macro
 \define@key{school}{name}{\def\sch@name{#1}}
 \define@key{school}{loc}{\def\sch@loc{#1}}
 \define@key{school}{from}{\def\sch@from{#1}}
@@ -59,15 +59,38 @@
 \define@key{school}{grad}{\def\sch@grad{#1}}
 \DeclareDocumentCommand{\school}{m}{
   \begingroup
-  % Key Defaults + New Ones
-  \setkeys{school}{name={},loc={},from={},to={},major={},minor={},year={},gpa={},grad={},#1}
-  % Define the macro
-  \textsc{\sch@from} - \textsc{\sch@to} & \textbf{\sch@major Major, \sch@minor Minor \textbar} GPA \sch@gpa\newline
-  \textbf{\sch@name}, \sch@loc\newline
-  Awards and misc. go here\newline
-  2\textsuperscript{nd} Year Junior, Expected Graduation \sch@grad\\
+    % Key Defaults + New Ones
+    \setkeys{school}{name={},loc={},from={},to={},major={},minor={},year={},gpa={},grad={},#1}
+    % Define the macro
+    \item [\sch@from - \sch@to] \textbf{\sch@major Major, \sch@minor Minor \textbar} GPA \sch@gpa\\
+      \textbf{\sch@name}, \sch@loc\\
+      Awards and misc. go here\\
+      2\textsuperscript{nd} Year Junior, Expected Graduation \sch@grad
   \endgroup
 }
+
+% This is old, using tables. Left here if I want to go back later
+% School (Row) Macro
+% \define@key{school}{name}{\def\sch@name{#1}}
+% \define@key{school}{loc}{\def\sch@loc{#1}}
+% \define@key{school}{from}{\def\sch@from{#1}}
+% \define@key{school}{to}{\def\sch@to{#1}}
+% \define@key{school}{major}{\def\sch@major{#1}}
+% \define@key{school}{minor}{\def\sch@minor{#1}}
+% \define@key{school}{year}{\def\sch@year{#1}}
+% \define@key{school}{gpa}{\def\sch@gpa{#1}}
+% \define@key{school}{grad}{\def\sch@grad{#1}}
+% \DeclareDocumentCommand{\school}{m}{
+%   \begingroup
+%     % Key Defaults + New Ones
+%     \setkeys{school}{name={},loc={},from={},to={},major={},minor={},year={},gpa={},grad={},#1}
+%     % Define the macro
+%     \textsc{\sch@from} - \textsc{\sch@to} & \textbf{\sch@major Major, \sch@minor Minor \textbar} GPA \sch@gpa\newline
+%     \textbf{\sch@name}, \sch@loc\newline
+%     Awards and misc. go here\newline
+%     2\textsuperscript{nd} Year Junior, Expected Graduation \sch@grad\\
+%   \endgroup
+% }
 
 % Create the experience macro, with keyval and xparse
 % https://tex.stackexchange.com/questions/120037/xparse-and-key-value-arguments
