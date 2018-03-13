@@ -39,7 +39,7 @@
   </xsl:template>
 
   <xsl:template match="experience">
-    &tab;<xsl:text>\experience{</xsl:text><xsl:value-of select="corp" />}{<xsl:value-of select="pos" />}{<xsl:value-of select="dates/from" />-<xsl:value-of select="dates/to" /><xsl:text>}</xsl:text>&cr;
+    &tab;\experience{corp={<xsl:value-of select="corp" />},pos={<xsl:value-of select="pos" />},from={<xsl:value-of select="dates/from" />},to={<xsl:value-of select="dates/to" />}}&cr;
     <xsl:apply-templates select="list" />
   </xsl:template>
 
