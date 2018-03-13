@@ -4,6 +4,7 @@
     <title>Education</title>
 
     <school>
+      <!-- adjust these numbers each semester -->
       <year>2\textsuperscript{nd} Year Junior</year>
       <gpa>3.58</gpa>
 
@@ -66,6 +67,34 @@
         <!-- <item>Established sponsorship ties with local manufacturing businesses</item> -->
       </list>
     </experience>
+
+    <experience>
+      <corp>Conrad Spirit of Innovation</corp>
+      <pos>Programming/Electrical Lead</pos>
+      <dates>
+        <from>Sep 2014</from>
+        <to>Jun 2015</to>
+      </dates>
+
+      <list>
+        <item>Designed for a belt than warned the visually-impaired of threatening obstacles</item>
+        <item>Wired and programmed a LIDAR tracking system using an Arduino microcontroller</item>
+      </list>
+    </experience>
+
+    <!-- <experience> -->
+    <!--   <corp>Edge Systems Design</corp> -->
+    <!--   <pos>Mechanical Engineer</pos> -->
+    <!--   <dates> -->
+    <!--     <from>Jun 2012</from> -->
+    <!--     <to>Jun 2014</to> -->
+    <!--   </dates> -->
+
+    <!--   <list> -->
+    <!--     <item>Designed base frame and linear motion system for an affordable CNC router targeted at the hobby market</item> -->
+    <!--     <item>Helped manage funding and operation of a startup</item> -->
+    <!--   </list> -->
+    <!-- </experience> -->
   </section>
 
   <section >
