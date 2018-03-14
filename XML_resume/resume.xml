@@ -4,9 +4,12 @@
     <title>Education</title>
 
     <schools>
+      <longest>Aug 2016 - Present</longest>
+
       <school>
         <!-- adjust these numbers each semester -->
-        <year>2\textsuperscript{nd} Year Junior</year>
+        <!-- TODO: Fix errors because of brackets -->
+        <!-- <year>2\textsuperscript{nd} Year Junior</year> -->
         <gpa>3.58</gpa>
 
         <name>Georgia Institute of Technology</name>

@@ -35,7 +35,17 @@
   <!-- ignore the section/title node, because it is already used -->
   <xsl:template match="section/title" />
 
+  <xsl:template match="schools">
+\begin{schools}{<xsl:value-of select="longest" />}
+<xsl:apply-templates />
+\end{schools}
+  </xsl:template>
+
+  <!-- ignore the schools/longest node, because it is already used -->
+  <xsl:template match="schools/longest" />
+
   <xsl:template match="school">
+    \school{name={<xsl:value-of select="name" />},loc={<xsl:value-of select="location" />},from={<xsl:value-of select="dates/from" />},to={<xsl:value-of select="dates/to" />},major={<xsl:value-of select="major" />},minor={<xsl:value-of select="minor" />},year={<xsl:value-of select="year" />},gpa={<xsl:value-of select="gpa" />},grad={<xsl:value-of select="grad" />}}
   </xsl:template>
 
   <xsl:template match="experience">
@@ -59,7 +69,7 @@
   </xsl:template>
 
   <xsl:template match="skills">
-    \begin{skills}{<xsl:value-of select="longest" />}
+\begin{skills}{<xsl:value-of select="longest" />}
 <xsl:apply-templates />
 \end{skills}
   </xsl:template>
