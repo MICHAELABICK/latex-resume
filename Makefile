@@ -1,10 +1,13 @@
 MAKEDIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 LIBDIR = /texmf/tex/latex
 RESDIR = resumes
-XMLDIR = XML_resume
+XMLDIR = TeXML_resume
 LETDIR = cover_letters
 LATEXSTYLE = $(XMLDIR)/LaTeX_resume.xslt
 TEXTSTYLE = $(XMLDIR)/text_resume.xslt
+LATEXMK = latexmk -pdf -cd -use-make
+XSLTMK = xsltproc
+TEXMLMK = texml
 
 export TEXMFHOME=$(MAKEDIR)texmf
 
@@ -20,18 +23,21 @@ letpdf = $(patsubst %.tex,%.pdf,$(letters))
 # %.tex: ;
 # %.cls: ;
 
-all : $(respdf) $(letpdf) $(xmlpdf) $(xmltext)
+# all : $(respdf) $(letpdf) $(xmlpdf) $(xmltext)
+all : $(respdf) $(letpdf) $(xmlpdf)
 $(respdf) $(letpdf) $(xmlpdf) : FORCE
-	latexmk -pdf -cd -use-make $(basename $@).tex
+	$(LATEXMK) $(basename $@).tex
 $(letpdf) : $(respdf)
 .SECONDEXPANSION :
 # TODO: Determine whether the -use-make option will call make
 #       on the tex file, make this next line unneccesary
 $(xmlpdf) : $$(basename $$@).tex
-$(xmltex) : $$(basename $$@).xml $(LATEXSTYLE)
-	xsltproc $(LATEXSTYLE) $< > $@
-$(xmltext) : $$(basename $$@).xml $(TEXTSTYLE)
-	xsltproc $(TEXTSTYLE) $< > $@
+$(xmltex) : $$(basename $$@).xml
+	$(TEXMLMK) $< $@
+# $(xmltex) : $$(basename $$@).xml $(LATEXSTYLE)
+# 	xsltproc $(LATEXSTYLE) $< > $@
+# $(xmltext) : $$(basename $$@).xml $(TEXTSTYLE)
+# 	xsltproc $(TEXTSTYLE) $< > $@
 # Assuming latexmk can find dependencies correctly, we can just force
 # latexmk to run every time a tex file needs to be generated, and we
 # dont actually need to track dependencies seperately
