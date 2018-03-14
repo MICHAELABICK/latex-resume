@@ -1,12 +1,13 @@
 MAKEDIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
-LIBDIR = /texmf/tex/latex
-RESDIR = resumes
-XMLDIR = XML_resume
-LETDIR = cover_letters
+SRCDIR = src
+LIBDIR = /$(SRCDIR)/texmf/tex/latex
+RESDIR = $(SRCDIR)/resumes
+XMLDIR = $(SRCDIR)/XML_resume
+LETDIR = $(SRCDIR)/cover_letters
 LATEXSTYLE = $(XMLDIR)/LaTeX_resume.xslt
 TEXTSTYLE = $(XMLDIR)/text_resume.xslt
 
-export TEXMFHOME=$(MAKEDIR)texmf
+export TEXMFHOME=$(MAKEDIR)$(SRCDIR)/texmf
 
 resumes = $(shell find $(RESDIR) -name '*.tex')
 xml_resumes = $(shell find $(XMLDIR) -name '*.xml')
