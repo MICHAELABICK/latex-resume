@@ -6,3 +6,6 @@
 *.synctex.gz
 *.out
 tags
+
+ignore files in the output directory, as these can be made
+output/*
