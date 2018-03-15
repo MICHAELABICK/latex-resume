@@ -8,10 +8,4 @@
 tags
 
 ignore files in the output directory, as these can be made
-output/*
-
-XML_resume/resume.xml
-
-XML_resume/resume.xml
-
-XML_resume/resume.text
+build/*
