@@ -1,0 +1,11 @@
+<TeXML>
+  <cmd name="documentclass" nl2="1">
+    <parm>resume</parm>
+  </cmd>
+
+  <env name="document">
+    <cmd name="section">
+      <parm>Education</parm>
+    </cmd>
+  </env>
+</TeXML>
