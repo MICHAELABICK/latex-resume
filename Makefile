@@ -26,7 +26,7 @@ respdf =  $(patsubst %.tex,%.pdf,$(out_resumes))
 xmlpdf =  $(patsubst %.xml,%.pdf,$(out_xml_resumes))
 xmltex =  $(patsubst %.xml,%.tex,$(out_xml_resumes))
 xmltext = $(patsubst %.xml,%.text,$(out_xml_resumes))
-letpdf =  $(patsubst %.tex,%.pdf,$(out_lout_etters))
+letpdf =  $(patsubst %.tex,%.pdf,$(out_letters))
 
 # %.tex: ;
 # %.cls: ;
