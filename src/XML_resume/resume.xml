@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<resume>
+  <section>
+    <title>Education</title>
+
+    <schools>
+      <longest>Aug 2016 - Present</longest>
+
+      <school>
+        <!-- adjust these numbers each semester -->
+        <!-- TODO: Fix errors because of brackets -->
+        <!-- <year>2\textsuperscript{nd} Year Junior</year> -->
+        <gpa>3.58</gpa>
+
+        <name>Georgia Institute of Technology</name>
+        <location>Atlanta, GA</location>
+        <dates>
+          <from>Aug 2016</from>
+          <to>Present</to>
+        </dates>
+        <major>Mechanical Engineering</major>
+        <minor>Robotics</minor>
+        <graduation>June 2020</graduation>
+      </school>
+    </schools>
+  </section>
+
+  <section>
+    <title>Academic Projects</title>
+
+    <experience>
+      <corp>GT Motorsports</corp>
+      <pos>Powertrain Team Member</pos>
+      <dates>
+        <from>Aug 2016</from>
+        <to>Present</to>
+      </dates>
+
+      <list>
+        <item>Simulating engine dynamics with the eventual goal of increasing efficiency and low-end torque by lowering power-band</item>
+        <item>Designing and manufacturing improved camshaft to match optimal lift profile</item>
+      </list>
+    </experience>
+
+    <experience>
+      <corp>Robojackets</corp>
+      <pos>Team Member</pos>
+      <dates>
+        <from>Aug 2016</from>
+        <to>Present</to>
+      </dates>
+
+      <list>
+        <item>Lead design of a 3lb combat robot including CAD, chassis analysis, and weapon optimization</item>
+        <item>Manufactured robotic components using precision machinery including CNC mills, lathes, and waterjets</item>
+        <item>Created autonomous path planning and motion profile algorithm using Matlab</item>
+      </list>
+    </experience>
+
+    <experience>
+      <corp>MilkenKnights FRC Team</corp>
+      <pos>Team Captain</pos>
+      <dates>
+        <from>Aug 2011</from>
+        <to>Jun 2016</to>
+      </dates>
+
+      <list>
+        <item>Managed the 6-week design and construction of a robot, including rapid prototyping, CAD, manufacturing, and control dynamics</item>
+        <item>Created top-down Solidworks models of transmissions, gearboxes, and complex linkages</item>
+        <item>Implemented position PID, velocity PID, vision tracking, motion profiles, and path following</item>
+        <item>Trained students in CAD and operating precision machinery including a mill, lathe, and CNC router</item>
+        <!-- <item>Established sponsorship ties with local manufacturing businesses</item> -->
+      </list>
+    </experience>
+
+    <experience>
+      <corp>Conrad Spirit of Innovation</corp>
+      <pos>Programming/Electrical Lead</pos>
+      <dates>
+        <from>Sep 2014</from>
+        <to>Jun 2015</to>
+      </dates>
+
+      <list>
+        <item>Designed for a belt than warned the visually-impaired of threatening obstacles</item>
+        <item>Wired and programmed a LIDAR tracking system using an Arduino microcontroller</item>
+      </list>
+    </experience>
+
+    <!-- <experience> -->
+    <!--   <corp>Edge Systems Design</corp> -->
+    <!--   <pos>Mechanical Engineer</pos> -->
+    <!--   <dates> -->
+    <!--     <from>Jun 2012</from> -->
+    <!--     <to>Jun 2014</to> -->
+    <!--   </dates> -->
+
+    <!--   <list> -->
+    <!--     <item>Designed base frame and linear motion system for an affordable CNC router targeted at the hobby market</item> -->
+    <!--     <item>Helped manage funding and operation of a startup</item> -->
+    <!--   </list> -->
+    <!-- </experience> -->
+  </section>
+
+  <section>
+    <title>Technical Skills</title>
+
+    <skills>
+      <longest>Microcontrollers</longest>
+
+      <skill>
+        <group>CAD</group>
+        <text>Solidworks(7 years), Autodesk~Inventor(8 years), Top-down~Design, Parametric~Design, Surface~Modeling, 2D~Engineering~Drawings</text>
+      </skill>
+
+      <skill>
+        <group>Manufacturing</group>
+        <text>Haas CNC, Manual Mill, Manual Lathe, Laser Cutter, Waterjet, 3D Printer</text>
+      </skill>
+
+      <skill>
+        <group>Programming</group>
+        <text>MatLab, Java, Python, HTML, CSS, SASS, Android, \LaTeX</text>
+      </skill>
+
+      <skill>
+        <group>Microcontrollers</group>
+        <text>Arduino, NI myRio/roboRio(LabView)</text>
+      </skill>
+
+      <skill>
+        <group>Software</group>
+        <text>Vim, Adobe Illustrator, Word, Excel</text>
+      </skill>
+    </skills>
+  </section>
+
+  <section>
+    <title>Awards \&amp; Honors</title>
+
+    <awards>
+      <award>
+        <date></date>
+        <place></place>
+        <name></name>
+      </award>
+    </awards>
+  </section>
+</resume>
