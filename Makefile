@@ -31,6 +31,7 @@ out_letters =      $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(letters))
 respdf =  $(patsubst %.tex,%.pdf,$(out_resumes))
 xmlpdf =  $(patsubst %.xml,%.pdf,$(out_xml_resumes))
 xmltex =  $(patsubst %.xml,%.tex,$(out_xml_resumes))
+xmltexml =  $(patsubst %.xml,%.texml.xml,$(out_xml_resumes))
 xmltext = $(patsubst %.xml,%.text,$(out_xml_resumes))
 letpdf =  $(patsubst %.tex,%.pdf,$(out_letters))
 
@@ -48,10 +49,10 @@ $(out_resumes) $(out_letters) $(out_xml_resumes) : $$(patsubst $$(BUILDDIR)/%,$$
 # TODO: Determine whether the -use-make option will call make
 #       on the tex file, making this next line unneccesary
 $(respdf) $(letpdf) $(xmlpdf) : $$(basename $$@).tex
-$(xmltex) : $$(basename $$@).xml
+$(xmltex) : $$(basename $$@).texml.xml
 	$(TEXMLMK) $< $@
-# $(xmltex) : $$(basename $$@).xml $(LATEXSTYLE)
-# 	xsltproc $(LATEXSTYLE) $< > $@
+$(xmltexml) : $$(patsubst %.texml.xml,%.xml,$$@)  $(LATEXSTYLE)
+	xsltproc $(LATEXSTYLE) $< > $@
 $(xmltext) : $$(basename $$@).xml $(TEXTSTYLE)
 	xsltproc $(TEXTSTYLE) $< > $@
 # Assuming latexmk can find dependencies correctly, we can just force

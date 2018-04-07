@@ -11,7 +11,7 @@
 
   <xsl:output
     method="text"
-    indent="no"/>
+    indent="no" />
 
   <xsl:strip-space elements="*" />
 

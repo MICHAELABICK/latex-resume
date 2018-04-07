@@ -131,3 +131,8 @@
      labelwidth=\skillwd,align=right,
      itemindent=-\skillindent]}
   {\end{description}}
+
+% Create a skill macro for each skill row
+\newcommand{\skill}[2]{
+  \item [#1] #1
+}
