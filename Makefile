@@ -15,7 +15,7 @@ export TEXMFHOME=$(MAKEDIR)$(SRCDIR)/texmf
 
 # Source Files
 resumes =     $(shell find $(RESDIR) -name '*.tex')
-xml_resumes = $(shell find $(XMLDIR) -name '*.xml')
+# xml_resumes = $(shell find $(XMLDIR) -name '*.xml')
 letters =     $(shell find $(LETDIR) -name '*.tex')
 # resumes =     $(wildcard $(RESDIR)/**/*.tex)
 # xml_resumes = $(wildcard $(XMLDIR)/**/*.xml)
