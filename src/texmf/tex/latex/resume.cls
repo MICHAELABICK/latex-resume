@@ -57,14 +57,15 @@
 \define@key{school}{year}{\def\sch@year{#1}}
 \define@key{school}{gpa}{\def\sch@gpa{#1}}
 \define@key{school}{grad}{\def\sch@grad{#1}}
+\define@key{school}{awards}{\def\sch@awards{#1}}
 \DeclareDocumentCommand{\school}{m}{
   \begingroup
     % Key Defaults + New Ones
-    \setkeys{school}{name={},loc={},from={},to={},major={},minor={},year={},gpa={},grad={},#1}
+    \setkeys{school}{name={},loc={},from={},to={},major={},minor={},year={},gpa={},grad={},awards={},#1}
     % Define the macro
-    \item [\sch@from - \sch@to] \textbf{\sch@major Major, \sch@minor Minor \textbar} GPA \sch@gpa\\
+    \item [\sch@from{} - \sch@to] \textbf{\sch@major{} Major, \sch@minor{} Minor \textbar} GPA \sch@gpa\\
       \textbf{\sch@name}, \sch@loc\\
-      Awards and misc. go here\\
+      \sch@awards\\
       2\textsuperscript{nd} Year Junior, Expected Graduation \sch@grad
   \endgroup
 }
