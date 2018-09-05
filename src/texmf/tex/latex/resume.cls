@@ -63,10 +63,10 @@
     % Key Defaults + New Ones
     \setkeys{school}{name={},loc={},from={},to={},major={},minor={},year={},gpa={},grad={},awards={},#1}
     % Define the macro
-    \item [\sch@from{} - \sch@to] \textbf{\sch@major{} Major, \sch@minor{} Minor \textbar} GPA \sch@gpa\\
-      \textbf{\sch@name}, \sch@loc\\
-      \sch@awards\\
-      2\textsuperscript{nd} Year Junior, Expected Graduation \sch@grad
+    \item [\sch@from{} - \sch@to] \textbf{\sch@name}, \sch@loc\\
+      \textbf{Bachelor's of Science: \sch@major{}}\\
+      \sch@minor{} Minor \textbar GPA \sch@gpa\\
+      \sch@awards
   \endgroup
 }
 
