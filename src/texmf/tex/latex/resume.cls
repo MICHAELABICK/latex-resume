@@ -107,7 +107,9 @@
     % Define the macro
     \subsection[\exp@corp]{
       \hfill \exp@from - \exp@to\\
-      \textbf{\exp@corp \textbar} \exp@pos
+      \IfValueTF{\exp@pos}
+        { \textbf{\exp@corp \textbar} \exp@pos}
+        {\textbf{\exp@corp}}
     }
   \endgroup
 }
