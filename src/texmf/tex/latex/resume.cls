@@ -6,6 +6,7 @@
 
 \RequirePackage{keyval}
 \RequirePackage{xparse}
+\RequirePackage{etoolbox}
 
 % Load enumitem for custom list formatting
 \RequirePackage{enumitem}
@@ -106,10 +107,10 @@
     \setkeys{experience}{corp={},pos={},from={},to={},#1}
     % Define the macro
     \subsection[\exp@corp]{
-      \hfill \exp@from - \exp@to\\
-      \IfValueTF{\exp@pos}
-        { \textbf{\exp@corp \textbar} \exp@pos}
+      \hfill \exp@from{} - \exp@to\\
+      \ifdefempty{\exp@pos}
         {\textbf{\exp@corp}}
+        { \textbf{\exp@corp \textbar} \exp@pos}
     }
   \endgroup
 }
