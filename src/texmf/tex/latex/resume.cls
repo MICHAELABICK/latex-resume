@@ -9,6 +9,25 @@
 \RequirePackage{etoolbox}
 \RequirePackage{tabularx}
 
+% Do not hyphenate the resume
+\RequirePackage[none]{hyphenat}
+\sloppy
+
+% Create a comma seperated list environment
+% Used adjustev version of this solution: https://tex.stackexchange.com/a/62620
+\RequirePackage{xparse,environ,xspace}
+\ExplSyntaxOn
+\NewEnviron{commalist}[1][\space]{\spence_comma_list:V \BODY #1}
+\seq_new:N \l_spence_items_seq
+\cs_new_protected:Npn \spence_comma_list:n #1
+ {
+  \seq_set_split:Nnn \l_spence_items_seq { \item } { #1 }
+  \seq_pop_left:NN \l_spence_items_seq \l_tmpa_tl % we have an empty element at the beginning
+  \seq_use:Nnnn \l_spence_items_seq { , ~ } { , ~ } { , ~ }
+ }
+\cs_generate_variant:Nn \spence_comma_list:n { V }
+\ExplSyntaxOff
+
 % Load enumitem for custom list formatting
 \RequirePackage{enumitem}
 % Remove space between list items
