@@ -49,13 +49,9 @@ $(out_resumes) $(out_letters) $(out_xml_resumes) : $$(patsubst $$(BUILDDIR)/%,$$
 # TODO: Determine whether the -use-make option will call make
 #       on the tex file, making this next line unneccesary
 $(respdf) $(letpdf) $(xmlpdf) : $$(basename $$@).tex
-<<<<<<< HEAD
 $(xmltex) : $$(basename $$@).texml.xml
 	$(TEXMLMK) $< $@
 $(xmltexml) : $$(patsubst %.texml.xml,%.xml,$$@)  $(LATEXSTYLE)
-=======
-$(xmltex) : $$(basename $$@).xml $(LATEXSTYLE)
->>>>>>> master
 	xsltproc $(LATEXSTYLE) $< > $@
 $(xmltext) : $$(basename $$@).xml $(TEXTSTYLE)
 	xsltproc $(TEXTSTYLE) $< > $@
