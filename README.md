@@ -10,7 +10,7 @@ The Makefile will need both `pdflatex` and `latexmk`. First install these progra
 make resumes/resume_name.pdf
 ```
 
-,replacing "resume_name" with the name of the Tex file you would like to compile. A cover letter PDF could be built using the command,
+replacing "resume_name" with the name of the Tex file you would like to compile. A cover letter PDF could be built using the command,
 
 ```sh
 make cover_letters/cover_letter_dir/cover_letter_name.pdf
