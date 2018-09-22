@@ -9,9 +9,8 @@
       <school type="cmd">
         <keyvals>
           <!-- adjust these numbers each semester -->
-          <!-- TODO: add superscripts -->
-          <year>2nd Year Junior</year>
-          <gpa>3.58</gpa>
+          <!-- <year>3<super>rd</super> Year</year> -->
+          <gpa>3.50</gpa>
 
           <name>Georgia Institute of Technology</name>
           <loc>Atlanta, GA</loc>
@@ -19,7 +18,7 @@
             <from>Aug 2016</from>
             <to>Present</to>
           </dates>
-          <major>Mechanical Engineering</major>
+          <major>Bachelors of Science: Mechanical Engineering</major>
           <minor>Robotics</minor>
           <grad>June 2020</grad>
         </keyvals>
@@ -119,35 +118,32 @@
     <skills>
       <longest>Microcontrollers</longest>
 
-      <skill>
-        <group>CAD</group>
-        <text>Solidworks(7 years), Autodesk&nbsp;Inventor(8 years), Top-down&nbsp;Design, Parametric&nbsp;Design, SurfaceM&nbsp;odeling, 2D&nbsp;Engineering&nbsp;Drawings</text>
-      </skill>
+      <group>
+        <title>CAD</title>
 
-      <skill>
-        <group>Manufacturing</group>
-        <text>Haas&nbsp;CNC, Manual&nbsp;Mill, Manual&nbsp;Lathe, Laser&nbsp;Cutter, Waterjet, 3D&nbsp;Printer</text>
-      </skill>
+        <skill>Solidworks(7 years)</skill>
+        <skill>Autodesk Inventor(8 years)</skill>
+        <skill>Top-down Design</skill>
+        <skill>Parametric Design</skill>
+        <skill>Surface Modeling</skill>
+        <skill>2D Engineering Drawings</skill>
+      </group>
 
-      <skill>
-        <group>Programming</group>
-        <text>MatLab, Java, Python, HTML, CSS, SASS, Android, <LaTeX /></text>
-      </skill>
+      <group>
+        <title>Manufacturing</title>
 
-      <skill>
-        <group>Microcontrollers</group>
-        <text>Arduino, NI&nbsp;myRio/roboRio(LabView)</text>
-      </skill>
-
-      <skill>
-        <group>Software</group>
-        <text>Vim, Adobe&nbsp;Illustrator, Word, Excel</text>
-      </skill>
+        <skill>Haas CNC</skill>
+        <skill>Manual Mill</skill>
+        <skill>Manual Lathe</skill>
+        <skill>Laser Cutter</skill>
+        <skill>Waterjet</skill>
+        <skill>3D Printer</skill>
+      </group>
     </skills>
   </section>
 
   <section>
-    <title>Awards & Honors</title>
+    <title>Awards &amp; Honors</title>
 
     <awards>
       <award>

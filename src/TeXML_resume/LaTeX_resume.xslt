@@ -107,10 +107,18 @@
 
   <xsl:template match="skills/longest" />
 
-  <xsl:template match="skills/skill">
-    <cmd name="skill">
-      <parm><xsl:value-of select="group" /></parm>
-      <parm><xsl:value-of select="text" /></parm>
-    </cmd>
+  <xsl:template match="skills/group">
+    <env name="group">
+      <parm><xsl:value-of select="title" /></parm>
+      <xsl:apply-templates />
+    </env>
+  </xsl:template>
+
+  <xsl:template match="skills/group/title" />
+
+  <xsl:template match="skills/group/skill">
+    <cmd name="item" gr="0" />
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="." />
   </xsl:template>
 </xsl:stylesheet>
