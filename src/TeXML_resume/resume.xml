@@ -24,7 +24,45 @@
   </section>
 
   <section>
-    <title>Academic Projects</title>
+    <title>Work Experience</title>
+
+    <experience type="cmd">
+      <keyvals>
+        <corp>UCLA Recreation</corp>
+        <pos>Sailing Coordinator</pos>
+        <dates>
+          <from>idk</from>
+          <to>idk</to>
+        </dates>
+      </keyvals>
+
+      <list>
+        <item>I did some stuff</item>
+      </list>
+    </experience>
+  </section>
+
+  <section>
+    <title>Research</title>
+
+    <experience type="cmd">
+      <keyvals>
+        <corp>GTRI Agricultural Robotics</corp>
+        <pos>Research Assistant</pos>
+        <dates>
+          <from>idk</from>
+          <to>idk</to>
+        </dates>
+      </keyvals>
+
+      <list>
+        <item>I did some stuff</item>
+      </list>
+    </experience>
+  </section>
+
+  <section>
+    <title>Academic Leadership Projects</title>
 
     <experience type="cmd">
       <keyvals>
