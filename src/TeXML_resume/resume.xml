@@ -141,13 +141,15 @@
     <title>Awards &amp; Honors</title>
 
     <awards>
-      <award>
-        <date>
-          <month>Dec</month>
-          <year>2016</year>
-        </date>
-        <place>1<super>st</super>/100</place>
-        <name>Random Award</name>
+      <award type="cmd">
+        <keyvals>
+          <date>
+            <month>Dec</month>
+            <year>2016</year>
+          </date>
+          <place>1st/100</place>
+          <name>Random Award</name>
+        </keyvals>
       </award>
     </awards>
   </section>

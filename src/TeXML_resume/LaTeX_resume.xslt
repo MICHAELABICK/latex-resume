@@ -117,11 +117,8 @@
 
   <xsl:template match="awards">
     <env name="awards">
-      <xsl:apply-template />
+      <xsl:apply-templates />
     </env>
-  </xsl:template>
-
-  <xsl:template match="award">
   </xsl:template>
 
   <xsl:template match="super">
