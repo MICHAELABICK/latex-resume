@@ -4,8 +4,6 @@
     <title>Education</title>
 
     <schools>
-      <longest>Aug 2016 - Present</longest>
-
       <school type="cmd">
         <keyvals>
           <!-- adjust these numbers each semester -->
@@ -128,7 +126,6 @@
         <skill>Surface Modeling</skill>
         <skill>2D Engineering Drawings</skill>
       </group>
-
       <group>
         <title>Manufacturing</title>
 
@@ -148,8 +145,8 @@
     <awards>
       <award>
         <date></date>
-        <place></place>
-        <name></name>
+        <place><supernum>1<super>st</super></supernum>/100</place>
+        <name>Random Award</name>
       </award>
     </awards>
   </section>

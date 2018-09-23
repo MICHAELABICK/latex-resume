@@ -16,7 +16,7 @@
   </xsl:template>
 
   <xsl:strip-space elements="*" />
-  <xsl:preserve-space elements="list item" />
+  <xsl:preserve-space elements="list item skills groupitem skill" />
 
   <xsl:template match="LaTeX">
     <cmd name="LaTeX" gr="0" />
@@ -91,7 +91,6 @@
 
   <xsl:template match="schools">
     <env name="schools">
-      <parm><xsl:value-of select="longest" /></parm>
       <xsl:apply-templates />
     </env>
   </xsl:template>
@@ -108,7 +107,7 @@
   <xsl:template match="skills/longest" />
 
   <xsl:template match="skills/group">
-    <env name="group">
+    <env name="groupitem">
       <parm><xsl:value-of select="title" /></parm>
       <xsl:apply-templates />
     </env>
