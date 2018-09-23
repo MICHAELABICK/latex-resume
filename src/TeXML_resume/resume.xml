@@ -318,8 +318,8 @@
             <month>Dec</month>
             <year>2016</year>
           </date>
-          <place>1<super>st</super>/100</place>
-          <name>Random Award</name>
+          <place>to Present</place>
+          <name>Georgia Tech Dean's List</name>
         </keyvals>
       </award>
 
@@ -329,8 +329,85 @@
             <month>Nov</month>
             <year>2017</year>
           </date>
-          <place>2<super>nd</super>/100</place>
-          <name>Random Award</name>
+          <place>7<super>th</super>/60</place>
+          <name>Georgia Tech ME2110 Design Competition</name>
+        </keyvals>
+      </award>
+
+      <award type="cmd">
+        <keyvals>
+          <date>
+            <month>Apr</month>
+            <year>2016</year>
+          </date>
+          <place>2<super>nd</super>/42</place>
+          <name>FIRST Robotics Orange County Regional</name>
+        </keyvals>
+      </award>
+
+      <award type="cmd">
+        <keyvals>
+          <date>
+            <month>Mar</month>
+            <year>2015</year>
+          </date>
+          <place>3<super>rd</super>/41</place>
+          <name>FIRST Robotics Ventura Regional</name>
+        </keyvals>
+      </award>
+
+      <award type="cmd">
+        <keyvals>
+          <date>
+            <month>Mar</month>
+            <year>2015</year>
+          </date>
+          <place>3<super>rd</super>/53</place>
+          <name>FIRST Robotics Utah Regional</name>
+        </keyvals>
+      </award>
+
+      <award type="cmd">
+        <keyvals>
+          <date>
+            <month>Oct</month>
+            <year>2014</year>
+          </date>
+          <place>International</place>
+          <name>Conrad Spirit of Innovation Semi-Finalist</name>
+        </keyvals>
+      </award>
+
+      <award type="cmd">
+        <keyvals>
+          <date>
+            <month>Mar</month>
+            <year>2013</year>
+          </date>
+          <place>2<super>nd</super>/26</place>
+          <name>FIRST Robotics Madtown Robotics Off-season</name>
+        </keyvals>
+      </award>
+
+      <award type="cmd">
+        <keyvals>
+          <date>
+            <month>Mar</month>
+            <year>2013</year>
+          </date>
+          <place>1<super>st</super>/65</place>
+          <name>FIRST Robotics Los Angeles Regional</name>
+        </keyvals>
+      </award>
+
+      <award type="cmd">
+        <keyvals>
+          <date>
+            <month>Mar</month>
+            <year>2012</year>
+          </date>
+          <place>2<super>nd</super>/66</place>
+          <name>FIRST Robotics Los Angeles Regional</name>
         </keyvals>
       </award>
     </awards>
