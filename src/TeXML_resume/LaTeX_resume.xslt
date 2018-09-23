@@ -39,15 +39,16 @@
 
   <xsl:template match="keyvals//*">
     <xsl:choose>
-      <xsl:when test="*">
+      <xsl:when test="* and not(super)">
         <!-- if it has child nodes, apply-templates to the child nodes -->
-        <xsl:apply-templates select="*" />
+        <xsl:apply-templates />
       </xsl:when>
       <xsl:otherwise>
         <!-- otherwise, create a keyval out of the contents of this node -->
         <xsl:value-of select="local-name()" />
         <xsl:text>={</xsl:text>
-        <xsl:value-of select="." />
+        <xsl:apply-templates />
+        <!-- <xsl:value-of select="." /> -->
         <xsl:text>},</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
@@ -125,5 +126,13 @@
     <cmd name="textsuperscript" gr="0">
       <param><xsl:value-of select="." /></param>
     </cmd>
+  </xsl:template>
+
+  <!-- superscripts in a keyval are already being escaped, so they need -->
+  <!-- a different template -->
+  <xsl:template match="keyvals//super">
+    <xsl:text>\textsuperscript{</xsl:text>
+    <xsl:value-of select="." />
+    <xsl:text>}</xsl:text>
   </xsl:template>
 </xsl:stylesheet>

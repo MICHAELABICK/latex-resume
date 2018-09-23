@@ -186,7 +186,17 @@
             <month>Dec</month>
             <year>2016</year>
           </date>
-          <place>1st/100</place>
+          <place>1<super>st</super>/100</place>
+          <name>Random Award</name>
+        </keyvals>
+      </award>
+      <award type="cmd">
+        <keyvals>
+          <date>
+            <month>Nov</month>
+            <year>2017</year>
+          </date>
+          <place>2<super>nd</super>/100</place>
           <name>Random Award</name>
         </keyvals>
       </award>
