@@ -193,21 +193,25 @@
     <title>Technical Skills</title>
 
     <skills>
-      <longest>Microcontrollers</longest>
+      <longest>Communication</longest>
 
       <group>
         <title>CAD</title>
 
-        <skill>Solidworks(7 years)</skill>
-        <skill>Autodesk Inventor(8 years)</skill>
+        <skill>Solidworks (8 years)</skill>
+        <skill>Autodesk Inventor (9 years)</skill>
         <skill>Top-down Design</skill>
         <skill>Parametric Design</skill>
         <skill>Surface Modeling</skill>
-        <skill>2D Engineering Drawings</skill>
+        <skill>2D&amp;3D Manufacturing/Installation Drawings</skill>
+        <skill>Geometric Design &amp; Tolerancing</skill>
+        <skill>Design for Manufacture (DFM)</skill>
+        <skill>Design for Assembly (DFA)</skill>
+        <skill>Finite Element Analysis (FEA)</skill>
       </group>
 
       <group>
-        <title>Manufacturing</title>
+        <title>Fabrication</title>
 
         <skill>Haas CNC</skill>
         <skill>Manual Mill</skill>
@@ -215,6 +219,91 @@
         <skill>Laser Cutter</skill>
         <skill>Waterjet</skill>
         <skill>3D Printer</skill>
+        <skill>Selective Laser Sintering</skill>
+        <skill>Drill Press</skill>
+        <skill>Bandsaw</skill>
+        <skill>Soldering Iron</skill>
+      </group>
+
+      <group>
+        <title>Programming</title>
+
+        <skill>MATLAB</skill>
+        <skill>Java</skill>
+        <skill>Python</skill>
+        <skill>Git</skill>
+        <skill>Bash</skill>
+        <skill>G-Code</skill>
+        <skill>Robot Operating System (ROS)</skill>
+        <skill>OpenCV</skill>
+        <skill>LabView</skill>
+        <skill>Android</skill>
+        <skill>HTML</skill>
+        <skill>CSS</skill>
+        <skill>SASS</skill>
+        <skill><LaTeX /></skill>
+      </group>
+
+      <group>
+        <title>Mechatronics</title>
+
+        <skill>NI cRio/myRio/roboRio</skill>
+        <skill>Arduino</skill>
+        <skill>Servo Motors</skill>
+        <skill>Intel Realsense</skill>
+        <skill>LIDAR</skill>
+        <skill>Sonar</skill>
+        <skill>Hall Effect</skill>
+        <skill>Penumatic Actuators</skill>
+        <skill>Encoders</skill>
+        <skill>Solenoids</skill>
+        <skill>IR Sensors</skill>
+        <skill>Wire Harness</skill>
+      </group>
+
+      <group>
+        <title>Software</title>
+
+        <skill>Vim</skill>
+        <skill>Linux</skill>
+        <skill>Ubuntu</skill>
+        <skill>Adobe Illustrator</skill>
+        <skill>Word</skill>
+        <skill>Excel</skill>
+        <skill>MacOS</skill>
+        <skill>Windows</skill>
+      </group>
+
+      <group>
+        <title>Instruments</title>
+
+        <skill>Micrometer</skill>
+        <skill>Caliper</skill>
+        <skill>Ocilloscope</skill>
+        <skill>Multimeter</skill>
+        <skill>Voltmeter</skill>
+      </group>
+
+      <group>
+        <title>Communication</title>
+
+        <skill>Oral Reports</skill>
+        <skill>Technical Reports</skill>
+        <skill>Documentation</skill>
+        <skill>Executive Summaries</skill>
+        <skill>Progress Reports</skill>
+        <skill>Bill of Materials (BOM)</skill>
+      </group>
+
+      <group>
+        <title>Planning</title>
+
+        <skill>House of Quality</skill>
+        <skill>Specification Sheet</skill>
+        <skill>Morph Chart</skill>
+        <skill>Function Tree</skill>
+        <skill>Gantt Chart</skill>
+        <skill>Evaluation Matrix</skill>
       </group>
     </skills>
   </section>

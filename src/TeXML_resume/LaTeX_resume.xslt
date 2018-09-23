@@ -113,7 +113,7 @@
   <xsl:template match="skills/group/skill">
     <cmd name="item" gr="0" />
     <xsl:text> </xsl:text>
-    <xsl:value-of select="." />
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template match="awards">
@@ -134,5 +134,9 @@
     <xsl:text>\textsuperscript{</xsl:text>
     <xsl:value-of select="." />
     <xsl:text>}</xsl:text>
+  </xsl:template>
+
+  <xsl:template match="LaTeX">
+    <cmd name="LaTeX" gr="0" />
   </xsl:template>
 </xsl:stylesheet>
