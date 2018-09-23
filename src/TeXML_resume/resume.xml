@@ -31,13 +31,16 @@
         <corp>UCLA Recreation</corp>
         <pos>Sailing Coordinator</pos>
         <dates>
-          <from>idk</from>
-          <to>idk</to>
+          <from>June 2016</from>
+          <to>Aug 2018</to>
         </dates>
       </keyvals>
 
       <list>
-        <item>I did some stuff</item>
+        <item>Coordinated the daily plan and goals for 20 co-workers</item>
+        <item>Responsible for safety of UCLA sailors on and off the water</item>
+        <item>Taught sailors with skill levels ranging from beginner to advanced</item>
+        <item>Advanced from coordinator to lead coordinator</item>
       </list>
     </experience>
   </section>
@@ -50,13 +53,16 @@
         <corp>GTRI Agricultural Robotics</corp>
         <pos>Research Assistant</pos>
         <dates>
-          <from>idk</from>
-          <to>idk</to>
+          <from>Aug 2018</from>
+          <to>Present</to>
         </dates>
       </keyvals>
 
       <list>
-        <item>I did some stuff</item>
+        <item>Researching, integrating, and programming various 3D-depth sensor arrays for brachiating robot</item>
+        <item>Used computer vision on a stereo camera array to identify a thin cable in harsh environmental conditions</item>
+        <item>Integrating sensor data into feedback controls of a non-linear, robot and flexible cable system</item>
+        <item>Implemented ROS (Robot Operating System) to record, communicate, and log robot and sensor state</item>
       </list>
     </experience>
   </section>
@@ -66,34 +72,35 @@
 
     <experience type="cmd">
       <keyvals>
-        <corp>GT Motorsports</corp>
-        <pos>Powertrain Team Member</pos>
+        <corp>Robojackets</corp>
+        <pos>Team Member</pos>
         <dates>
           <from>Aug 2016</from>
-          <to>Present</to>
+          <to>April 2017</to>
         </dates>
       </keyvals>
 
       <list>
-        <item>Simulating engine dynamics with the eventual goal of increasing efficiency and low-end torque by lowering power-band</item>
-        <item>Designing and manufacturing improved camshaft to match optimal lift profile</item>
+        <item>Lead design of a 3lb combat robot including CAD and Design for Manufacture</item>
+        <item>Performed Finite Element Analysis on weapon subsystem to prevent catastrophic and fatigue failure</item>
+        <item>Manufactured robotic components using precision machinery including CNC mills, lathes, and waterjets</item>
+        <item>Created autonomous path planning and motion profile algorithm using MATLAB</item>
       </list>
     </experience>
 
     <experience type="cmd">
       <keyvals>
-        <corp>Robojackets</corp>
-        <pos>Team Member</pos>
+        <corp>GT Motorsports</corp>
+        <pos>Powertrain Team Member</pos>
         <dates>
           <from>Aug 2016</from>
-          <to>Present</to>
+          <to>April 2017</to>
         </dates>
       </keyvals>
 
       <list>
-        <item>Lead design of a 3lb combat robot including CAD, chassis analysis, and weapon optimization</item>
-        <item>Manufactured robotic components using precision machinery including CNC mills, lathes, and waterjets</item>
-        <item>Created autonomous path planning and motion profile algorithm using Matlab</item>
+        <item>Simulated engine dynamics to increase efficiency and low-end torque by lowering power-band</item>
+        <item>Designed improved camshaft to match optimal lift profile</item>
       </list>
     </experience>
 
@@ -108,11 +115,46 @@
       </keyvals>
 
       <list>
-        <item>Managed the 6-week design and construction of a robot, including rapid prototyping, CAD, manufacturing, and control dynamics</item>
-        <item>Created top-down Solidworks models of transmissions, gearboxes, and complex linkages</item>
+        <item>Used Lean and Six Sigma principles to streamline manufacturing and assembly proccess</item>
+        <item>Managed 60 students in rapid prototyping, designing, and manufacturing a robot in six weeks</item>
+        <item>Created top-down Solidworks models of transmissions, manipulators, and complex linkages</item>
         <item>Implemented position PID, velocity PID, vision tracking, motion profiles, and path following</item>
         <item>Trained students in CAD and operating precision machinery including a mill, lathe, and CNC router</item>
         <!-- <item>Established sponsorship ties with local manufacturing businesses</item> -->
+      </list>
+    </experience>
+
+    <experience type="cmd">
+      <keyvals>
+        <corp>3D Printing Design Project</corp>
+        <dates>
+          <from>Aug 2016</from>
+          <to>Dec 2016</to>
+        </dates>
+      </keyvals>
+
+      <list>
+        <item>Surface modeled an X-Wing, designed to be SLS printed to minimize part count and ease assembly</item>
+        <item>Performed Geometric Dimensioning and Tolerancing to ensure functionality</item>
+        <item>Created manufacturing drawings, assembly diagrams, and sections views for a technical report</item>
+        <item>Final print is used as an example of excellent modeling technique and novel usage of SLS 3D printing</item>
+      </list>
+    </experience>
+
+    <experience type="cmd">
+      <keyvals>
+        <corp>Creative Decisions and Design Competition</corp>
+        <dates>
+          <from>Aug 2017</from>
+          <to>Dec 2017</to>
+        </dates>
+      </keyvals>
+
+      <list>
+        <item>Utilized CAD and laser cutting techniques to enable rapid prototyping, ideation, and manufacturing</item>
+        <item>Wrote technical project reports outlining design process, decisions, and future improvements</item>
+        <item>Presented our machine, design decisions, and proccess to a panel of qualified judges</item>
+        <item>Programmed a NI myRio to execute a system of automated tasks using LabView</item>
       </list>
     </experience>
 
@@ -127,7 +169,7 @@
       </keyvals>
 
       <list>
-        <item>Designed for a belt than warned the visually-impaired of threatening obstacles</item>
+        <item>Designed a belt than warned the visually-impaired of hazardous obstacles</item>
         <item>Wired and programmed a LIDAR tracking system using an Arduino microcontroller</item>
       </list>
     </experience>
@@ -163,6 +205,7 @@
         <skill>Surface Modeling</skill>
         <skill>2D Engineering Drawings</skill>
       </group>
+
       <group>
         <title>Manufacturing</title>
 
@@ -190,6 +233,7 @@
           <name>Random Award</name>
         </keyvals>
       </award>
+
       <award type="cmd">
         <keyvals>
           <date>
