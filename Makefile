@@ -5,11 +5,14 @@ BUILDDIR = build
 LIBDIR = /$(SRCDIR)/texmf/tex/latex
 # Source Directories
 RESDIR = $(SRCDIR)/resumes
-XMLDIR = $(SRCDIR)/XML_resume
+XMLDIR = $(SRCDIR)/TeXML_resume
 LETDIR = $(SRCDIR)/cover_letters
 # Compile commands and files
 LATEXSTYLE = $(XMLDIR)/LaTeX_resume.xslt
 TEXTSTYLE = $(XMLDIR)/text_resume.xslt
+LATEXMK = latexmk -pdf -cd -use-make
+XSLTMK = xsltproc
+TEXMLMK = texml
 
 export TEXMFHOME=$(MAKEDIR)$(SRCDIR)/texmf
 
@@ -28,14 +31,14 @@ out_letters =      $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(letters))
 respdf =  $(patsubst %.tex,%.pdf,$(out_resumes))
 xmlpdf =  $(patsubst %.xml,%.pdf,$(out_xml_resumes))
 xmltex =  $(patsubst %.xml,%.tex,$(out_xml_resumes))
+xmltexml =  $(patsubst %.xml,%.texml.xml,$(out_xml_resumes))
 xmltext = $(patsubst %.xml,%.text,$(out_xml_resumes))
 letpdf =  $(patsubst %.tex,%.pdf,$(out_letters))
 
 # all : $(respdf) $(letpdf) $(xmlpdf) $(xmltext)
-all : $(respdf) $(letpdf)
-	echo $(resumes)
+all : $(respdf) $(letpdf) $(xmlpdf)
 $(respdf) $(letpdf) $(xmlpdf) : FORCE
-	latexmk -pdf -cd -use-make $(basename $@).tex
+	$(LATEXMK) $(basename $@).tex
 $(letpdf) : $(respdf)
 .SECONDEXPANSION :
 $(out_resumes) $(out_letters) $(out_xml_resumes) : $$(patsubst $$(BUILDDIR)/%,$$(SRCDIR)/%,$$@)
@@ -46,7 +49,9 @@ $(out_resumes) $(out_letters) $(out_xml_resumes) : $$(patsubst $$(BUILDDIR)/%,$$
 # TODO: Determine whether the -use-make option will call make
 #       on the tex file, making this next line unneccesary
 $(respdf) $(letpdf) $(xmlpdf) : $$(basename $$@).tex
-$(xmltex) : $$(basename $$@).xml $(LATEXSTYLE)
+$(xmltex) : $$(basename $$@).texml.xml
+	$(TEXMLMK) $< $@
+$(xmltexml) : $$(patsubst %.texml.xml,%.xml,$$@)  $(LATEXSTYLE)
 	xsltproc $(LATEXSTYLE) $< > $@
 $(xmltext) : $$(basename $$@).xml $(TEXTSTYLE)
 	xsltproc $(TEXTSTYLE) $< > $@

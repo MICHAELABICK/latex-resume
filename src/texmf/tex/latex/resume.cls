@@ -158,3 +158,8 @@
      labelwidth=\skillwd,align=right,
      itemindent=-\skillindent]}
   {\end{description}}
+
+% Environment for a list item of a group of items
+\newenvironment{groupitem}[1]
+  {\item [#1] \commalist}
+  {\endcommalist}
