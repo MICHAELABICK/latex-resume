@@ -162,26 +162,37 @@
 % Environment for a list item of a group of items
 \newenvironment{groupitem}[1]
   {\item [#1] \commalist}
-  {\endcommalist}
+{\endcommalist}
 
 % Environment for awards
 \newenvironment{awards}
-  {\begin{tabular}{rll}}
-  {\end{tabular}}
+  {}
+  {
+    \begin{tabular}{rll}
+      \awardrows
+    \end{tabular}
+  }
 
-% % TODO: make this a legitimate macro -- there are some major
-% %       issues with implementing table row macros
-% % Macro for an award
-% % Key Definitions
-% \define@key{award}{month}{\def\awd@month{#1}}
-% \define@key{award}{year}{\def\awd@year{#1}}
-% \define@key{award}{place}{\def\awd@place{#1}}
-% \define@key{award}{name}{\def\awd@name{#1}}
-% \DeclareDocumentCommand{\award}{m}{
-%   \begingroup
-%     % Key Defaults + New Ones
-%     \setkeys{award}{month={},year={},place={},name={},#1}
-%     % Define the macro
-%     \textsc{\awd@month} awd@year & awd@place & awd@name\\
-%   \endgroup
-% }
+% Tables are weird. We will gather all the contents, and then
+% later create the awards table
+% https://tex.stackexchange.com/questions/341916/command-to-continually-add-to-table-with-a-command-macro
+\newcommand\awardrows{}
+
+% TODO: Look into rewriting with expl3
+% Macro for an award
+% Key Definitions
+\define@key{award}{month}{\def\awd@month{#1}}
+\define@key{award}{year}{\def\awd@year{#1}}
+\define@key{award}{place}{\def\awd@place{#1}}
+\define@key{award}{name}{\def\awd@name{#1}}
+\DeclareDocumentCommand{\award}{m}{
+  % Key Defaults + New Ones
+  \setkeys{award}{month={},year={},place={},name={},#1}
+  % Define the macro
+  \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\expandafter\textsc\expandafter{\awd@month}}
+  \g@addto@macro\awardrows{ }
+  \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\awd@year}
+  \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\expandafter&\awd@place}
+  \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\expandafter&\awd@name}
+  \g@addto@macro\awardrows{\\}
+}
