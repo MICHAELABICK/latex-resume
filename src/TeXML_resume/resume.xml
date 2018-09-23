@@ -142,7 +142,10 @@
 
     <awards>
       <award>
-        <date></date>
+        <date>
+          <month>Dec</month>
+          <year>2016</year>
+        </date>
         <place>1<super>st</super>/100</place>
         <name>Random Award</name>
       </award>
