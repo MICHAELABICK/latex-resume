@@ -163,3 +163,25 @@
 \newenvironment{groupitem}[1]
   {\item [#1] \commalist}
   {\endcommalist}
+
+% Environment for awards
+\newenvironment{awards}
+  {\begin{tabular}{rll}}
+  {\end{tabular}}
+
+% % TODO: make this a legitimate macro -- there are some major
+% %       issues with implementing table row macros
+% % Macro for an award
+% % Key Definitions
+% \define@key{award}{month}{\def\awd@month{#1}}
+% \define@key{award}{year}{\def\awd@year{#1}}
+% \define@key{award}{place}{\def\awd@place{#1}}
+% \define@key{award}{name}{\def\awd@name{#1}}
+% \DeclareDocumentCommand{\award}{m}{
+%   \begingroup
+%     % Key Defaults + New Ones
+%     \setkeys{award}{month={},year={},place={},name={},#1}
+%     % Define the macro
+%     \textsc{\awd@month} awd@year & awd@place & awd@name\\
+%   \endgroup
+% }
