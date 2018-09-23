@@ -89,12 +89,6 @@
     <xsl:value-of select="." />
   </xsl:template>
 
-  <xsl:template match="schools">
-    <env name="schools">
-      <xsl:apply-templates />
-    </env>
-  </xsl:template>
-
   <xsl:template match="schools/longest" />
 
   <xsl:template match="skills">
@@ -119,5 +113,15 @@
     <cmd name="item" gr="0" />
     <xsl:text> </xsl:text>
     <xsl:value-of select="." />
+  </xsl:template>
+
+  <xsl:template match="awards">
+    <xsl:apply-template />
+  </xsl:template>
+
+  <xsl:template match="super">
+    <cmd name="textsuperscript" gr="0">
+      <param><xsl:value-of select="." /></param>
+    </cmd>
   </xsl:template>
 </xsl:stylesheet>
