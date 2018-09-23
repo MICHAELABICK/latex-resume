@@ -133,7 +133,7 @@
       \hfill \exp@from{} - \exp@to\\
       \ifdefempty{\exp@pos}
         {\textbf{\exp@corp}}
-        { \textbf{\exp@corp \textbar} \exp@pos}
+        { \textbf{\exp@corp{} \textbar} \exp@pos}
     }
   \endgroup
 }
