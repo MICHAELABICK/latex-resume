@@ -159,7 +159,7 @@
      itemindent=-\skillindent]}
   {\end{description}}
 
-% Create a skill macro for each skill row
-\newcommand{\skill}[2]{
-  \item [#1] #1
-}
+% Environment for a list item of a group of items
+\newenvironment{groupitem}[1]
+  {\item [#1] \commalist}
+  {\endcommalist}
