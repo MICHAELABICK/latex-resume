@@ -200,16 +200,17 @@
       <group>
         <title>CAD</title>
 
-        <skill>Solidworks (8 years)</skill>
-        <skill>Autodesk Inventor (9 years)</skill>
+        <skill>Solidworks<nobrksp />(8 years)</skill>
+        <skill>Autodesk Inventor<nobrksp />(9 years)</skill>
+        <skill>Master Model</skill>
         <skill>Top-down Design</skill>
         <skill>Parametric Design</skill>
         <skill>Surface Modeling</skill>
-        <skill>2D&amp;3D Manufacturing/Installation Drawings</skill>
-        <skill>Geometric Design &amp; Tolerancing</skill>
-        <skill>Design for Manufacture (DFM)</skill>
-        <skill>Design for Assembly (DFA)</skill>
-        <skill>Finite Element Analysis (FEA)</skill>
+        <skill>2D<nobrksp />&amp;<nobrksp />3D Manufacturing/Installation Drawings</skill>
+        <skill>Geometric Design<nobrksp />&amp; Tolerancing</skill>
+        <skill>Design for Manufacture<nobrksp />(DFM)</skill>
+        <skill>Design for Assembly<nobrksp />(DFA)</skill>
+        <skill>Finite Element Analysis<nobrksp />(FEA)</skill>
       </group>
 
       <group>
@@ -221,7 +222,7 @@
         <skill>Laser Cutter</skill>
         <skill>Waterjet</skill>
         <skill>3D Printer</skill>
-        <skill>Selective Laser Sintering</skill>
+        <skill>Selective Laser Sintering<nobrksp />(SLS)</skill>
         <skill>Drill Press</skill>
         <skill>Bandsaw</skill>
         <skill>Soldering Iron</skill>
@@ -236,7 +237,7 @@
         <skill>Git</skill>
         <skill>Bash</skill>
         <skill>G-Code</skill>
-        <skill>Robot Operating System (ROS)</skill>
+        <skill>Robot Operating System<nobrksp />(ROS)</skill>
         <skill>OpenCV</skill>
         <skill>LabView</skill>
         <skill>Android</skill>
@@ -249,17 +250,17 @@
       <group>
         <title>Mechatronics</title>
 
-        <skill>NI cRio/myRio/roboRio</skill>
+        <skill>NI<nobrksp />cRio/myRio/roboRio</skill>
         <skill>Arduino</skill>
         <skill>Servo Motors</skill>
         <skill>Intel Realsense</skill>
         <skill>LIDAR</skill>
         <skill>Sonar</skill>
-        <skill>Hall Effect</skill>
+        <skill>Hall<nobrksp />Effect</skill>
         <skill>Penumatic Actuators</skill>
         <skill>Encoders</skill>
         <skill>Solenoids</skill>
-        <skill>IR Sensors</skill>
+        <skill>IR<nobrksp />Sensors</skill>
         <skill>Wire Harness</skill>
       </group>
 
@@ -294,7 +295,7 @@
         <skill>Documentation</skill>
         <skill>Executive Summaries</skill>
         <skill>Progress Reports</skill>
-        <skill>Bill of Materials (BOM)</skill>
+        <skill>Bill of Materials<nobrksp />(BOM)</skill>
       </group>
 
       <group>

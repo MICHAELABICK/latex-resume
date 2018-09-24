@@ -139,4 +139,8 @@
   <xsl:template match="LaTeX">
     <cmd name="LaTeX" gr="0" />
   </xsl:template>
+
+  <xsl:template match="nobrksp">
+    <spec cat="tilde" />
+  </xsl:template>
 </xsl:stylesheet>
