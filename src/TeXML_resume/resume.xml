@@ -332,7 +332,7 @@
             <month>Nov</month>
             <year>2017</year>
           </date>
-          <place>7<super>th</super>/60</place>
+          <place><supernum>7</supernum>/60</place>
           <name>Georgia Tech ME2110 Design Competition</name>
         </keyvals>
       </award>
@@ -343,7 +343,7 @@
             <month>Apr</month>
             <year>2016</year>
           </date>
-          <place>2<super>nd</super>/42</place>
+          <place><supernum>2</supernum>/42</place>
           <name>FIRST Robotics Orange County Regional</name>
         </keyvals>
       </award>
@@ -354,7 +354,7 @@
             <month>Mar</month>
             <year>2015</year>
           </date>
-          <place>3<super>rd</super>/41</place>
+          <place><supernum>3</supernum>/41</place>
           <name>FIRST Robotics Ventura Regional</name>
         </keyvals>
       </award>
@@ -365,7 +365,7 @@
             <month>Mar</month>
             <year>2015</year>
           </date>
-          <place>3<super>rd</super>/53</place>
+          <place><supernum>3</supernum>/53</place>
           <name>FIRST Robotics Utah Regional</name>
         </keyvals>
       </award>
@@ -387,7 +387,7 @@
             <month>Mar</month>
             <year>2013</year>
           </date>
-          <place>2<super>nd</super>/26</place>
+          <place><supernum>2</supernum>/26</place>
           <name>FIRST Robotics Madtown Robotics Off-season</name>
         </keyvals>
       </award>
@@ -398,7 +398,7 @@
             <month>Mar</month>
             <year>2013</year>
           </date>
-          <place>1<super>st</super>/65</place>
+          <place><supernum>1</supernum>/65</place>
           <name>FIRST Robotics Los Angeles Regional</name>
         </keyvals>
       </award>
@@ -409,7 +409,7 @@
             <month>Mar</month>
             <year>2012</year>
           </date>
-          <place>2<super>nd</super>/66</place>
+          <place><supernum>2</supernum>/66</place>
           <name>FIRST Robotics Los Angeles Regional</name>
         </keyvals>
       </award>

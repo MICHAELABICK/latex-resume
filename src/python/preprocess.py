@@ -16,6 +16,8 @@ def main():
     tree.write(output_file)
 
 def preprocess(node):
+    add_superscript(node)
+
     for child in node:
         tags = child.get("tags")
         untags = child.get("untags")
@@ -47,7 +49,24 @@ def preprocess(node):
 
     return node
 
-def superscipt(num_str):
+def add_superscript(node):
+    for child in node:
+        if child.tag == "supernum":
+            child_num = child.text
+            child_superscript = superscript(child_num)
+
+            # Combine with text or tail depending on child position
+            ind = node.index(child)
+            if ind == 0:
+                node.text = xstr(node.text) + child_num
+            else:
+                node[ind - 1].tail = xstr(node[ind - 1].tail) + child_num
+
+            child.tag = "super"
+            child.text = child_superscript
+
+
+def superscript(num_str):
     num = int(num_str)
     num_mod_10 = num % 10
     num_mod_100 = num % 100
@@ -64,6 +83,11 @@ def superscipt(num_str):
         return "rd"
     else:
         return "th"
+
+def xstr(s):
+    if s is None:
+        return ""
+    return str(s)
 
 if __name__ == "__main__":
     main()
