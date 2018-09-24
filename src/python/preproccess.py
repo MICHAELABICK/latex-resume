@@ -5,7 +5,10 @@ INCLUDE_TAGS = []
 def main():
     tree = etree.parse("src/TeXML_resume/resume.xml")
     root = tree.getroot()
-    print(etree.tostring(root, pretty_print=True))
+    # print(etree.tostring(tree, pretty_print=True, encoding="unicode"))
+
+    root = preprocess(root)
+    print(etree.tostring(tree, pretty_print=True, encoding="unicode"))
 
 def preprocess(node):
     for child in node:
