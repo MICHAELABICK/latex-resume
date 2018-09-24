@@ -174,19 +174,21 @@
       </list>
     </experience>
 
-    <!-- <experience> -->
-    <!--   <corp>Edge Systems Design</corp> -->
-    <!--   <pos>Mechanical Engineer</pos> -->
-    <!--   <dates> -->
-    <!--     <from>Jun 2012</from> -->
-    <!--     <to>Jun 2014</to> -->
-    <!--   </dates> -->
+    <experience type="cmd" tags="old">
+      <keyvals>
+        <corp>Edge Systems Design</corp>
+        <pos>Mechanical Engineer</pos>
+        <dates>
+          <from>Jun 2012</from>
+          <to>Jun 2014</to>
+        </dates>
+      </keyvals>
 
-    <!--   <list> -->
-    <!--     <item>Designed base frame and linear motion system for an affordable CNC router targeted at the hobby market</item> -->
-    <!--     <item>Helped manage funding and operation of a startup</item> -->
-    <!--   </list> -->
-    <!-- </experience> -->
+      <list>
+        <item>Designed base frame and linear motion system for an affordable CNC router</item>
+        <item>Helped manage funding and operation of a startup</item>
+      </list>
+    </experience>
   </section>
 
   <section>
@@ -378,7 +380,7 @@
         </keyvals>
       </award>
 
-      <award type="cmd">
+      <award type="cmd" tags="old">
         <keyvals>
           <date>
             <month>Mar</month>
@@ -400,7 +402,7 @@
         </keyvals>
       </award>
 
-      <award type="cmd">
+      <award type="cmd" tags="old">
         <keyvals>
           <date>
             <month>Mar</month>

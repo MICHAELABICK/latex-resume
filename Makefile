@@ -7,12 +7,15 @@ LIBDIR = /$(SRCDIR)/texmf/tex/latex
 RESDIR = $(SRCDIR)/resumes
 XMLDIR = $(SRCDIR)/TeXML_resume
 LETDIR = $(SRCDIR)/cover_letters
+PYDIR = $(SRCDIR)/python
 # Compile commands and files
 LATEXSTYLE = $(XMLDIR)/LaTeX_resume.xslt
 TEXTSTYLE = $(XMLDIR)/text_resume.xslt
+PREPROC = $(PYDIR)/preprocess.py
 LATEXMK = latexmk -pdf -cd -use-make
-XSLTMK = xsltproc
+XSLTPROC = xsltproc
 TEXMLMK = texml
+PYTHON = pipenv run python
 
 export TEXMFHOME=$(MAKEDIR)$(SRCDIR)/texmf
 
@@ -33,6 +36,7 @@ xmlpdf =  $(patsubst %.xml,%.pdf,$(out_xml_resumes))
 xmltex =  $(patsubst %.xml,%.tex,$(out_xml_resumes))
 xmltexml =  $(patsubst %.xml,%.texml.xml,$(out_xml_resumes))
 xmltext = $(patsubst %.xml,%.text,$(out_xml_resumes))
+xmlproc = $(patsubst %.xml,%.proc.xml,$(out_xml_resumes))
 letpdf =  $(patsubst %.tex,%.pdf,$(out_letters))
 
 # all : $(respdf) $(letpdf) $(xmlpdf) $(xmltext)
@@ -51,10 +55,12 @@ $(out_resumes) $(out_letters) $(out_xml_resumes) : $$(patsubst $$(BUILDDIR)/%,$$
 $(respdf) $(letpdf) $(xmlpdf) : $$(basename $$@).tex
 $(xmltex) : $$(basename $$@).texml.xml
 	$(TEXMLMK) $< $@
-$(xmltexml) : $$(patsubst %.texml.xml,%.xml,$$@)  $(LATEXSTYLE)
-	xsltproc $(LATEXSTYLE) $< > $@
-$(xmltext) : $$(basename $$@).xml $(TEXTSTYLE)
-	xsltproc $(TEXTSTYLE) $< > $@
+$(xmltexml) : $$(patsubst %.texml.xml,%.proc.xml,$$@)  $(LATEXSTYLE)
+	$(XSLTPROC) $(LATEXSTYLE) $< > $@
+$(xmltext) : $$(basename $$@).proc.xml $(TEXTSTYLE)
+	$(XSLTPROC) $(TEXTSTYLE) $< > $@
+$(xmlproc) : $$(patsubst %.proc.xml,%.xml,$$@) $(PREPROC)
+	$(PYTHON) $(PREPROC)
 # Assuming latexmk can find dependencies correctly, we can just force
 # latexmk to run every time a tex file needs to be generated, and we
 # dont actually need to track dependencies seperately
