@@ -1,8 +1,6 @@
-# from sets import set
 from lxml import etree
 
-# INCLUDE_TAGS = Set([])
-INCLUDE_TAGS = []
+INCLUDE_TAGS = set([])
 
 def main():
     input_file = "build/TeXML_resume/resume.xml"
@@ -26,8 +24,7 @@ def preprocess(node):
         if tags is not None or untags is not None:
             if tags != None:
                 is_include = False # Unless it has a tag
-                # tags = Set(tags.split(","))
-                tags = tags.split(",")
+                tags = set(tags.split(","))
 
                 for t in INCLUDE_TAGS:
                     if t in tags:
@@ -36,8 +33,7 @@ def preprocess(node):
 
             # If the node has already been disqualified, no need to do further checks
             if is_include and untags != None:
-                # untags = Set(untags.split(","))
-                untags = untags.split(",")
+                untags = set(untags.split(","))
 
                 for t in untags:
                     if t in INCLUDE_TAGS:
