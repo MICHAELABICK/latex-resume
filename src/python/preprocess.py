@@ -10,7 +10,6 @@ def main():
     root = tree.getroot()
     # print(etree.tostring(tree, pretty_print=True, encoding="unicode"))
 
-    # tree = etree.ElementTree(preprocess(root))
     root = preprocess(root)
     # print(etree.tostring(tree, pretty_print=True, encoding="unicode"))
     tree.write(output_file)
@@ -19,35 +18,38 @@ def preprocess(node):
     add_superscript(node)
 
     for child in node:
-        tags = child.get("tags")
-        untags = child.get("untags")
-
-        is_include = True # Assume we are going to include it
-        if tags is not None or untags is not None:
-            if tags != None:
-                is_include = False # Unless it has a tag
-                tags = set(tags.split(","))
-
-                for t in INCLUDE_TAGS:
-                    if t in tags:
-                        is_include = True
-                        break
-
-            # If the node has already been disqualified, no need to do further checks
-            if is_include and untags != None:
-                untags = set(untags.split(","))
-
-                for t in untags:
-                    if t in INCLUDE_TAGS:
-                        is_include = False
-                        break
-
-        if is_include:
+        if tags_is_include(child):
             preprocess(child)
         else:
             node.remove(child)
 
     return node
+
+def tags_is_include(node):
+    tags = node.get("tags")
+    untags = node.get("untags")
+
+    is_include = True # Assume we are going to include it
+    if tags is not None or untags is not None:
+        if tags != None:
+            is_include = False # Unless it has a tag
+            tags = set(tags.split(","))
+
+            for t in INCLUDE_TAGS:
+                if t in tags:
+                    is_include = True
+                    break
+
+        # If the node has already been disqualified, no need to do further checks
+        if is_include and untags != None:
+            untags = set(untags.split(","))
+
+            for t in untags:
+                if t in INCLUDE_TAGS:
+                    is_include = False
+                    break
+
+    return is_include
 
 def add_superscript(node):
     for child in node:
