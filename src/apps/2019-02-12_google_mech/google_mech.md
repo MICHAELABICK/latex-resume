@@ -3,7 +3,7 @@
 
 I am extremely interested and experienced in robotics/automation, rapid prototyping, and manufacturing.
 
-At Georgia Tech, I work on developing the sensor array for a brachiating (swinging) robot. Our team's sensor provides feedback about the pose of the cable that the robot swings on. My work has focused on collecting data from various sensors, including SLAM LIDAR rangefinders, stereo vision cameras, and inertial measurement units and then processing the data using ROS (Robot Operating System) and Python. My work further includes transforming our data between robot and world reference frames and creating the classifiers to detect and identify the cable with openCV.
+At Georgia Tech, I work on developing the sensor array for a brachiating (swinging) robot. Our team's sensor provides feedback about the pose of the cable that the robot swings on. My work has focused on collecting data from various sensors, including SLAM LIDAR rangefinders, stereo vision cameras, and inertial measurement units and then processing the data using ROS (Robot Operating System). My work further includes transforming our data between robot and world reference frames and creating the classifiers to detect and identify the cable with openCV.
 
 I have also lead a team in building a robot that competed in the Georgia Tech "Creative Design Decisions Competition". The team prioritized building quick, useful iterations -- a methodology similar to the concept of Agile Development in computer science -- in order to learn about and fix failures quickly. By taking advantage of CAD, laser cutters, and 3D printers, the team iterated through three major robot revisions in the same amount of time in which most teams only worked on one.
 
