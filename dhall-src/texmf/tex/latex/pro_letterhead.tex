@@ -1,0 +1,45 @@
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+
+% Reformat margins
+\RequirePackage[letterpaper, portrait, margin=1in, top=1.25in,
+  bottom=0.5in, headheight=0.9in, headsep=0.1in]{geometry}
+
+% Remove numbering
+\pagenumbering{gobble}
+
+% Header formatting
+\RequirePackage{fancyhdr}
+\pagestyle{empty}
+\thispagestyle{fancy}
+
+% Load tabularx for auto-width columns
+\RequirePackage{tabularx}
+% Create a tabularx column type that avoids hyphenation
+% https://tex.stackexchange.com/questions/341592/hyphenating-text-inside-tabularx
+% \newcolumntype{Z}{>{\raggedright\arraybackslash}X}
+
+\fancyhead{} % clear all fields
+\fancyhead[L]{
+  \fontsize{10}{12} \selectfont
+  \begin{tabularx}{\textwidth}{Xlr}
+    \fontsize{20.74}{25}\selectfont
+    \textsc{Michael A. Bick}
+    % \huge{\textsc{Michael A. Bick}}
+    \fontsize{10}{12}\selectfont
+    & \begin{tabular}{l}4329 Saint Clair Ave.\\
+      Studio City, CA 91604\end{tabular}
+    & \begin{tabular}{r}(747)-227-6723\\
+      michael.bick@gatech.edu\end{tabular}
+  \end{tabularx}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Setup microtype package
+\RequirePackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+% activate={true,nocompatibility} - activate protrusion and expansion
+% final - enable microtype; use "draft" to disable
+% tracking=true, kerning=true, spacing=true - activate these techniques
+% factor=1100 - add 10% to the protrusion amount (default is 1000)
+% stretch=10, shrink=10 - reduce stretchability/shrinkability (default is 20/20)
+\SetTracking{encoding={*}, shape=sc}{0}
