@@ -1,39 +1,32 @@
 let Prelude = ../Prelude.dhall
-let XML = Prelude.XML
+
+let List/concatMap = Prelude.List.concatMap
+
+let LaTeX = ../../LaTeX/package.dhall
 
 let types = ../types.dhall
 
-
-let empty = XML.leaf { name = "empty", attributes = XML.emptyAttributes }
-
-let toSection =
-    \(section : types.Section)
- -> XML.element {
-    , name = "section"
-    , attributes = XML.emptyAttributes
-    , content = [
-        , XML.element {
-            , name = "title"
-            , attributes = XML.emptyAttributes
-            , content = [ XML.text section.title ]
-            }
+let toSectionLaTeX =
+      λ(section : types.Section) →
+        [ LaTeX.command
+            { name = "section", arguments = [ section.title ], newline = True }
         ]
-    }
 
+let toResumeLaTeX =
+      λ(sections : List types.Section) →
+      λ(tags : List Text) →
+        let document =
+              List/concatMap types.Section LaTeX.Type toSectionLaTeX sections
 
-let toResume =
-    \(sections : List types.Section)
- -> \(tags : List Text)
- -> XML.render
-    ( XML.element {
-      , name = "resume"
-      , attributes = XML.emptyAttributes
-      , content = [
-          , XML.leaf { name = "section", attributes = XML.emptyAttributes }
-          , XML.leaf { name = "section", attributes = XML.emptyAttributes }
-          ]
-      }
-    )
+        in  LaTeX.render
+              ( LaTeX.document
+                  [ LaTeX.command
+                      { name = "documentclass"
+                      , arguments = [] : List Text
+                      , newline = True
+                      }
+                  , LaTeX.environment { name = "document", content = document }
+                  ]
+              )
 
-
- in toResume
+in  toResumeLaTeX

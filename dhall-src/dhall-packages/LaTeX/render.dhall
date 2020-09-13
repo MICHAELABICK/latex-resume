@@ -41,19 +41,20 @@ let render
                     \end{${env.name}}
 
                     ''
-          , document = λ(doc : List Text) →
-              let content = Text/concat doc
-              in ''
-                 \documentclass{resume}
-                 \begin{document}
-                 ${content}\end{document}
-                 ''
+          , document = λ(doc : List Text) → Text/concat doc
           }
 
 let example0 =
         assert
       :   render
-            ( document [ command
+            ( document [
+                  , command
+                      { name = "documentclass"
+                      , arguments = [ "article" ]
+                      , newline = True
+                      }
+                  , environment { name = "document", content = [
+                  , command
                       { name = "section"
                       , arguments = [ "First" ]
                       , newline = True
@@ -92,11 +93,11 @@ let example0 =
                             }
                         , text " item 2"
                         ]
-                      }
+                      } ] }
                   ]
             )
         ≡ ''
-          \documentclass{resume}
+          \documentclass{article}
           \begin{document}
           \section{First}
           This is some text
@@ -110,8 +111,10 @@ let example0 =
           \item item 1
           \item item 2
           \end{itemize}
+
           
           \end{document}
+
           ''
 
 in  render
