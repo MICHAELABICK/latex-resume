@@ -10,12 +10,7 @@ let environment
     : Args → LaTeX
     = λ(env : Args) →
       λ(_LaTeX : Type) →
-      λ ( latex
-        : { text : Text → _LaTeX
-          , command : { name : Text, arguments : List Text } → _LaTeX
-          , environment : { name : Text, content : List _LaTeX } → _LaTeX
-          }
-        ) →
+      λ(latex : ./elements.dhall _LaTeX) →
         latex.environment
           (   env
             ⫽ { content =
