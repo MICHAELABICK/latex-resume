@@ -4,7 +4,7 @@ let List/map = Prelude.List.map
 
 let LaTeX = ./Type.dhall
 
-let Args = { name : Text, content : List LaTeX }
+let Args = { name : Text, arguments : List Text, content : List LaTeX }
 
 let environment
     : Args → LaTeX

@@ -25,6 +25,19 @@ let toKeyvalsArguments =
 
         in  [ " ${string} " ]
 
+let toItemize =
+      λ(items : List Text) →
+        LaTeX.concatMapSep
+          [ LaTeX.newline ]
+          Text
+          ( λ(x : Text) →
+              [ LaTeX.command
+                  { name = "item", arguments = [] : List Text, newline = False }
+              , LaTeX.text " ${x}"
+              ]
+          )
+          items
+
 let toSchoolLaTeX =
       λ(school : types.School) →
         let graduated = Bool/fold school.graduated Text "" school.dates.to
@@ -57,43 +70,22 @@ let toExperienceLaTeX =
                     }
                 )
 
-        let bullets =
-              LaTeX.concatMapSep
-                [ LaTeX.newline ]
-                Text
-                ( λ(x : Text) →
-                    [ LaTeX.command
-                        { name = "item"
-                        , arguments = [] : List Text
-                        , newline = False
-                        }
-                    , LaTeX.text " ${x}"
-                    ]
-                )
-                exp.bullets
-
         in  [ LaTeX.command { name = "experience", arguments, newline = True }
-            , LaTeX.environment { name = "itemize", content = bullets }
+            , LaTeX.environment
+                { name = "itemize"
+                , arguments = [] : List Text
+                , content = toItemize exp.bullets
+                }
             ]
 
 let toSkillGroupLaTeX =
       λ(sg : types.SkillGroup) →
-        let items =
-              LaTeX.concatMapSep
-                [ LaTeX.newline ]
-                Text
-                ( λ(x : Text) →
-                    [ LaTeX.command
-                        { name = "item"
-                        , arguments = [] : List Text
-                        , newline = False
-                        }
-                    , LaTeX.text " ${x}"
-                    ]
-                )
-                sg.skills
-
-        in  [ LaTeX.environment { name = "groupitem", content = items } ]
+        [ LaTeX.environment
+            { name = "groupitem"
+            , arguments = [ sg.name ]
+            , content = toItemize sg.skills
+            }
+        ]
 
 let toSectionLaTeX =
       λ(section : types.Section) →
@@ -112,6 +104,7 @@ let toSectionLaTeX =
                     λ(x : types.SkillSectionData) →
                       [ LaTeX.environment
                           { name = "skills"
+                          , arguments = [ x.title ]
                           , content =
                               Prelude.List.concatMap
                                 types.SkillGroup
@@ -144,7 +137,11 @@ let toResumeLaTeX =
                       , arguments = [] : List Text
                       , newline = True
                       }
-                  , LaTeX.environment { name = "document", content = document }
+                  , LaTeX.environment
+                      { name = "document"
+                      , arguments = [] : List Text
+                      , content = document
+                      }
                   ]
               )
 
