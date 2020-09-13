@@ -9,30 +9,47 @@ let command = ./command.dhall
 let text = ./text.dhall
 
 let concatMapSep =
-      \(seperator : List LaTeX) ->
-      \(a : Type) ->
-      \(func : a -> List LaTeX) ->
-      \(xs : List a) ->
-      let full_list =
-            Prelude.List.concatMap
-            a
-            LaTeX
-            (\(x : a) -> (func x) # seperator)
-            xs
+      λ(seperator : List LaTeX) →
+      λ(a : Type) →
+      λ(func : a → List LaTeX) →
+      λ(xs : List a) →
+        let full_list =
+              Prelude.List.concatMap a LaTeX (λ(x : a) → func x # seperator) xs
 
-      let reversed = List/reverse LaTeX full_list
-      let seperator_length = List/length LaTeX seperator
-      let reversed_dropped = Prelude.List.drop seperator_length LaTeX reversed
-      in List/reverse LaTeX reversed_dropped
+        let full_length = List/length LaTeX full_list
 
-let example0 = assert :
-    concatMapSep
-    [ newline ]
-    Text
-    (\(x : Text) -> [ command { name = "item", arguments = [] : List Text, newline = False }, text " ${x}" ])
-    [ "item1", "item2", "item3" ]
-    === [ command {name = "item", arguments = [] : List Text, newline = False }, text " item1", newline,
-          command {name = "item", arguments = [] : List Text, newline = False }, text " item2", newline,
-          command {name = "item", arguments = [] : List Text, newline = False }, text " item3"]
+        let seperator_length = List/length LaTeX seperator
 
-in concatMapSep
+        let take_length = Prelude.Natural.subtract seperator_length full_length
+
+        in  Prelude.List.take take_length LaTeX full_list
+
+let example0 =
+        assert
+      :   concatMapSep
+            [ newline ]
+            Text
+            ( λ(x : Text) →
+                [ command
+                    { name = "item"
+                    , arguments = [] : List Text
+                    , newline = False
+                    }
+                , text " ${x}"
+                ]
+            )
+            [ "item1", "item2", "item3" ]
+        ≡ [ command
+              { name = "item", arguments = [] : List Text, newline = False }
+          , text " item1"
+          , newline
+          , command
+              { name = "item", arguments = [] : List Text, newline = False }
+          , text " item2"
+          , newline
+          , command
+              { name = "item", arguments = [] : List Text, newline = False }
+          , text " item3"
+          ]
+
+in  concatMapSep
