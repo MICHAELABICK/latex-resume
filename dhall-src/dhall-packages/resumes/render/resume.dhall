@@ -76,6 +76,25 @@ let toExperienceLaTeX =
             , LaTeX.environment { name = "itemize", content = bullets }
             ]
 
+let toSkillGroupLaTeX =
+      λ(sg : types.SkillGroup) →
+        let items =
+              LaTeX.concatMapSep
+                [ LaTeX.newline ]
+                Text
+                ( λ(x : Text) →
+                    [ LaTeX.command
+                        { name = "item"
+                        , arguments = [] : List Text
+                        , newline = False
+                        }
+                    , LaTeX.text " ${x}"
+                    ]
+                )
+                sg.skills
+
+        in  [ LaTeX.environment { name = "groupitem", content = items } ]
+
 let toSectionLaTeX =
       λ(section : types.Section) →
         let data =
@@ -89,6 +108,18 @@ let toSectionLaTeX =
                         LaTeX.Type
                         toExperienceLaTeX
                         x
+                , Skills =
+                    λ(x : types.SkillSectionData) →
+                      [ LaTeX.environment
+                          { name = "skills"
+                          , content =
+                              Prelude.List.concatMap
+                                types.SkillGroup
+                                LaTeX.Type
+                                toSkillGroupLaTeX
+                                x.groups
+                          }
+                      ]
                 }
                 section.data
 

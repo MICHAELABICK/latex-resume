@@ -5,4 +5,6 @@ in <
     ./School.dhall
 | Experiences :
     List Experience.Type
+| Skills :
+    ./SkillSectionData.dhall
 >

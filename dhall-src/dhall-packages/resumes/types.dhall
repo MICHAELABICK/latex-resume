@@ -7,4 +7,8 @@
     ./types/School.dhall
 , Experience =
     ./types/Experience.dhall
+, SkillSectionData =
+    ./types/SkillSectionData.dhall
+, SkillGroup =
+    ./types/SkillGroup.dhall
 }
