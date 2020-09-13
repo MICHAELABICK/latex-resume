@@ -87,6 +87,27 @@ let toSkillGroupLaTeX =
             }
         ]
 
+let toAwardLaTeX =
+      λ(awd : types.Award) →
+        let keyvals =
+              toKeyvalsArguments
+                ( toMap
+                    ( merge
+                        { Placed =
+                            λ(x : types.PlacedAward) →
+                              { name = x.name, col1 = x.date, col2 = x.place }
+                        , TimePeriod =
+                            λ(x : types.TimePeriodAward) →
+                              { name = x.name, col1 = x.from, col2 = x.to }
+                        }
+                        awd
+                    )
+                )
+
+        in  [ LaTeX.command
+                { name = "award", arguments = keyvals, newline = False }
+            ]
+
 let toSectionLaTeX =
       λ(section : types.Section) →
         let data =
@@ -104,13 +125,26 @@ let toSectionLaTeX =
                     λ(x : types.SkillSectionData) →
                       [ LaTeX.environment
                           { name = "skills"
-                          , arguments = [ x.title ]
+                          , arguments = [ x.longest_group_title ]
                           , content =
                               Prelude.List.concatMap
                                 types.SkillGroup
                                 LaTeX.Type
                                 toSkillGroupLaTeX
                                 x.groups
+                          }
+                      ]
+                , Awards =
+                    λ(x : List types.Award) →
+                      [ LaTeX.environment
+                          { name = "awards"
+                          , arguments = [] : List Text
+                          , content =
+                              LaTeX.concatMapSep
+                                [ LaTeX.newline ]
+                                types.Award
+                                toAwardLaTeX
+                                x
                           }
                       ]
                 }

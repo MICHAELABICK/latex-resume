@@ -11,4 +11,10 @@
     ./types/SkillSectionData.dhall
 , SkillGroup =
     ./types/SkillGroup.dhall
+, Award =
+    ./types/Award.dhall
+, PlacedAward =
+    ./types/PlacedAward.dhall
+, TimePeriodAward =
+    ./types/TimePeriodAward.dhall
 }

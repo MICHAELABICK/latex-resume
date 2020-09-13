@@ -38,11 +38,26 @@ in  [ { title = "Education"
     , { title = "Technical Skills"
       , data =
           types.SectionData.Skills
-            { title = "Communication"
-            , groups =
+            { groups =
               [ { name = "CAD", skills = [ "item1", "item2" ] }
               , { name = "Communication", skills = [ "item1", "item2" ] }
               ]
+            , longest_group_title = "Communication"
             }
+      }
+    , { title = "Awards \\& Honors"
+      , data =
+          types.SectionData.Awards
+            [ types.Award.TimePeriod
+                { name = "Georgia Tech Dean's List"
+                , from = "Dec 2016"
+                , to = "to Present"
+                }
+            , types.Award.Placed
+                { name = "Georgia Tech ME2110 Design Competition"
+                , date = "Nov 2017"
+                , place = "7th/60"
+                }
+            ]
       }
     ]

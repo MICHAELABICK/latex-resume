@@ -7,4 +7,6 @@ in <
     List Experience.Type
 | Skills :
     ./SkillSectionData.dhall
+| Awards :
+    List ./Award.dhall
 >
