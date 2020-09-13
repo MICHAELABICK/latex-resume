@@ -14,11 +14,9 @@ let command = ./command.dhall
 
 let environment = ./environment.dhall
 
-let document = ./document.dhall
-
 let newline = ./newline.dhall
 
-let render
+let renderLaTeX
     : LaTeX → Text
     = λ(x : LaTeX) →
         let toArguments =
@@ -50,70 +48,71 @@ let render
                         \end{${env.name}}
 
                         ''
-              , document = λ(doc : List Text) → Text/concat doc
               }
+
+let render =
+      λ(elems : List LaTeX) →
+        Text/concat (Prelude.List.map LaTeX Text renderLaTeX elems)
 
 let example0 =
         assert
       :   render
-            ( document
-                [ command
-                    { name = "documentclass"
-                    , arguments = [ "article" ]
-                    , newline = True
-                    }
-                , environment
-                    { name = "document"
-                    , arguments = [] : List Text
-                    , content =
-                      [ command
-                          { name = "section"
-                          , arguments = [ "First" ]
-                          , newline = True
-                          }
-                      , text "This is some text"
-                      , newline
-                      , environment
-                          { name = "equation"
-                          , arguments = [] : List Text
-                          , content = [ text "1 + 1 = 2" ]
-                          }
-                      , command
-                          { name = "section"
-                          , arguments = [ "Second" ]
-                          , newline = True
-                          }
-                      , text "This is some "
-                      , command
-                          { name = "textbf"
-                          , arguments = [ "more" ]
-                          , newline = False
-                          }
-                      , text " text"
-                      , newline
-                      , environment
-                          { name = "itemize"
-                          , arguments = [] : List Text
-                          , content =
-                            [ command
-                                { name = "item"
-                                , arguments = [] : List Text
-                                , newline = False
-                                }
-                            , text " item 1"
-                            , newline
-                            , command
-                                { name = "item"
-                                , arguments = [] : List Text
-                                , newline = False
-                                }
-                            , text " item 2"
-                            ]
-                          }
-                      ]
-                    }
-                ]
-            )
+            [ command
+                { name = "documentclass"
+                , arguments = [ "article" ]
+                , newline = True
+                }
+            , environment
+                { name = "document"
+                , arguments = [] : List Text
+                , content =
+                  [ command
+                      { name = "section"
+                      , arguments = [ "First" ]
+                      , newline = True
+                      }
+                  , text "This is some text"
+                  , newline
+                  , environment
+                      { name = "equation"
+                      , arguments = [] : List Text
+                      , content = [ text "1 + 1 = 2" ]
+                      }
+                  , command
+                      { name = "section"
+                      , arguments = [ "Second" ]
+                      , newline = True
+                      }
+                  , text "This is some "
+                  , command
+                      { name = "textbf"
+                      , arguments = [ "more" ]
+                      , newline = False
+                      }
+                  , text " text"
+                  , newline
+                  , environment
+                      { name = "itemize"
+                      , arguments = [] : List Text
+                      , content =
+                        [ command
+                            { name = "item"
+                            , arguments = [] : List Text
+                            , newline = False
+                            }
+                        , text " item 1"
+                        , newline
+                        , command
+                            { name = "item"
+                            , arguments = [] : List Text
+                            , newline = False
+                            }
+                        , text " item 2"
+                        ]
+                      }
+                  ]
+                }
+            ]
         ≡ ''
           \documentclass{article}
           \begin{document}

@@ -131,18 +131,16 @@ let toResumeLaTeX =
               List/concatMap types.Section LaTeX.Type toSectionLaTeX sections
 
         in  LaTeX.render
-              ( LaTeX.document
-                  [ LaTeX.command
-                      { name = "documentclass"
-                      , arguments = [] : List Text
-                      , newline = True
-                      }
-                  , LaTeX.environment
-                      { name = "document"
-                      , arguments = [] : List Text
-                      , content = document
-                      }
-                  ]
-              )
+              [ LaTeX.command
+                  { name = "documentclass"
+                  , arguments = [] : List Text
+                  , newline = True
+                  }
+              , LaTeX.environment
+                  { name = "document"
+                  , arguments = [] : List Text
+                  , content = document
+                  }
+              ]
 
 in  toResumeLaTeX
