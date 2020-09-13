@@ -6,4 +6,5 @@
 , newline = ./newline.dhall
 , render = ./render.dhall
 , elements = ./elements.dhall
+, concatMapSep = ./concatMapSep.dhall
 }

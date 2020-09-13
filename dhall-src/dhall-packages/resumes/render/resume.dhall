@@ -25,23 +25,6 @@ let toKeyvalsArguments =
 
         in  [ " ${string} " ]
 
-let LaTeX/concatMapSep =
-      \(seperator : List LaTeX.Type) ->
-      \(a : Type) ->
-      \(func : a -> List LaTeX.Type) ->
-      \(xs : List a) ->
-      let full_list =
-            Prelude.List.concatMap
-            a
-            LaTeX.Type
-            (\(x : a) -> (func x) # seperator)
-            xs
-
-      let reversed = List/reverse LaTeX.Type full_list
-      let seperator_length = Prelude.List.length LaTeX.Type seperator
-      let reversed_dropped = Prelude.List.drop seperator_length LaTeX.Type reversed
-      in List/reverse LaTeX.Type reversed_dropped
-
 let toSchoolLaTeX =
       λ(school : types.School) →
         let graduated = Bool/fold school.graduated Text "" school.dates.to
@@ -75,7 +58,7 @@ let toExperienceLaTeX =
                 )
 
         let bullets =
-              LaTeX/concatMapSep
+              LaTeX.concatMapSep
                 [ LaTeX.newline ]
                 Text
                 ( λ(x : Text) →
