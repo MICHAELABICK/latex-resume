@@ -12,87 +12,98 @@ let Text/default = Prelude.Text.default
 
 let LaTeX = ../../LaTeX/package.dhall
 
-let types = ../types.dhall
+let toLaTeX =
+      λ(Tags : Type) →
+      λ(matchTags : Tags → Bool) →
+        let types = ../types.dhall Tags
 
-let toKeyvalsArguments =
-      λ(keyvals : Map Text Text) →
-        let string =
-              Prelude.Text.concatMapSep
-                ","
-                (Entry Text Text)
-                (λ(x : Entry Text Text) → "${x.mapKey}={${x.mapValue}}")
-                keyvals
+        let toKeyvalsArguments =
+              λ(keyvals : Map Text Text) →
+                let string =
+                      Prelude.Text.concatMapSep
+                        ","
+                        (Entry Text Text)
+                        (λ(x : Entry Text Text) → "${x.mapKey}={${x.mapValue}}")
+                        keyvals
 
-        in  [ " ${string} " ]
+                in  [ " ${string} " ]
 
-let toItemize =
-      λ(items : List Text) →
-        LaTeX.concatMapSep
-          [ LaTeX.newline ]
-          Text
-          ( λ(x : Text) →
-              [ LaTeX.command
-                  { name = "item", arguments = [] : List Text, newline = False }
-              , LaTeX.text " ${x}"
-              ]
-          )
-          items
+        let toItemize =
+              λ(items : List Text) →
+                LaTeX.concatMapSep
+                  [ LaTeX.newline ]
+                  Text
+                  ( λ(x : Text) →
+                      [ LaTeX.command
+                          { name = "item"
+                          , arguments = [] : List Text
+                          , newline = False
+                          }
+                      , LaTeX.text " ${x}"
+                      ]
+                  )
+                  items
 
-let toSchoolLaTeX =
-      λ(school : types.School) →
-        let graduated = Bool/fold school.graduated Text "" school.dates.to
+        let toSchoolLaTeX =
+              λ(school : types.School) →
+                let graduated =
+                      Bool/fold school.graduated Text "" school.dates.to
 
-        let arguments =
-              toKeyvalsArguments
-                ( toMap
-                    { name = school.name
-                    , loc = school.location
-                    , from = school.dates.from
-                    , to = school.dates.to
-                    , major = school.major
-                    , minor = Text/default school.minor
-                    , grad = graduated
-                    , awards = school.awards
+                let arguments =
+                      toKeyvalsArguments
+                        ( toMap
+                            { name = school.name
+                            , loc = school.location
+                            , from = school.dates.from
+                            , to = school.dates.to
+                            , major = school.major
+                            , minor = Text/default school.minor
+                            , grad = graduated
+                            , awards = school.awards
+                            }
+                        )
+
+                in  LaTeX.command { name = "school", arguments, newline = True }
+
+        let toExperienceLaTeX =
+              λ(exp : types.Experience.Type) →
+                let arguments =
+                      toKeyvalsArguments
+                        (   toMap
+                              { corp = exp.corporation
+                              , from = exp.dates.from
+                              , to = exp.dates.to
+                              }
+                          # Prelude.Map.unpackOptionals
+                              Text
+                              Text
+                              (toMap { pos = exp.position })
+                        )
+
+                in  if    exp.tags matchTags
+                    then  [ LaTeX.command
+                              { name = "experience", arguments, newline = True }
+                          , LaTeX.environment
+                              { name = "itemize"
+                              , arguments = [] : List Text
+                              , content = toItemize exp.bullets
+                              }
+                          ]
+                    else  [] : List LaTeX.Type
+
+        let toSkillGroupLaTeX =
+              λ(sg : types.SkillGroup) →
+                [ LaTeX.environment
+                    { name = "groupitem"
+                    , arguments = [ sg.name ]
+                    , content = toItemize sg.skills
                     }
-                )
+                ]
 
-        in  LaTeX.command { name = "school", arguments, newline = True }
-
-let toExperienceLaTeX =
-      λ(exp : types.Experience.Type) →
-        let arguments =
-              toKeyvalsArguments
-                ( toMap
-                    { corp = exp.corporation
-                    , pos = exp.position
-                    , from = exp.dates.from
-                    , to = exp.dates.to
-                    }
-                )
-
-        in  [ LaTeX.command { name = "experience", arguments, newline = True }
-            , LaTeX.environment
-                { name = "itemize"
-                , arguments = [] : List Text
-                , content = toItemize exp.bullets
-                }
-            ]
-
-let toSkillGroupLaTeX =
-      λ(sg : types.SkillGroup) →
-        [ LaTeX.environment
-            { name = "groupitem"
-            , arguments = [ sg.name ]
-            , content = toItemize sg.skills
-            }
-        ]
-
-let toAwardLaTeX =
-      λ(awd : types.Award) →
-        let keyvals =
-              toKeyvalsArguments
-                ( toMap
-                    ( merge
+        let toAwardLaTeX =
+              λ(awd : types.Award) →
+                let keyvals =
+                      merge
                         { Placed =
                             λ(x : types.PlacedAward) →
                               { name = x.name, col1 = x.date, col2 = x.place }
@@ -101,80 +112,86 @@ let toAwardLaTeX =
                               { name = x.name, col1 = x.from, col2 = x.to }
                         }
                         awd
-                    )
-                )
 
-        in  [ LaTeX.command
-                { name = "award", arguments = keyvals, newline = False }
-            ]
+                let arguments = toKeyvalsArguments (toMap keyvals)
 
-let toSectionLaTeX =
-      λ(section : types.Section) →
-        let data =
-              merge
-                { Education =
-                    λ(x : types.School) → [ toSchoolLaTeX x, LaTeX.newline ]
-                , Experiences =
-                    λ(x : List types.Experience.Type) →
-                      Prelude.List.concatMap
-                        types.Experience.Type
-                        LaTeX.Type
-                        toExperienceLaTeX
-                        x
-                , Skills =
-                    λ(x : types.SkillSectionData) →
-                      [ LaTeX.environment
-                          { name = "skills"
-                          , arguments = [ x.longest_group_title ]
-                          , content =
+                in  [ LaTeX.command
+                        { name = "award", arguments, newline = False }
+                    ]
+
+        let toSectionLaTeX =
+              λ(section : types.Section) →
+                let data =
+                      merge
+                        { Education =
+                            λ(x : types.School) →
+                              [ toSchoolLaTeX x, LaTeX.newline ]
+                        , Experiences =
+                            λ(x : List types.Experience.Type) →
                               Prelude.List.concatMap
-                                types.SkillGroup
+                                types.Experience.Type
                                 LaTeX.Type
-                                toSkillGroupLaTeX
-                                x.groups
-                          }
-                      ]
-                , Awards =
-                    λ(x : List types.Award) →
-                      [ LaTeX.environment
-                          { name = "awards"
-                          , arguments = [] : List Text
-                          , content =
-                              LaTeX.concatMapSep
-                                [ LaTeX.newline ]
-                                types.Award
-                                toAwardLaTeX
+                                toExperienceLaTeX
                                 x
+                        , Skills =
+                            λ(x : types.SkillSectionData) →
+                              [ LaTeX.environment
+                                  { name = "skills"
+                                  , arguments = [ x.longest_group_title ]
+                                  , content =
+                                      Prelude.List.concatMap
+                                        types.SkillGroup
+                                        LaTeX.Type
+                                        toSkillGroupLaTeX
+                                        x.groups
+                                  }
+                              ]
+                        , Awards =
+                            λ(x : List types.Award) →
+                              [ LaTeX.environment
+                                  { name = "awards"
+                                  , arguments = [] : List Text
+                                  , content =
+                                      LaTeX.concatMapSep
+                                        [ LaTeX.newline ]
+                                        types.Award
+                                        toAwardLaTeX
+                                        x
+                                  }
+                              ]
+                        }
+                        section.data
+
+                in    [ LaTeX.command
+                          { name = "section"
+                          , arguments = [ section.title ]
+                          , newline = True
                           }
                       ]
-                }
-                section.data
+                    # data
 
-        in    [ LaTeX.command
-                  { name = "section"
-                  , arguments = [ section.title ]
-                  , newline = True
-                  }
-              ]
-            # data
+        let toResumeLaTeX =
+              λ(sections : List types.Section) →
+                let document =
+                      List/concatMap
+                        types.Section
+                        LaTeX.Type
+                        toSectionLaTeX
+                        sections
 
-let toResumeLaTeX =
-      λ(sections : List types.Section) →
-      λ(tags : List Text) →
-        let document =
-              List/concatMap types.Section LaTeX.Type toSectionLaTeX sections
+                in  LaTeX.render
+                      [ LaTeX.command
+                          { name = "documentclass"
+                          , arguments = [] : List Text
+                          , newline = True
+                          }
+                      , LaTeX.environment
+                          { name = "document"
+                          , arguments = [] : List Text
+                          , content = document
+                          }
+                      ]
 
-        in  LaTeX.render
-              [ LaTeX.command
-                  { name = "documentclass"
-                  , arguments = [] : List Text
-                  , newline = True
-                  }
-              , LaTeX.environment
-                  { name = "document"
-                  , arguments = [] : List Text
-                  , content = document
-                  }
-              ]
+        in  toResumeLaTeX
 
-in  toResumeLaTeX
+in  toLaTeX

@@ -1,15 +1,13 @@
-{
-, Type = {
-    , corporation : Text
-    , position : Text
-    , tags : List Text
-    , dates : {
-        , from : Text
-        , to : Text
+let Experience =
+      λ(Tags : Type) →
+        { Type =
+            { corporation : Text
+            , position : Optional Text
+            , dates : { from : Text, to : Text }
+            , bullets : List Text
+            , tags : ∀(matchTags : Tags → Bool) → Bool
+            }
+        , default.position = None Text
         }
-    , bullets : List Text
-    }
-, default = {
-    , tags = [] : List Text
-    }
-}
+
+in  Experience

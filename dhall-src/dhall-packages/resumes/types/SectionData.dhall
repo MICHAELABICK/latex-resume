@@ -1,12 +1,11 @@
 let Experience = ./Experience.dhall
 
-in <
-| Education :
-    ./School.dhall
-| Experiences :
-    List Experience.Type
-| Skills :
-    ./SkillSectionData.dhall
-| Awards :
-    List ./Award.dhall
->
+let SectionData =
+      λ(Tags : Type) →
+        < Education : ./School.dhall
+        | Experiences : List (Experience Tags).Type
+        | Skills : ./SkillSectionData.dhall
+        | Awards : List ./Award.dhall
+        >
+
+in  SectionData
