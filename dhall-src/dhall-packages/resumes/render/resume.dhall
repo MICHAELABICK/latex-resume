@@ -44,6 +44,18 @@ let toLaTeX =
                   )
                   items
 
+        let renderTaggedItem =
+              λ(Item : Type) →
+                let Rendered = List LaTeX.Type
+
+                in  λ(render : Item → Rendered) →
+                    λ(t : types.Tagged.Type Item) →
+                      types.Tagged.default
+                        matchTags
+                        Rendered
+                        ([] : Rendered)
+                        { item = render t.item, tags = t.tags }
+
         let toSchoolLaTeX =
               λ(school : types.School) →
                 let graduated =
@@ -80,16 +92,14 @@ let toLaTeX =
                               (toMap { pos = exp.position })
                         )
 
-                in  if    exp.tags matchTags
-                    then  [ LaTeX.command
-                              { name = "experience", arguments, newline = True }
-                          , LaTeX.environment
-                              { name = "itemize"
-                              , arguments = [] : List Text
-                              , content = toItemize exp.bullets
-                              }
-                          ]
-                    else  [] : List LaTeX.Type
+                in  [ LaTeX.command
+                        { name = "experience", arguments, newline = True }
+                    , LaTeX.environment
+                        { name = "itemize"
+                        , arguments = [] : List Text
+                        , content = toItemize exp.bullets
+                        }
+                    ]
 
         let toSkillGroupLaTeX =
               λ(sg : types.SkillGroup) →
@@ -121,44 +131,53 @@ let toLaTeX =
 
         let toSectionLaTeX =
               λ(section : types.Section) →
+                let toExperiences =
+                      λ(x : List (types.Tagged.Type types.Experience.Type)) →
+                        Prelude.List.concatMap
+                          (types.Tagged.Type types.Experience.Type)
+                          LaTeX.Type
+                          ( renderTaggedItem
+                              types.Experience.Type
+                              toExperienceLaTeX
+                          )
+                          x
+
+                let toSkills =
+                      λ(x : types.SkillSectionData) →
+                        [ LaTeX.environment
+                            { name = "skills"
+                            , arguments = [ x.longest_group_title ]
+                            , content =
+                                Prelude.List.concatMap
+                                  types.SkillGroup
+                                  LaTeX.Type
+                                  toSkillGroupLaTeX
+                                  x.groups
+                            }
+                        ]
+
+                let toAwards =
+                      λ(x : List types.Award) →
+                        [ LaTeX.environment
+                            { name = "awards"
+                            , arguments = [] : List Text
+                            , content =
+                                LaTeX.concatMapSep
+                                  [ LaTeX.newline ]
+                                  types.Award
+                                  toAwardLaTeX
+                                  x
+                            }
+                        ]
+
                 let data =
                       merge
                         { Education =
                             λ(x : types.School) →
                               [ toSchoolLaTeX x, LaTeX.newline ]
-                        , Experiences =
-                            λ(x : List types.Experience.Type) →
-                              Prelude.List.concatMap
-                                types.Experience.Type
-                                LaTeX.Type
-                                toExperienceLaTeX
-                                x
-                        , Skills =
-                            λ(x : types.SkillSectionData) →
-                              [ LaTeX.environment
-                                  { name = "skills"
-                                  , arguments = [ x.longest_group_title ]
-                                  , content =
-                                      Prelude.List.concatMap
-                                        types.SkillGroup
-                                        LaTeX.Type
-                                        toSkillGroupLaTeX
-                                        x.groups
-                                  }
-                              ]
-                        , Awards =
-                            λ(x : List types.Award) →
-                              [ LaTeX.environment
-                                  { name = "awards"
-                                  , arguments = [] : List Text
-                                  , content =
-                                      LaTeX.concatMapSep
-                                        [ LaTeX.newline ]
-                                        types.Award
-                                        toAwardLaTeX
-                                        x
-                                  }
-                              ]
+                        , Experiences = toExperiences
+                        , Skills = toSkills
+                        , Awards = toAwards
                         }
                         section.data
 
