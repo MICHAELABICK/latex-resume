@@ -49,8 +49,8 @@ let toLaTeX =
                 let Rendered = List LaTeX.Type
 
                 in  λ(render : Item → Rendered) →
-                    λ(t : types.Tagged.Type Item) →
-                      types.Tagged.default
+                    λ(t : types.TagSet.Tagged Item) →
+                      types.TagSet.default
                         matchTags
                         Rendered
                         ([] : Rendered)
@@ -103,10 +103,17 @@ let toLaTeX =
 
         let toSkillGroupLaTeX =
               λ(sg : types.SkillGroup) →
-                [ LaTeX.environment
+                let skills =
+                      Prelude.List.concatMap
+                      (types.TagSet.Tagged Text)
+                      Text
+                      (\(x : types.TagSet.Tagged Text) -> if x.tags matchTags then [ x.item ] else ([] : List Text))
+                      sg.skills
+
+                in [ LaTeX.environment
                     { name = "groupitem"
                     , arguments = [ sg.name ]
-                    , content = toItemize sg.skills
+                    , content = toItemize skills
                     }
                 ]
 
@@ -132,9 +139,9 @@ let toLaTeX =
         let toSectionLaTeX =
               λ(section : types.Section) →
                 let toExperiences =
-                      λ(x : List (types.Tagged.Type types.Experience.Type)) →
+                      λ(x : List (types.TagSet.Tagged types.Experience.Type)) →
                         Prelude.List.concatMap
-                          (types.Tagged.Type types.Experience.Type)
+                          (types.TagSet.Tagged types.Experience.Type)
                           LaTeX.Type
                           ( renderTaggedItem
                               types.Experience.Type

@@ -1,4 +1,4 @@
-let Tagged = ./Type.dhall
+let Tagged = ./Tagged.dhall
 
 let default =
       \(Tags : Type) ->
