@@ -1,5 +1,3 @@
-let TagSet = ./TagSet/package.dhall
-
 let SkillSectionData =
       \(Tags : Type) ->
         {

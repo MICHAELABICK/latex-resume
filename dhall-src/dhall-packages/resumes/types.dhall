@@ -1,4 +1,4 @@
-let TagSet = ./types/TagSet/package.dhall
+let Tagged = ./types/Tagged/package.dhall
 
 let types =
       λ(Tags : Type) →
@@ -11,12 +11,10 @@ let types =
         , Award = ./types/Award.dhall
         , PlacedAward = ./types/PlacedAward.dhall
         , TimePeriodAward = ./types/TimePeriodAward.dhall
-        , TagSet =
-            { Type = TagSet.Type Tags
-            , build = TagSet.build Tags
-            , Tagged = TagSet.Tagged Tags
-            , tagText = TagSet.tagText Tags
-            , default = TagSet.default Tags
+        , Tagged =
+            {
+            , Type = Tagged.Type Tags
+            , tagText = Tagged.tagText Tags
             }
         }
 

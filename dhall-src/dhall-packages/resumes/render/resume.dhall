@@ -44,18 +44,6 @@ let toLaTeX =
                   )
                   items
 
-        let renderTaggedItem =
-              λ(Item : Type) →
-                let Rendered = List LaTeX.Type
-
-                in  λ(render : Item → Rendered) →
-                    λ(t : types.TagSet.Tagged Item) →
-                      types.TagSet.default
-                        matchTags
-                        Rendered
-                        ([] : Rendered)
-                        { item = render t.item, tags = t.tags }
-
         let toSchoolLaTeX =
               λ(school : types.School) →
                 let graduated =
@@ -105,17 +93,21 @@ let toLaTeX =
               λ(sg : types.SkillGroup) →
                 let skills =
                       Prelude.List.concatMap
-                      (types.TagSet.Tagged Text)
-                      Text
-                      (\(x : types.TagSet.Tagged Text) -> if x.tags matchTags then [ x.item ] else ([] : List Text))
-                      sg.skills
+                        (types.Tagged.Type Text)
+                        Text
+                        ( λ(x : types.Tagged.Type Text) →
+                            if    matchTags x.tags
+                            then  [ x.item ]
+                            else  [] : List Text
+                        )
+                        sg.skills
 
-                in [ LaTeX.environment
-                    { name = "groupitem"
-                    , arguments = [ sg.name ]
-                    , content = toItemize skills
-                    }
-                ]
+                in  [ LaTeX.environment
+                        { name = "groupitem"
+                        , arguments = [ sg.name ]
+                        , content = toItemize skills
+                        }
+                    ]
 
         let toAwardLaTeX =
               λ(awd : types.Award) →
@@ -139,13 +131,14 @@ let toLaTeX =
         let toSectionLaTeX =
               λ(section : types.Section) →
                 let toExperiences =
-                      λ(x : List (types.TagSet.Tagged types.Experience.Type)) →
+                      λ(x : List (types.Tagged.Type types.Experience.Type)) →
                         Prelude.List.concatMap
-                          (types.TagSet.Tagged types.Experience.Type)
+                          (types.Tagged.Type types.Experience.Type)
                           LaTeX.Type
-                          ( renderTaggedItem
-                              types.Experience.Type
-                              toExperienceLaTeX
+                          ( λ(te : types.Tagged.Type types.Experience.Type) →
+                              if    matchTags te.tags
+                              then  toExperienceLaTeX te.item
+                              else  [] : List LaTeX.Type
                           )
                           x
 

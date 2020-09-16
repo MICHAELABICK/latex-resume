@@ -6,16 +6,17 @@ let matchTags = λ(tags : Tags.Type) → Prelude.Bool.not tags.old
 
 let types = ../types.dhall Tags.Type
 
-let makeTagged =
-      λ(Item : Type) →
-      λ(item : Item) →
-        { item = item, tags = types.TagSet.build Tags.default }
+let tagItem = λ(Item : Type) → λ(item : Item) → { item, tags = Tags.default }
 
-let TaggedExperience = makeTagged types.Experience.Type
+let TaggedExperience = tagItem types.Experience.Type
 
 let TaggedTextList =
-      \(items : List Text) ->
-        Prelude.List.map Text (types.TagSet.Tagged Text) (\(x : Text) -> types.TagSet.tagText Tags.default x) items
+      λ(items : List Text) →
+        Prelude.List.map
+          Text
+          (types.Tagged.Type Text)
+          (λ(x : Text) → types.Tagged.tagText Tags.default x)
+          items
 
 let content =
       [ { title = "Education"
@@ -131,7 +132,7 @@ let content =
                       , "Wired and programmed a LIDAR tracking system using an Arduino microcontroller"
                       ]
                     }
-                ⫽ { tags = types.TagSet.build Tags::{ old = True } }
+                ⫽ { tags = Tags::{ old = True } }
               ,   TaggedExperience
                     types.Experience::{
                     , corporation = "Edge Systems Design"
@@ -142,7 +143,7 @@ let content =
                       , "Helped manage funding and operation of a startup"
                       ]
                     }
-                ⫽ { tags = types.TagSet.build Tags::{ old = True } }
+                ⫽ { tags = Tags::{ old = True } }
               ]
         }
       , { title = "Technical Skills"
@@ -150,7 +151,9 @@ let content =
             types.SectionData.Skills
               { groups =
                 [ { name = "CAD", skills = TaggedTextList [ "item1", "item2" ] }
-                , { name = "Communication", skills = TaggedTextList [ "item1", "item2" ] }
+                , { name = "Communication"
+                  , skills = TaggedTextList [ "item1", "item2" ]
+                  }
                 ]
               , longest_group_title = "Communication"
               }
