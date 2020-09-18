@@ -1,22 +1,26 @@
 let Prelude = ../Prelude.dhall
 
-let Tags = { Type = { old : Bool }, default.old = False }
+let Tags =
+      { Type = { old : Bool, webdev : Bool }
+      , default = { old = False, webdev = False }
+      }
 
-let matchTags = λ(tags : Tags.Type) → Prelude.Bool.not tags.old
+let matchTags
+    : Tags.Type → Bool
+    = λ(tags : Tags.Type) →
+        Prelude.Bool.not tags.old && Prelude.Bool.not tags.webdev
 
 let types = ../types.dhall Tags.Type
 
 let tagItem = λ(Item : Type) → λ(item : Item) → { item, tags = Tags.default }
 
-let TaggedExperience = tagItem types.Experience.Type
+let TaggedExperience
+    : types.Experience.Type → types.Tagged.Type types.Experience.Type
+    = tagItem types.Experience.Type
 
-let TaggedTextList =
-      λ(items : List Text) →
-        Prelude.List.map
-          Text
-          (types.Tagged.Type Text)
-          (λ(x : Text) → types.Tagged.tagText Tags.default x)
-          items
+let TaggedText
+    : Text → types.Tagged.Type Text
+    = types.Tagged.tagText Tags.default
 
 let content =
       [ { title = "Education"
@@ -150,9 +154,111 @@ let content =
         , data =
             types.SectionData.Skills
               { groups =
-                [ { name = "CAD", skills = TaggedTextList [ "item1", "item2" ] }
+                [ { name = "CAD"
+                  , skills =
+                    [ TaggedText "Solidworks~(8 years)"
+                    , TaggedText "Autodesk Inventor~(9 years)"
+                    , TaggedText "Master Model"
+                    , TaggedText "Top-down Design"
+                    , TaggedText "Parametric Design"
+                    , TaggedText "Surface Modeling"
+                    , TaggedText "2D~\\&~3D Manufacturing/Installation Drawings"
+                    , TaggedText "Geometric Design~\\& Tolerancing"
+                    , TaggedText "Design for Manufacture~(DFM)"
+                    , TaggedText "Design for Assembly~(DFA)"
+                    , TaggedText "Finite Element Analysis~(FEA)"
+                    ]
+                  }
+                , { name = "Fabrication"
+                  , skills =
+                    [ TaggedText "G-Code"
+                    , TaggedText "CNC Mill"
+                    , TaggedText "Manual Mill"
+                    , TaggedText "Manual Lathe"
+                    , TaggedText "Laser Cutter"
+                    , TaggedText "Waterjet"
+                    , TaggedText "3D Printer"
+                    , TaggedText "Selective Laser Sintering~(SLS)"
+                    , TaggedText "Drill Press"
+                    , TaggedText "Bandsaw"
+                    , TaggedText "Soldering Iron"
+                    ]
+                  }
+                , { name = "Programming"
+                  , skills =
+                    [ TaggedText "MATLAB"
+                    , TaggedText "Java"
+                    , TaggedText "Python"
+                    , TaggedText "Git"
+                    , TaggedText "Bash"
+                    , TaggedText "Robot Operating System~(ROS)"
+                    , TaggedText "OpenCV"
+                    , TaggedText "LabView"
+                    , TaggedText "Android"
+                    , TaggedText "HTML" ⫽ { tags = Tags::{ webdev = True } }
+                    , TaggedText "CSS" ⫽ { tags = Tags::{ webdev = True } }
+                    , TaggedText "SASS" ⫽ { tags = Tags::{ webdev = True } }
+                    , TaggedText "\\LaTeX"
+                    ]
+                  }
+                , { name = "Mechatronics"
+                  , skills =
+                    [ TaggedText "NI~cRio/myRio/roboRio"
+                    , TaggedText "Arduino"
+                    , TaggedText "Servo Motors"
+                    , TaggedText "Intel~Realsense Stereo~Camera"
+                    , TaggedText "SLAM LIDAR"
+                    , TaggedText "Sonar"
+                    , TaggedText "Hall~Effect"
+                    , TaggedText "Pneumatic Actuators"
+                    , TaggedText "Encoders"
+                    , TaggedText "Solenoids"
+                    , TaggedText "IR~Sensors"
+                    , TaggedText "Wire Harness"
+                    ]
+                  }
+                , { name = "Software"
+                  , skills =
+                    [ TaggedText "Adobe Illustrator"
+                    , TaggedText "Linux"
+                    , TaggedText "Ubuntu"
+                    , TaggedText "Emacs"
+                    , TaggedText "Vim"
+                    , TaggedText "Inkscape"
+                    , TaggedText "Gimp"
+                    , TaggedText "Excel"
+                    , TaggedText "Word"
+                    , TaggedText "MacOS"
+                    , TaggedText "Windows"
+                    ]
+                  }
+                , { name = "Instruments"
+                  , skills =
+                    [ TaggedText "Micrometer"
+                    , TaggedText "Caliper"
+                    , TaggedText "Ocilloscope"
+                    , TaggedText "Multimeter"
+                    ]
+                  }
                 , { name = "Communication"
-                  , skills = TaggedTextList [ "item1", "item2" ]
+                  , skills =
+                    [ TaggedText "Oral Reports"
+                    , TaggedText "Technical Reports"
+                    , TaggedText "Documentation"
+                    , TaggedText "Executive Summaries"
+                    , TaggedText "Progress Reports"
+                    , TaggedText "Bill of Materials~(BOM)"
+                    ]
+                  }
+                , { name = "Planning"
+                  , skills =
+                    [ TaggedText "House of Quality"
+                    , TaggedText "Specification Sheet"
+                    , TaggedText "Morph Chart"
+                    , TaggedText "Function Tree"
+                    , TaggedText "Gantt Chart"
+                    , TaggedText "Evaulation Matrix"
+                    ]
                   }
                 ]
               , longest_group_title = "Communication"
