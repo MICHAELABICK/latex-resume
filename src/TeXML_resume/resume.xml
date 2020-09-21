@@ -7,7 +7,7 @@
       <keyvals>
         <!-- adjust these numbers each semester -->
         <!-- <year>3<super>rd</super> Year</year> -->
-        <gpa>3.53</gpa>
+        <gpa>3.60</gpa>
 
         <name>Georgia Institute of Technology</name>
         <loc>Atlanta, GA</loc>
@@ -25,6 +25,25 @@
 
   <section>
     <title>Work Experience</title>
+
+    <experience type="cmd">
+      <keyvals>
+	<corp>Intuitive Surgical</corp>
+	<pos>Mechanical Engineering Co-op</pos>
+	<dates>
+	  <from>Aug 2019</from>
+	  <to>Present</from>
+	</dates>
+      </keyvals>
+
+      <list>
+	<item>Built an automated fixture and developed the controller for design validation tests</item>
+	<item>Acted as project manager for a variety of manufacturing, re-manufacturing, and sustaining engineering projects</item>
+	<item>Performed verification and validation for highly regulated medical devices</item>
+	<item>Performed FEA failure analysis and DFM on sheet metal and thermoformed plastic parts</item>
+	<item>Performed engineering change orders and drawing updates in Agile PLM and Windchill PDM</item>
+      </list>
+    </experience>
 
     <experience type="cmd">
       <keyvals>
@@ -50,11 +69,11 @@
 
     <experience type="cmd">
       <keyvals>
-        <corp>GTRI Agricultural Robotics</corp>
+        <corp>GTRI</corp>
         <pos>Undergraduate Researcher</pos>
         <dates>
           <from>Aug 2018</from>
-          <to>Present</to>
+          <to>Aug 2020</to>
         </dates>
       </keyvals>
 
@@ -158,7 +177,7 @@
       </list>
     </experience>
 
-    <experience type="cmd">
+    <experience type="cmd" tags="old">
       <keyvals>
         <corp>Conrad Spirit of Innovation</corp>
         <pos>Programming/Electrical Lead</pos>
@@ -198,10 +217,13 @@
       <longest>Communication</longest>
 
       <group>
-        <title>CAD</title>
+        <title>CAD, PLM, and PDM</title>
 
-        <skill>Solidworks<nobrksp />(8 years)</skill>
-        <skill>Autodesk Inventor<nobrksp />(9 years)</skill>
+        <skill>Solidworks<nobrksp />(9 years)</skill>
+	<skill>Agile PLM</skill>
+	<skill>Windchill</skill>
+	<skill>Solidworks Enterprise PDM<nobrksp />(EPDM)</skill>
+        <skill>Autodesk Inventor<nobrksp />(10 years)</skill>
         <skill>Master Model</skill>
         <skill>Top-down Design</skill>
         <skill>Parametric Design</skill>
@@ -216,7 +238,7 @@
       <group>
         <title>Fabrication</title>
 
-        <skill>Haas CNC</skill>
+        <skill>CNC Mill</skill>
         <skill>Manual Mill</skill>
         <skill>Manual Lathe</skill>
         <skill>Laser Cutter</skill>
@@ -229,13 +251,19 @@
       </group>
 
       <group>
-        <title>Programming</title>
+        <title>Programming and Devops</title>
 
         <skill>MATLAB</skill>
-        <skill>Java</skill>
         <skill>Python</skill>
+	<skill>Julia</skill>
+        <skill>Java</skill>
         <skill>Git</skill>
         <skill>Bash</skill>
+        <skill>Terraform</skill>
+	<skill>Ansible</skill>
+	<skill>Amazon Web Services<nobrksp />(Google Cloud)</skill>
+	<skill>Google Cloud</skill>
+	<skill>Dhall</skill>
         <skill>G-Code</skill>
         <skill>Robot Operating System<nobrksp />(ROS)</skill>
         <skill>OpenCV</skill>
@@ -248,8 +276,9 @@
       </group>
 
       <group>
-        <title>Mechatronics</title>
+        <title>Mechatronics and Robotics</title>
 
+	<skill>Festo Actuators and Drives</skill>
         <skill>NI<nobrksp />cRio/myRio/roboRio</skill>
         <skill>Arduino</skill>
         <skill>Servo Motors</skill>
@@ -324,6 +353,16 @@
           <place>to Present</place>
           <name>Georgia Tech Dean's List</name>
         </keyvals>
+      </award>
+
+      <award>
+	<keyvals>
+	  <date>
+	    <month>April</month>
+	    <year>2020</year>
+	  </date>
+	  <name>GT Presidential Undergraduate Research Award (PURA)</name>
+	</keyvals>
       </award>
 
       <award type="cmd">
