@@ -1,14 +1,16 @@
 let Prelude = ./Prelude.dhall
 
 let Tags =
-      { Type = { old : Bool, webdev : Bool }
-      , default = { old = False, webdev = False }
+      { Type = { old : Bool, cad : Bool, webdev : Bool }
+      , default = { old = False, cad = False, webdev = False }
       }
 
 let matchTags
     : Tags.Type → Bool
     = λ(tags : Tags.Type) →
-        Prelude.Bool.not tags.old && Prelude.Bool.not tags.webdev
+            Prelude.Bool.not tags.old
+        &&  Prelude.Bool.not tags.cad
+        &&  Prelude.Bool.not tags.webdev
 
 let types = ./types.dhall Tags.Type
 
@@ -200,13 +202,22 @@ let content =
               { groups =
                 [ { name = "CAD"
                   , skills =
-                    [ TaggedText "Solidworks~(8 years)"
-                    , TaggedText "Autodesk Inventor~(9 years)"
-                    , TaggedText "Master Model"
-                    , TaggedText "Top-down Design"
-                    , TaggedText "Parametric Design"
-                    , TaggedText "Surface Modeling"
-                    , TaggedText "2D~\\&~3D Manufacturing/Installation Drawings"
+                    [ TaggedText "Solidworks"
+                    , TaggedText "Agile PLM"
+                    , TaggedText "Windchill"
+                    , TaggedText "Solidworks Enterprise PDM~(EPDM)"
+                    , TaggedText "Autodesk Inventor"
+                    ,   TaggedText "Master Model"
+                      ⫽ { tags = Tags::{ cad = True } }
+                    ,   TaggedText "Top-down Design"
+                      ⫽ { tags = Tags::{ cad = True } }
+                    ,   TaggedText "Parametric Design"
+                      ⫽ { tags = Tags::{ cad = True } }
+                    ,   TaggedText "Surface Modeling"
+                      ⫽ { tags = Tags::{ cad = True } }
+                    ,   TaggedText
+                          "2D~\\&~3D Manufacturing/Installation Drawings"
+                      ⫽ { tags = Tags::{ cad = True } }
                     , TaggedText "Geometric Design~\\& Tolerancing"
                     , TaggedText "Design for Manufacture~(DFM)"
                     , TaggedText "Design for Assembly~(DFA)"
