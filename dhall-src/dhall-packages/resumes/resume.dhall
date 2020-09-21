@@ -22,6 +22,21 @@ let TaggedText
     : Text → types.Tagged.Type Text
     = types.Tagged.tagText Tags.default
 
+let FIRSTAward = {
+      , regional : Text
+      , place : Natural
+      , team_count : Natural
+      , date : Text
+      }
+
+let toFIRSTAward =
+      \(fa : FIRSTAward) ->
+        types.Award.Placed {
+        , name = "FIRST Robotics ${fa.regional} Regional"
+        , place = "${Natural/show fa.place}/${Natural/show fa.team_count}"
+        , date = fa.date
+        }
+
 let content =
       [ { title = "Education"
         , data =
@@ -42,8 +57,22 @@ let content =
             types.SectionData.Experiences
               [ TaggedExperience
                   types.Experience::{
+                  , corporation = "Intuitive Surgical"
+                  , position = types.Position.Single "Mechanical Engineering Co-op"
+                  , dates = { from = "Aug 2019", to = "Present" }
+                  , bullets =
+                    [
+                    , "Built an automated fixture using a tuned PID controller and trajectories for design validation tests"
+                    , "Acted as project manager for manufacturing, re-manufacturing, and sustaining engineering projects"
+                    , "Performed verification and validation for highly regulated medical devices"
+                    , "Performed FEA failure analysis and DFM on sheet metal and thermoformed plastic parts"
+                    , "Performed engineering change orders and drawing updates in Agile PLM and Windchill PDM"
+                    ]
+                  }
+              , TaggedExperience
+                  types.Experience::{
                   , corporation = "UCLA Recreation"
-                  , position = Some "Lead Sailing Coordinator"
+                  , position = types.Position.Progression { last = "Lead Sailing Coordinator", first = "Instructor" }
                   , dates = { from = "June 2016", to = "Aug 2018" }
                   , bullets =
                     [ "Coordinated the daily plan and goals for 20 co-workers"
@@ -60,7 +89,7 @@ let content =
               [ TaggedExperience
                   types.Experience::{
                   , corporation = "GTRI Agricultural Robotics"
-                  , position = Some "Undergraduate Researcher"
+                  , position = types.Position.Single "Undergraduate Researcher"
                   , dates = { from = "Aug 2018", to = "April 2019" }
                   , bullets =
                     [ "Researched, integrated, and programmed stereo depth and SLAM LIDAR units for brachiating robot"
@@ -72,7 +101,7 @@ let content =
               , TaggedExperience
                   types.Experience::{
                   , corporation = "Robojackets"
-                  , position = Some "Team Member"
+                  , position = types.Position.Single "Team Member"
                   , dates = { from = "Aug 2016", to = "April 2017" }
                   , bullets =
                     [ "Lead design of a 3lb combat robot including CAD and Design for Manufacture"
@@ -84,7 +113,7 @@ let content =
               , TaggedExperience
                   types.Experience::{
                   , corporation = "GT Motorsports"
-                  , position = Some "Powertrain Team Member"
+                  , position = types.Position.Single "Powertrain Team Member"
                   , dates = { from = "Aug 2016", to = "April 2017" }
                   , bullets =
                     [ "Simulated engine dynamics to increase efficiency and low-end torque by lowering power-band"
@@ -94,7 +123,7 @@ let content =
               , TaggedExperience
                   types.Experience::{
                   , corporation = "MilkenKnights FRC Team"
-                  , position = Some "Team Captain"
+                  , position = types.Position.Single "Team Captain"
                   , dates = { from = "Aug 2011", to = "Jun 2016" }
                   , bullets =
                     [ "Used Lean and Six Sigma principles to streamline manufacturing and assembly proccess"
@@ -129,7 +158,7 @@ let content =
               ,   TaggedExperience
                     types.Experience::{
                     , corporation = "Conrad Spirit of Innovation"
-                    , position = Some "Mechatronics Lead"
+                    , position = types.Position.Single "Mechatronics Lead"
                     , dates = { from = "Sep 2014", to = "Jun 2015" }
                     , bullets =
                       [ "Designed a belt than warned the visually-impaired of hazardous obstacles"
@@ -140,7 +169,7 @@ let content =
               ,   TaggedExperience
                     types.Experience::{
                     , corporation = "Edge Systems Design"
-                    , position = Some "Mechanical Engineer"
+                    , position = types.Position.Single "Mechanical Engineer"
                     , dates = { from = "Jun 2012", to = "Jun 2014" }
                     , bullets =
                       [ "Designed base frame and linear motion system for an affordable CNC router"
@@ -279,9 +308,43 @@ let content =
                   , to = "to Present"
                   }
               , types.Award.Placed
+                  { name = "GT Presidential Undergraduate Research Award (PURA)"
+                  , date = "April 2020"
+                  , place = ""
+                  }
+              , types.Award.Placed
                   { name = "Georgia Tech ME2110 Design Competition"
                   , date = "Nov 2017"
                   , place = "7th/60"
+                  }
+              , toFIRSTAward {
+                  , regional = "Orange County"
+                  , date = "Apr 2016"
+                  , place = 2
+                  , team_count = 42
+                  }
+              , toFIRSTAward {
+                  , regional = "Ventura"
+                  , date = "Mar 2015"
+                  , place = 3
+                  , team_count = 41
+                  }
+              , toFIRSTAward {
+                  , regional = "Utah"
+                  , date = "Mar 2015"
+                  , place = 3
+                  , team_count = 53
+                  }
+              , types.Award.Placed
+                  { name = "Conrad Spirit of Innovation Semi-Finalist"
+                  , date = "Oct 2014"
+                  , place = "International"
+                  }
+              , toFIRSTAward {
+                  , regional = "Los Angeles"
+                  , date = "Mar 2013"
+                  , place = 1
+                  , team_count = 65
                   }
               ]
         }

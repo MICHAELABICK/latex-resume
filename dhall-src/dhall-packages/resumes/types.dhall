@@ -11,6 +11,8 @@ let types =
         , Award = ./types/Award.dhall
         , PlacedAward = ./types/PlacedAward.dhall
         , TimePeriodAward = ./types/TimePeriodAward.dhall
+        , Position = ./types/Position.dhall
+        , ProgressionPosition = ./types/ProgressionPosition.dhall
         , Tagged =
             {
             , Type = Tagged.Type Tags

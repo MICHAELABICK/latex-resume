@@ -53,6 +53,7 @@ let toLaTeX =
                       toKeyvalsArguments
                         ( toMap
                             { name = school.name
+                            , gpa = "${Double/show school.gpa}/4.0"
                             , loc = school.location
                             , from = school.dates.from
                             , to = school.dates.to
@@ -67,17 +68,24 @@ let toLaTeX =
 
         let toExperienceLaTeX =
               λ(exp : types.Experience.Type) →
+                let position =
+                      merge {
+                      , Progression =
+                          \(x : types.ProgressionPosition) -> "${x.first} to ${x.last}"
+                      , Single =
+                          \(x : Text) -> x
+                      , None = ""
+                      }
+                      exp.position
+
                 let arguments =
                       toKeyvalsArguments
                         (   toMap
                               { corp = exp.corporation
                               , from = exp.dates.from
                               , to = exp.dates.to
+                              , pos = position
                               }
-                          # Prelude.Map.unpackOptionals
-                              Text
-                              Text
-                              (toMap { pos = exp.position })
                         )
 
                 in  [ LaTeX.command
