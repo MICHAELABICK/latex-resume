@@ -69,23 +69,23 @@ let toLaTeX =
         let toExperienceLaTeX =
               λ(exp : types.Experience.Type) →
                 let position =
-                      merge {
-                      , Progression =
-                          \(x : types.ProgressionPosition) -> "${x.first} to ${x.last}"
-                      , Single =
-                          \(x : Text) -> x
-                      , None = ""
-                      }
-                      exp.position
+                      merge
+                        { Progression =
+                            λ(x : types.ProgressionPosition) →
+                              "${x.first} to ${x.last}"
+                        , Single = λ(x : Text) → x
+                        , None = ""
+                        }
+                        exp.position
 
                 let arguments =
                       toKeyvalsArguments
-                        (   toMap
-                              { corp = exp.corporation
-                              , from = exp.dates.from
-                              , to = exp.dates.to
-                              , pos = position
-                              }
+                        ( toMap
+                            { corp = exp.corporation
+                            , from = exp.dates.from
+                            , to = exp.dates.to
+                            , pos = position
+                            }
                         )
 
                 in  [ LaTeX.command

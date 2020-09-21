@@ -22,20 +22,16 @@ let TaggedText
     : Text → types.Tagged.Type Text
     = types.Tagged.tagText Tags.default
 
-let FIRSTAward = {
-      , regional : Text
-      , place : Natural
-      , team_count : Natural
-      , date : Text
-      }
+let FIRSTAward =
+      { regional : Text, place : Natural, team_count : Natural, date : Text }
 
 let toFIRSTAward =
-      \(fa : FIRSTAward) ->
-        types.Award.Placed {
-        , name = "FIRST Robotics ${fa.regional} Regional"
-        , place = "${Natural/show fa.place}/${Natural/show fa.team_count}"
-        , date = fa.date
-        }
+      λ(fa : FIRSTAward) →
+        types.Award.Placed
+          { name = "FIRST Robotics ${fa.regional} Regional"
+          , place = "${Natural/show fa.place}/${Natural/show fa.team_count}"
+          , date = fa.date
+          }
 
 let content =
       [ { title = "Education"
@@ -58,11 +54,11 @@ let content =
               [ TaggedExperience
                   types.Experience::{
                   , corporation = "Intuitive Surgical"
-                  , position = types.Position.Single "Mechanical Engineering Co-op"
+                  , position =
+                      types.Position.Single "Mechanical Engineering Co-op"
                   , dates = { from = "Aug 2019", to = "Present" }
                   , bullets =
-                    [
-                    , "Built an automated fixture using a tuned PID controller and trajectories for design validation tests"
+                    [ "Built an automated fixture using a tuned PID controller and trajectories for design validation tests"
                     , "Acted as project manager for manufacturing, re-manufacturing, and sustaining engineering projects"
                     , "Performed verification and validation for highly regulated medical devices"
                     , "Performed FEA failure analysis and DFM on sheet metal and thermoformed plastic parts"
@@ -71,16 +67,35 @@ let content =
                   }
               , TaggedExperience
                   types.Experience::{
-                  , corporation = "UCLA Recreation"
-                  , position = types.Position.Progression { last = "Lead Sailing Coordinator", first = "Instructor" }
-                  , dates = { from = "June 2016", to = "Aug 2018" }
+                  , corporation = "GTRI Brachiating Robotics"
+                  , position =
+                      types.Position.Progression
+                        { last = "Undergraduate Assistant", first = "Intern" }
+                  , dates = { from = "Apr 2019", to = "Aug 2020" }
                   , bullets =
-                    [ "Coordinated the daily plan and goals for 20 co-workers"
-                    , "Responsible for safety of UCLA sailors on and off the water"
-                    , "Taught sailors with skill levels ranging from beginner to advanced"
-                    , "Advanced from instructor to lead coordinator"
+                    [ "Implemenented a Quadratic Programming online controller in ANSI C/Arduino using the OSQP solver"
+                    , "Built a novel, bi-stable, biomimetic robotic gripper for flexible cables"
+                    , "Used FEA and MATLAB to size actuators and frame components for minimum weight"
+                    , "Work will be published in the IROS 2020 robotics conference"
+                    , "Awarded the Presidential Undergraduate Research Award for outstanding research"
                     ]
                   }
+              ,   TaggedExperience
+                    types.Experience::{
+                    , corporation = "UCLA Recreation"
+                    , position =
+                        types.Position.Progression
+                          { last = "Lead Sailing Coordinator"
+                          , first = "Instructor"
+                          }
+                    , dates = { from = "June 2016", to = "Aug 2018" }
+                    , bullets =
+                      [ "Coordinated the daily plan and goals for 20 co-workers"
+                      , "Responsible for safety of UCLA sailors on and off the water"
+                      , "Taught sailors with skill levels ranging from beginner to advanced"
+                      ]
+                    }
+                ⫽ { tags = Tags::{ old = True } }
               ]
         }
       , { title = "Academic Leadership Projects"
@@ -88,7 +103,7 @@ let content =
             types.SectionData.Experiences
               [ TaggedExperience
                   types.Experience::{
-                  , corporation = "GTRI Agricultural Robotics"
+                  , corporation = "Agricultural Robotics Research Course"
                   , position = types.Position.Single "Undergraduate Researcher"
                   , dates = { from = "Aug 2018", to = "April 2019" }
                   , bullets =
@@ -224,76 +239,70 @@ let content =
                     , TaggedText "OpenCV"
                     , TaggedText "LabView"
                     , TaggedText "Android"
-                    , TaggedText "HTML"
-                      // { tags = Tags::{ webdev = True } }
-                    , TaggedText "CSS"
-                      // { tags = Tags::{ webdev = True } }
-                    , TaggedText "SASS"
-                      // { tags = Tags::{ webdev = True } }
+                    , TaggedText "HTML" ⫽ { tags = Tags::{ webdev = True } }
+                    , TaggedText "CSS" ⫽ { tags = Tags::{ webdev = True } }
+                    , TaggedText "SASS" ⫽ { tags = Tags::{ webdev = True } }
                     , TaggedText "\\LaTeX"
                     ]
                   }
                 , { name = "Mechatronics"
                   , skills =
-                      [ TaggedText "NI~cRio/myRio/roboRio"
-                      , TaggedText "Arduino"
-                      , TaggedText "Servo Motors"
-                      , TaggedText "Intel~Realsense Stereo~Camera"
-                      , TaggedText "SLAM LIDAR"
-                      , TaggedText "Sonar"
-                      , TaggedText "Hall~Effect"
-                      , TaggedText "Pneumatic Actuators"
-                      , TaggedText "Encoders"
-                      , TaggedText "Solenoids"
-                      , TaggedText "IR~Sensors"
-                      , TaggedText "Wire Harness"
-                      ]
+                    [ TaggedText "NI~cRio/myRio/roboRio"
+                    , TaggedText "Arduino"
+                    , TaggedText "Servo Motors"
+                    , TaggedText "Intel~Realsense Stereo~Camera"
+                    , TaggedText "SLAM LIDAR"
+                    , TaggedText "Sonar"
+                    , TaggedText "Hall~Effect"
+                    , TaggedText "Pneumatic Actuators"
+                    , TaggedText "Encoders"
+                    , TaggedText "Solenoids"
+                    , TaggedText "IR~Sensors"
+                    , TaggedText "Wire Harness"
+                    ]
                   }
                 , { name = "Software"
                   , skills =
-                      [
-                      , TaggedText "Adobe Illustrator"
-                      , TaggedText "Linux"
-                      , TaggedText "Ubuntu"
-                      , TaggedText "Emacs"
-                      , TaggedText "Vim"
-                      , TaggedText "Inkscape"
-                      , TaggedText "Gimp"
-                      , TaggedText "Excel"
-                      , TaggedText "Word"
-                      , TaggedText "MacOS"
-                      , TaggedText "Windows"
-                      ]
+                    [ TaggedText "Adobe Illustrator"
+                    , TaggedText "Linux"
+                    , TaggedText "Ubuntu"
+                    , TaggedText "Emacs"
+                    , TaggedText "Vim"
+                    , TaggedText "Inkscape"
+                    , TaggedText "Gimp"
+                    , TaggedText "Excel"
+                    , TaggedText "Word"
+                    , TaggedText "MacOS"
+                    , TaggedText "Windows"
+                    ]
                   }
                 , { name = "Instruments"
                   , skills =
-                      [
-                      , TaggedText "Micrometer"
-                      , TaggedText "Caliper"
-                      , TaggedText "Ocilloscope"
-                      , TaggedText "Multimeter"
-                      ]
+                    [ TaggedText "Micrometer"
+                    , TaggedText "Caliper"
+                    , TaggedText "Ocilloscope"
+                    , TaggedText "Multimeter"
+                    ]
                   }
                 , { name = "Communication"
                   , skills =
-                      [ TaggedText "Oral Reports"
-                      , TaggedText "Technical Reports"
-                      , TaggedText "Documentation"
-                      , TaggedText "Executive Summaries"
-                      , TaggedText "Progress Reports"
-                      , TaggedText "Bill of Materials~(BOM)"
-                      ]
+                    [ TaggedText "Oral Reports"
+                    , TaggedText "Technical Reports"
+                    , TaggedText "Documentation"
+                    , TaggedText "Executive Summaries"
+                    , TaggedText "Progress Reports"
+                    , TaggedText "Bill of Materials~(BOM)"
+                    ]
                   }
                 , { name = "Planning"
                   , skills =
-                      [
-                      , TaggedText "House of Quality"
-                      , TaggedText "Specification Sheet"
-                      , TaggedText "Morph Chart"
-                      , TaggedText "Function Tree"
-                      , TaggedText "Gantt Chart"
-                      , TaggedText "Evaulation Matrix"
-                      ]
+                    [ TaggedText "House of Quality"
+                    , TaggedText "Specification Sheet"
+                    , TaggedText "Morph Chart"
+                    , TaggedText "Function Tree"
+                    , TaggedText "Gantt Chart"
+                    , TaggedText "Evaulation Matrix"
+                    ]
                   }
                 ]
               , longest_group_title = "Communication"
@@ -317,20 +326,20 @@ let content =
                   , date = "Nov 2017"
                   , place = "7th/60"
                   }
-              , toFIRSTAward {
-                  , regional = "Orange County"
+              , toFIRSTAward
+                  { regional = "Orange County"
                   , date = "Apr 2016"
                   , place = 2
                   , team_count = 42
                   }
-              , toFIRSTAward {
-                  , regional = "Ventura"
+              , toFIRSTAward
+                  { regional = "Ventura"
                   , date = "Mar 2015"
                   , place = 3
                   , team_count = 41
                   }
-              , toFIRSTAward {
-                  , regional = "Utah"
+              , toFIRSTAward
+                  { regional = "Utah"
                   , date = "Mar 2015"
                   , place = 3
                   , team_count = 53
@@ -340,8 +349,8 @@ let content =
                   , date = "Oct 2014"
                   , place = "International"
                   }
-              , toFIRSTAward {
-                  , regional = "Los Angeles"
+              , toFIRSTAward
+                  { regional = "Los Angeles"
                   , date = "Mar 2013"
                   , place = 1
                   , team_count = 65
@@ -350,9 +359,4 @@ let content =
         }
       ]
 
-in
-{
-, content = content
-, Tags = Tags.Type
-, matchTags = matchTags
-}
+in  { content, Tags = Tags.Type, matchTags }
