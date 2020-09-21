@@ -34,6 +34,10 @@ let TaggedExperience
     : types.Experience.Type → types.Tagged.Type types.Experience.Type
     = tagItem types.Experience.Type
 
+let TaggedAward
+    : types.Award → types.Tagged.Type types.Award
+    = tagItem types.Award
+
 let TaggedText
     : Text → types.Tagged.Type Text
     = types.Tagged.tagText Tags.default
@@ -346,50 +350,76 @@ let content =
       , { title = "Awards \\& Honors"
         , data =
             types.SectionData.Awards
-              [ types.Award.TimePeriod
-                  { name = "Georgia Tech Dean's List"
-                  , from = "Dec 2016"
-                  , to = "to Present"
-                  }
-              , types.Award.Placed
-                  { name = "GT Presidential Undergraduate Research Award (PURA)"
-                  , date = "April 2020"
-                  , place = ""
-                  }
-              , types.Award.Placed
-                  { name = "Georgia Tech ME2110 Design Competition"
-                  , date = "Nov 2017"
-                  , place = "7th/60"
-                  }
-              , toFIRSTAward
-                  { regional = "Orange County"
-                  , date = "Apr 2016"
-                  , place = 2
-                  , team_count = 42
-                  }
-              , toFIRSTAward
-                  { regional = "Ventura"
-                  , date = "Mar 2015"
-                  , place = 3
-                  , team_count = 41
-                  }
-              , toFIRSTAward
-                  { regional = "Utah"
-                  , date = "Mar 2015"
-                  , place = 3
-                  , team_count = 53
-                  }
-              , types.Award.Placed
-                  { name = "Conrad Spirit of Innovation Semi-Finalist"
-                  , date = "Oct 2014"
-                  , place = "International"
-                  }
-              , toFIRSTAward
-                  { regional = "Los Angeles"
-                  , date = "Mar 2013"
-                  , place = 1
-                  , team_count = 65
-                  }
+              [ TaggedAward
+                  ( types.Award.TimePeriod
+                      { name = "Georgia Tech Dean's List"
+                      , from = "Dec 2016"
+                      , to = "to Present"
+                      }
+                  )
+              , TaggedAward
+                  ( types.Award.Placed
+                      { name =
+                          "GT Presidential Undergraduate Research Award (PURA)"
+                      , date = "April 2020"
+                      , place = ""
+                      }
+                  )
+              , TaggedAward
+                  ( types.Award.Placed
+                      { name = "Georgia Tech ME2110 Design Competition"
+                      , date = "Nov 2017"
+                      , place = "7th/60"
+                      }
+                  )
+              , TaggedAward
+                  ( toFIRSTAward
+                      { regional = "Orange County"
+                      , date = "Apr 2016"
+                      , place = 2
+                      , team_count = 42
+                      }
+                  )
+              , TaggedAward
+                  ( toFIRSTAward
+                      { regional = "Ventura"
+                      , date = "Mar 2015"
+                      , place = 3
+                      , team_count = 41
+                      }
+                  )
+              , TaggedAward
+                  ( toFIRSTAward
+                      { regional = "Utah"
+                      , date = "Mar 2015"
+                      , place = 3
+                      , team_count = 53
+                      }
+                  )
+              , TaggedAward
+                  ( types.Award.Placed
+                      { name = "Conrad Spirit of Innovation Semi-Finalist"
+                      , date = "Oct 2014"
+                      , place = "International"
+                      }
+                  )
+              , TaggedAward
+                  ( toFIRSTAward
+                      { regional = "Los Angeles"
+                      , date = "Mar 2013"
+                      , place = 1
+                      , team_count = 65
+                      }
+                  )
+              ,   TaggedAward
+                    ( toFIRSTAward
+                        { regional = "Los Angeles"
+                        , date = "Mar 2012"
+                        , place = 2
+                        , team_count = 66
+                        }
+                    )
+                ⫽ { tags = Tags::{ old = True } }
               ]
         }
       ]

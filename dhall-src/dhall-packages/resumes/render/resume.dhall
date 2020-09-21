@@ -165,18 +165,29 @@ let toLaTeX =
                         ]
 
                 let toAwards =
-                      λ(x : List types.Award) →
-                        [ LaTeX.environment
-                            { name = "awards"
-                            , arguments = [] : List Text
-                            , content =
-                                LaTeX.concatMapSep
-                                  [ LaTeX.newline ]
-                                  types.Award
-                                  toAwardLaTeX
-                                  x
-                            }
-                        ]
+                      λ(x : List (types.Tagged.Type types.Award)) →
+                        let filtered =
+                              Prelude.List.concatMap
+                                (types.Tagged.Type types.Award)
+                                types.Award
+                                ( λ(ta : types.Tagged.Type types.Award) →
+                                    if    matchTags ta.tags
+                                    then  [ ta.item ]
+                                    else  [] : List types.Award
+                                )
+                                x
+
+                        in  [ LaTeX.environment
+                                { name = "awards"
+                                , arguments = [] : List Text
+                                , content =
+                                    LaTeX.concatMapSep
+                                      [ LaTeX.newline ]
+                                      types.Award
+                                      toAwardLaTeX
+                                      filtered
+                                }
+                            ]
 
                 let data =
                       merge

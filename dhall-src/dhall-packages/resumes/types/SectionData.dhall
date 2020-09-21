@@ -7,7 +7,7 @@ let SectionData =
         < Education : ./School.dhall
         | Experiences : List (Tagged.Type Tags Experience.Type)
         | Skills : ./SkillSectionData.dhall Tags
-        | Awards : List ./Award.dhall
+        | Awards : List (Tagged.Type Tags ./Award.dhall)
         >
 
 in  SectionData
