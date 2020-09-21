@@ -1,8 +1,20 @@
 let Prelude = ./Prelude.dhall
 
 let Tags =
-      { Type = { old : Bool, cad : Bool, webdev : Bool }
-      , default = { old = False, cad = False, webdev = False }
+      { Type =
+          { old : Bool
+          , cad : Bool
+          , devops : Bool
+          , instruments : Bool
+          , webdev : Bool
+          }
+      , default =
+        { old = False
+        , cad = False
+        , devops = False
+        , instruments = False
+        , webdev = False
+        }
       }
 
 let matchTags
@@ -10,6 +22,8 @@ let matchTags
     = λ(tags : Tags.Type) →
             Prelude.Bool.not tags.old
         &&  Prelude.Bool.not tags.cad
+        &&  Prelude.Bool.not tags.devops
+        &&  Prelude.Bool.not tags.instruments
         &&  Prelude.Bool.not tags.webdev
 
 let types = ./types.dhall Tags.Type
@@ -122,7 +136,7 @@ let content =
                   , dates = { from = "Aug 2016", to = "April 2017" }
                   , bullets =
                     [ "Lead design of a 3lb combat robot including CAD and Design for Manufacture"
-                    , "Performed Finite Element Analysis on weapon subsystem to prevent catastrophic and fatigue failure"
+                    , "Performed FEA on weapon subsystem to prevent catastrophic and fatigue failure"
                     , "Manufactured robotic components using precision machinery including CNC mills, lathes, and waterjets"
                     , "Created autonomous path planning and motion profile algorithm using MATLAB"
                     ]
@@ -242,14 +256,21 @@ let content =
                 , { name = "Programming"
                   , skills =
                     [ TaggedText "MATLAB"
-                    , TaggedText "Java"
                     , TaggedText "Python"
+                    , TaggedText "Julia"
+                    , TaggedText "Java"
                     , TaggedText "Git"
-                    , TaggedText "Bash"
+                    , TaggedText "Amazon Web Services~(AWS)"
+                    , TaggedText "Google Cloud"
+                    ,   TaggedText "Terraform"
+                      ⫽ { tags = Tags::{ devops = True } }
+                    , TaggedText "Ansible" ⫽ { tags = Tags::{ devops = True } }
                     , TaggedText "Robot Operating System~(ROS)"
                     , TaggedText "OpenCV"
+                    , TaggedText "Bash"
                     , TaggedText "LabView"
                     , TaggedText "Android"
+                    , TaggedText "Dhall"
                     , TaggedText "HTML" ⫽ { tags = Tags::{ webdev = True } }
                     , TaggedText "CSS" ⫽ { tags = Tags::{ webdev = True } }
                     , TaggedText "SASS" ⫽ { tags = Tags::{ webdev = True } }
@@ -259,6 +280,7 @@ let content =
                 , { name = "Mechatronics"
                   , skills =
                     [ TaggedText "NI~cRio/myRio/roboRio"
+                    , TaggedText "Festo Actuators and Drives"
                     , TaggedText "Arduino"
                     , TaggedText "Servo Motors"
                     , TaggedText "Intel~Realsense Stereo~Camera"
@@ -293,6 +315,8 @@ let content =
                     , TaggedText "Caliper"
                     , TaggedText "Ocilloscope"
                     , TaggedText "Multimeter"
+                    ,   TaggedText "Voltmeter"
+                      ⫽ { tags = Tags::{ instruments = True } }
                     ]
                   }
                 , { name = "Communication"
