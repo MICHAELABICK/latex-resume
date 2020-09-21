@@ -99,16 +99,7 @@ let toLaTeX =
 
         let toSkillGroupLaTeX =
               λ(sg : types.SkillGroup) →
-                let skills =
-                      Prelude.List.concatMap
-                        (types.Tagged.Type Text)
-                        Text
-                        ( λ(x : types.Tagged.Type Text) →
-                            if    matchTags x.tags
-                            then  [ x.item ]
-                            else  [] : List Text
-                        )
-                        sg.skills
+                let skills = types.Tagged.filter Text matchTags sg.skills
 
                 in  [ LaTeX.environment
                         { name = "groupitem"
@@ -140,15 +131,17 @@ let toLaTeX =
               λ(section : types.Section) →
                 let toExperiences =
                       λ(x : List (types.Tagged.Type types.Experience.Type)) →
-                        Prelude.List.concatMap
-                          (types.Tagged.Type types.Experience.Type)
-                          LaTeX.Type
-                          ( λ(te : types.Tagged.Type types.Experience.Type) →
-                              if    matchTags te.tags
-                              then  toExperienceLaTeX te.item
-                              else  [] : List LaTeX.Type
-                          )
-                          x
+                        let filtered =
+                              types.Tagged.filter
+                                types.Experience.Type
+                                matchTags
+                                x
+
+                        in  Prelude.List.concatMap
+                              types.Experience.Type
+                              LaTeX.Type
+                              toExperienceLaTeX
+                              filtered
 
                 let toSkills =
                       λ(x : types.SkillSectionData) →
@@ -167,15 +160,7 @@ let toLaTeX =
                 let toAwards =
                       λ(x : List (types.Tagged.Type types.Award)) →
                         let filtered =
-                              Prelude.List.concatMap
-                                (types.Tagged.Type types.Award)
-                                types.Award
-                                ( λ(ta : types.Tagged.Type types.Award) →
-                                    if    matchTags ta.tags
-                                    then  [ ta.item ]
-                                    else  [] : List types.Award
-                                )
-                                x
+                              types.Tagged.filter types.Award matchTags x
 
                         in  [ LaTeX.environment
                                 { name = "awards"

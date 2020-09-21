@@ -17,6 +17,7 @@ let types =
             {
             , Type = Tagged.Type Tags
             , tagText = Tagged.tagText Tags
+            , filter = Tagged.filter Tags
             }
         }
 
