@@ -1,4 +1,4 @@
-let Prelude = ../Prelude.dhall
+let Prelude = ./Prelude.dhall
 
 let Tags =
       { Type = { old : Bool, webdev : Bool }
@@ -10,7 +10,7 @@ let matchTags
     = λ(tags : Tags.Type) →
         Prelude.Bool.not tags.old && Prelude.Bool.not tags.webdev
 
-let types = ../types.dhall Tags.Type
+let types = ./types.dhall Tags.Type
 
 let tagItem = λ(Item : Type) → λ(item : Item) → { item, tags = Tags.default }
 
@@ -195,70 +195,76 @@ let content =
                     , TaggedText "OpenCV"
                     , TaggedText "LabView"
                     , TaggedText "Android"
-                    , TaggedText "HTML" ⫽ { tags = Tags::{ webdev = True } }
-                    , TaggedText "CSS" ⫽ { tags = Tags::{ webdev = True } }
-                    , TaggedText "SASS" ⫽ { tags = Tags::{ webdev = True } }
+                    , TaggedText "HTML"
+                      // { tags = Tags::{ webdev = True } }
+                    , TaggedText "CSS"
+                      // { tags = Tags::{ webdev = True } }
+                    , TaggedText "SASS"
+                      // { tags = Tags::{ webdev = True } }
                     , TaggedText "\\LaTeX"
                     ]
                   }
                 , { name = "Mechatronics"
                   , skills =
-                    [ TaggedText "NI~cRio/myRio/roboRio"
-                    , TaggedText "Arduino"
-                    , TaggedText "Servo Motors"
-                    , TaggedText "Intel~Realsense Stereo~Camera"
-                    , TaggedText "SLAM LIDAR"
-                    , TaggedText "Sonar"
-                    , TaggedText "Hall~Effect"
-                    , TaggedText "Pneumatic Actuators"
-                    , TaggedText "Encoders"
-                    , TaggedText "Solenoids"
-                    , TaggedText "IR~Sensors"
-                    , TaggedText "Wire Harness"
-                    ]
+                      [ TaggedText "NI~cRio/myRio/roboRio"
+                      , TaggedText "Arduino"
+                      , TaggedText "Servo Motors"
+                      , TaggedText "Intel~Realsense Stereo~Camera"
+                      , TaggedText "SLAM LIDAR"
+                      , TaggedText "Sonar"
+                      , TaggedText "Hall~Effect"
+                      , TaggedText "Pneumatic Actuators"
+                      , TaggedText "Encoders"
+                      , TaggedText "Solenoids"
+                      , TaggedText "IR~Sensors"
+                      , TaggedText "Wire Harness"
+                      ]
                   }
                 , { name = "Software"
                   , skills =
-                    [ TaggedText "Adobe Illustrator"
-                    , TaggedText "Linux"
-                    , TaggedText "Ubuntu"
-                    , TaggedText "Emacs"
-                    , TaggedText "Vim"
-                    , TaggedText "Inkscape"
-                    , TaggedText "Gimp"
-                    , TaggedText "Excel"
-                    , TaggedText "Word"
-                    , TaggedText "MacOS"
-                    , TaggedText "Windows"
-                    ]
+                      [
+                      , TaggedText "Adobe Illustrator"
+                      , TaggedText "Linux"
+                      , TaggedText "Ubuntu"
+                      , TaggedText "Emacs"
+                      , TaggedText "Vim"
+                      , TaggedText "Inkscape"
+                      , TaggedText "Gimp"
+                      , TaggedText "Excel"
+                      , TaggedText "Word"
+                      , TaggedText "MacOS"
+                      , TaggedText "Windows"
+                      ]
                   }
                 , { name = "Instruments"
                   , skills =
-                    [ TaggedText "Micrometer"
-                    , TaggedText "Caliper"
-                    , TaggedText "Ocilloscope"
-                    , TaggedText "Multimeter"
-                    ]
+                      [
+                      , TaggedText "Micrometer"
+                      , TaggedText "Caliper"
+                      , TaggedText "Ocilloscope"
+                      , TaggedText "Multimeter"
+                      ]
                   }
                 , { name = "Communication"
                   , skills =
-                    [ TaggedText "Oral Reports"
-                    , TaggedText "Technical Reports"
-                    , TaggedText "Documentation"
-                    , TaggedText "Executive Summaries"
-                    , TaggedText "Progress Reports"
-                    , TaggedText "Bill of Materials~(BOM)"
-                    ]
+                      [ TaggedText "Oral Reports"
+                      , TaggedText "Technical Reports"
+                      , TaggedText "Documentation"
+                      , TaggedText "Executive Summaries"
+                      , TaggedText "Progress Reports"
+                      , TaggedText "Bill of Materials~(BOM)"
+                      ]
                   }
                 , { name = "Planning"
                   , skills =
-                    [ TaggedText "House of Quality"
-                    , TaggedText "Specification Sheet"
-                    , TaggedText "Morph Chart"
-                    , TaggedText "Function Tree"
-                    , TaggedText "Gantt Chart"
-                    , TaggedText "Evaulation Matrix"
-                    ]
+                      [
+                      , TaggedText "House of Quality"
+                      , TaggedText "Specification Sheet"
+                      , TaggedText "Morph Chart"
+                      , TaggedText "Function Tree"
+                      , TaggedText "Gantt Chart"
+                      , TaggedText "Evaulation Matrix"
+                      ]
                   }
                 ]
               , longest_group_title = "Communication"
@@ -281,4 +287,9 @@ let content =
         }
       ]
 
-in  { content, Tags, matchTags }
+in
+{
+, content = content
+, Tags = Tags.Type
+, matchTags = matchTags
+}

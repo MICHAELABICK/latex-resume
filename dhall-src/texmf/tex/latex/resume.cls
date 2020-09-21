@@ -181,18 +181,18 @@
 % TODO: Look into rewriting with expl3
 % Macro for an award
 % Key Definitions
-\define@key{award}{month}{\def\awd@month{#1}}
-\define@key{award}{year}{\def\awd@year{#1}}
-\define@key{award}{place}{\def\awd@place{#1}}
 \define@key{award}{name}{\def\awd@name{#1}}
+\define@key{award}{col1}{\def\awd@firstcol{#1}}
+\define@key{award}{col2}{\def\awd@secondcol{#1}}
 \DeclareDocumentCommand{\award}{m}{
   % Key Defaults + New Ones
-  \setkeys{award}{month={},year={},place={},name={},#1}
+  \setkeys{award}{name={},col1={},col2={},#1}
   % Define the macro
-  \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\expandafter\textsc\expandafter{\awd@month}}
-  \g@addto@macro\awardrows{ }
-  \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\awd@year}
-  \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\expandafter&\awd@place}
+  %% \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\expandafter\textsc\expandafter{\awd@month}}
+  %% \g@addto@macro\awardrows{ }
+  %% \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\awd@year}
+  \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\expandafter\textsc\expandafter{\awd@firstcol}}
+  \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\expandafter&\awd@secondcol}
   \expandafter\g@addto@macro\expandafter\awardrows\expandafter{\expandafter&\awd@name}
   \g@addto@macro\awardrows{\\}
 }

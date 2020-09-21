@@ -201,7 +201,7 @@ let toLaTeX =
                 in  LaTeX.render
                       [ LaTeX.command
                           { name = "documentclass"
-                          , arguments = [] : List Text
+                          , arguments = [ "resume" ]
                           , newline = True
                           }
                       , LaTeX.environment
