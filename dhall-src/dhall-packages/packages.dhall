@@ -1,6 +1,6 @@
 {
-, LaTeX =
-    ./LaTeX/package.dhall
+, latex =
+    ./latex/package.dhall
 , resumes =
     ./resumes/package.dhall
 , semver =

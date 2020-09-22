@@ -1,3 +1,1 @@
-{ tag : Text
-, message : Text
-}
+{ tag : Text, message : Text }

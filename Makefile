@@ -1,7 +1,9 @@
 # Main Repository Directories
-MAKEDIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 SRCDIR = dhall-src
 BUILDDIR = dhall-build
+TESTDIR = test
+
+MAKEDIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 LIBDIR = /$(SRCDIR)/texmf/tex/latex
 
 # Compile commands and files
@@ -12,6 +14,9 @@ export TEXMFHOME=$(MAKEDIR)$(SRCDIR)/texmf
 
 resumes_src = $(shell find $(SRCDIR) -name '*.tex.dhall')
 resumes_pdf = $(patsubst $(SRCDIR)/%.tex.dhall,$(BUILDDIR)/%.pdf,$(resumes_src))
+
+dhall_src = $(shell find $(SRCDIR) -name '*.dhall')
+dhall_test = $(patsubst $(SRCDIR)/%,$(TESTDIR)/%,$(dhall_src))
 
 
 .PHONY : all cleanall clean FORCE
@@ -27,6 +32,11 @@ $(BUILDDIR)/%.pdf : $(BUILDDIR)/%.tex FORCE
 $(BUILDDIR)/%.tex : $(SRCDIR)/%.tex.dhall FORCE
 	mkdir -p $(dir $@)
 	dhall text --file $< --output $@
+
+test : $(dhall_test)
+
+$(TESTDIR)/%.dhall : $(SRCDIR)/%.dhall FORCE
+	dhall type --file $< --quiet
 
 cleanall :
 	rm -rf $(BUILDDIR)
