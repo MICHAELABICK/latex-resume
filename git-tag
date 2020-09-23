@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+export TAGFILE='./dhall-src/git-tag.dhall'
+
+eval $(dhall-to-bash --declare NAME <<< "let tag = ${TAGFILE} in tag.tag")
+eval $(dhall-to-bash --declare MESSAGE <<< "let tag = ${TAGFILE} in tag.message")
+
+echo "git tag -a ${NAME} -m \"${MESSAGE}\""
