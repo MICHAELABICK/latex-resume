@@ -6,8 +6,8 @@ eval $(dhall-to-bash --declare MESSAGE <<< "let tag = ${TAGFILE} in tag.message"
 
 # Check if git tag file is commited
 ( git diff --exit-code ${TAGFILE} || \
-  echo "Error: ${TAGFILE} has changes" && \
-  exit 1 ) && \
+  ( echo "Error: ${TAGFILE} has changes" && \
+    exit 1 ) ) && \
 
 git tag -a ${NAME} -m "${MESSAGE}" && \
 git push origin ${NAME}
