@@ -78,9 +78,9 @@ let content =
                       types.Position.Single "Mechanical Engineering Co-op"
                   , dates = { from = "Aug 2019", to = "Present" }
                   , bullets =
-                    [ "Built an automated fixture using a tuned PID controller and trajectories for design validation tests"
+                    [ "Performed verification and validation for surgical robots in the highly regulated medical device industry"
+                    , "Built an automated fixture using cascaded PID controllers for design validation tests"
                     , "Acted as project manager for manufacturing, re-manufacturing, and sustaining engineering projects"
-                    , "Performed verification and validation for highly regulated medical devices"
                     , "Performed FEA failure analysis and DFM on sheet metal and thermoformed plastic parts"
                     , "Performed engineering change orders and drawing updates in Agile PLM and Windchill PDM"
                     ]
@@ -93,10 +93,11 @@ let content =
                         { last = "Undergraduate Assistant", first = "Intern" }
                   , dates = { from = "Apr 2019", to = "Aug 2020" }
                   , bullets =
-                    [ "Implemenented a Quadratic Programming online controller in ANSI C/Arduino using the OSQP solver"
-                    , "Built a novel, bi-stable, biomimetic robotic gripper for flexible cables"
-                    , "Used FEA and MATLAB to size actuators and frame components for minimum weight"
-                    , "Work will be published in the IROS 2020 robotics conference"
+                    [ "Implemenented a online, quadratic programming controller in ANSI C for brachiating robots"
+                    , "Used FEA to design biomimetic, robotic gripper jaws using the compliant mechanism methodology"
+                    , "Developed a novel, bi-stable linkage that improves speed and reduces power usage of robotic grippers"
+                    , "Applied machine design methodologies using MATLAB to size actuators and optimize chassis strength"
+                    , "Work on LQR and SOS controller design will be published in the IROS 2020 robotics conference"
                     , "Awarded the Presidential Undergraduate Research Award for outstanding research"
                     ]
                   }
@@ -130,7 +131,7 @@ let content =
                     [ "Researched, integrated, and programmed stereo depth and SLAM LIDAR units for brachiating robot"
                     , "Processed color and depth video using openCV to identify a thin cable in harsh environmental conditions"
                     , "Implemented ROS (Robot Operating System) to record, communicate, and log robot and sensor state"
-                    , "Developing a standalone cable-pose sensor for feedback controls of a robot and flexible cable system"
+                    , "Developed a standalone cable-pose sensor for feedback controls of a robot and flexible cable system"
                     ]
                   }
               , TaggedExperience
@@ -218,10 +219,9 @@ let content =
         , data =
             types.SectionData.Skills
               { groups =
-                [ { name = "CAD"
+                [ { name = "CAD \\& PDM"
                   , skills =
                     [ TaggedText "Solidworks"
-                    , TaggedText "Agile PLM"
                     , TaggedText "Windchill"
                     , TaggedText "Solidworks Enterprise PDM~(EPDM)"
                     , TaggedText "Autodesk Inventor"
@@ -240,6 +240,8 @@ let content =
                     , TaggedText "Design for Manufacture~(DFM)"
                     , TaggedText "Design for Assembly~(DFA)"
                     , TaggedText "Finite Element Analysis~(FEA)"
+                    , TaggedText "Simulation"
+                    , TaggedText "3D Modeling"
                     ]
                   }
                 , { name = "Fabrication"
@@ -283,24 +285,29 @@ let content =
                   }
                 , { name = "Mechatronics"
                   , skills =
-                    [ TaggedText "NI~cRio/myRio/roboRio"
+                    [ TaggedText "Stereo Depth Camera"
+                    , TaggedText "SLAM LIDAR"
+                    , TaggedText "NI~cRio/myRio/roboRio"
                     , TaggedText "Festo Actuators and Drives"
                     , TaggedText "Arduino"
-                    , TaggedText "Servo Motors"
-                    , TaggedText "Intel~Realsense Stereo~Camera"
-                    , TaggedText "SLAM LIDAR"
-                    , TaggedText "Sonar"
+                    , TaggedText "Brushless Servos"
+                    , TaggedText "Brushed Servos"
                     , TaggedText "Hall~Effect"
                     , TaggedText "Pneumatic Actuators"
                     , TaggedText "Encoders"
                     , TaggedText "Solenoids"
-                    , TaggedText "IR~Sensors"
-                    , TaggedText "Wire Harness"
+                    , TaggedText "Motors"
+                    , TaggedText "IR~Sensors" ⫽ { tags = Tags::{ old = True } }
+                    , TaggedText "Sonar" ⫽ { tags = Tags::{ old = True } }
+                    ,   TaggedText "Wire Harness"
+                      ⫽ { tags = Tags::{ old = True } }
                     ]
                   }
                 , { name = "Software"
                   , skills =
-                    [ TaggedText "Adobe Illustrator"
+                    [ TaggedText "Agile PLM"
+                    , TaggedText "SAP"
+                    , TaggedText "Adobe Illustrator"
                     , TaggedText "Linux"
                     , TaggedText "Ubuntu"
                     , TaggedText "Emacs"
@@ -323,28 +330,39 @@ let content =
                       ⫽ { tags = Tags::{ instruments = True } }
                     ]
                   }
-                , { name = "Communication"
+                , { name = "Planning"
                   , skills =
-                    [ TaggedText "Oral Reports"
+                    [ TaggedText "Investigation"
+                    , TaggedText "Root Cause Analysis"
+                    , TaggedText "Lean/Six Sigma"
+                    , TaggedText "Statistics"
+                    , TaggedText "Oral Reports"
                     , TaggedText "Technical Reports"
                     , TaggedText "Documentation"
                     , TaggedText "Executive Summaries"
                     , TaggedText "Progress Reports"
-                    , TaggedText "Bill of Materials~(BOM)"
-                    ]
-                  }
-                , { name = "Planning"
-                  , skills =
-                    [ TaggedText "House of Quality"
-                    , TaggedText "Specification Sheet"
-                    , TaggedText "Morph Chart"
-                    , TaggedText "Function Tree"
-                    , TaggedText "Gantt Chart"
-                    , TaggedText "Evaulation Matrix"
+                    , TaggedText "5-Whys"
+                    , TaggedText "DMAIC"
+                    , TaggedText "Project Management"
+                    , TaggedText "Problem Solving"
+                    ,   TaggedText "Bill of Materials~(BOM)"
+                      ⫽ { tags = Tags::{ old = False } }
+                    ,   TaggedText "House of Quality"
+                      ⫽ { tags = Tags::{ old = False } }
+                    ,   TaggedText "Specification Sheet"
+                      ⫽ { tags = Tags::{ old = False } }
+                    ,   TaggedText "Morph Chart"
+                      ⫽ { tags = Tags::{ old = False } }
+                    ,   TaggedText "Function Tree"
+                      ⫽ { tags = Tags::{ old = False } }
+                    ,   TaggedText "Gantt Chart"
+                      ⫽ { tags = Tags::{ old = False } }
+                    ,   TaggedText "Evaulation Matrix"
+                      ⫽ { tags = Tags::{ old = False } }
                     ]
                   }
                 ]
-              , longest_group_title = "Communication"
+              , longest_group_title = "Programming"
               }
         }
       , { title = "Awards \\& Honors"

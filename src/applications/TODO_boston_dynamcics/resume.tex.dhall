@@ -1,4 +1,4 @@
-let packages = ../../dhall-packages/packages.dhall
+let packages = ../../dhall-packages/package.dhall
 
 let resume = packages.resumes.resume
 
