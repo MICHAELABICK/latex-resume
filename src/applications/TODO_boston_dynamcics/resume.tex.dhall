@@ -1,7 +1,7 @@
-let packages = ../../dhall-packages/package.dhall
+let package = ../../dhall-packages/package.dhall
 
-let resume = packages.resumes.resume
+let resume = package.resumes.resume
 
-let latex = packages.resumes.toResume resume.Tags resume.matchTags resume.content 
+let latex = package.resumes.toResume resume.Tags resume.matchTags resume.content 
 
 in latex

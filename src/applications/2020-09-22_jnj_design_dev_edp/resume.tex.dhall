@@ -1,7 +1,7 @@
-let packages =
-      ../../dhall-packages/package.dhall
+let package =
+      https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v1.1.0/src/dhall-packages/package.dhall sha256:1765440f24d9d2db19e6dee2e5e56cc4de2f9307219a4316179bfa8d64e0b40c
 
-let resume = packages.resumes.resume
+let resume = package.resumes.resume
 
 let matchTags =
       λ(tags : resume.Tags) →
@@ -9,6 +9,6 @@ let matchTags =
 
         in  default || tags.cad || tags.instruments
 
-let latex = packages.resumes.toResume resume.Tags matchTags resume.content
+let latex = package.resumes.toResume resume.Tags matchTags resume.content
 
 in  latex
