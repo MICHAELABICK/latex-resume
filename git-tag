@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
-export TAGFILE='./dhall-src/git-tag.dhall'
+export TAGFILE='./src/git-tag.dhall'
 
 eval $(dhall-to-bash --declare NAME <<< "let tag = ${TAGFILE} in tag.tag")
 eval $(dhall-to-bash --declare MESSAGE <<< "let tag = ${TAGFILE} in tag.message")
 
-echo "git tag -a ${NAME} -m \"${MESSAGE}\""
+# Check if git tag file is commited
+( git diff --exit-code ${TAGFILE} || \
+  echo "Error: ${TAGFILE} has changes" && \
+  exit 1 ) && \
+
+git tag -a ${NAME} -m "${MESSAGE}" && \
+git push origin ${NAME}
