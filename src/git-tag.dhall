@@ -1,6 +1,6 @@
-let packages = ./dhall-packages/packages.dhall
+let packages = ./dhall-packages/package.dhall
 
-let resumeVersion = packages.semver.version 1 0 2
+let resumeVersion = packages.semver.version 1 1 0
 
 let renderedResumeVersion = "v${packages.semver.render resumeVersion}"
 
