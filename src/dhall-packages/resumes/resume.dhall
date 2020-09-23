@@ -93,7 +93,7 @@ let content =
                         { last = "Undergraduate Assistant", first = "Intern" }
                   , dates = { from = "Apr 2019", to = "Aug 2020" }
                   , bullets =
-                    [ "Implemenented a online, quadratic programming controller in ANSI C for brachiating robots"
+                    [ "Implemenented a online, quadratic programming controller in C++ for brachiating robots"
                     , "Used FEA to design biomimetic, robotic gripper jaws using the compliant mechanism methodology"
                     , "Developed a novel, bi-stable linkage that improves speed and reduces power usage of robotic grippers"
                     , "Applied machine design methodologies using MATLAB to size actuators and optimize chassis strength"
@@ -265,6 +265,8 @@ let content =
                     [ TaggedText "MATLAB"
                     , TaggedText "Python"
                     , TaggedText "Julia"
+                    , TaggedText "C"
+                    , TaggedText "C++"
                     , TaggedText "Java"
                     , TaggedText "Git"
                     , TaggedText "Amazon Web Services~(AWS)"
@@ -284,7 +286,7 @@ let content =
                     , TaggedText "\\LaTeX"
                     ]
                   }
-                , { name = "Mechatronics"
+                , { name = "Electro-mechanical"
                   , skills =
                     [ TaggedText "Stereo Depth Camera"
                     , TaggedText "SLAM LIDAR"
@@ -345,6 +347,7 @@ let content =
                     , TaggedText "5-Whys"
                     , TaggedText "DMAIC"
                     , TaggedText "Project Management"
+                    , TaggedText "First Pronciples"
                     , TaggedText "Problem Solving"
                     ,   TaggedText "Bill of Materials~(BOM)"
                       ⫽ { tags = Tags::{ old = False } }
