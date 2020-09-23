@@ -79,7 +79,7 @@ let content =
                   , dates = { from = "Aug 2019", to = "Present" }
                   , bullets =
                     [ "Performed verification and validation for surgical robots in the highly regulated medical device industry"
-                    , "Built an automated fixture using cascaded PID controllers for design validation tests"
+                    , "Built an automated fixture using cascaded PID controllers for design verification tests"
                     , "Acted as project manager for manufacturing, re-manufacturing, and sustaining engineering projects"
                     , "Performed FEA failure analysis and DFM on sheet metal and thermoformed plastic parts"
                     , "Performed engineering change orders and drawing updates in Agile PLM and Windchill PDM"
@@ -128,10 +128,11 @@ let content =
                   , position = types.Position.Single "Undergraduate Researcher"
                   , dates = { from = "Aug 2018", to = "April 2019" }
                   , bullets =
-                    [ "Researched, integrated, and programmed stereo depth and SLAM LIDAR units for brachiating robot"
+                    [
+                    , "Developed a standalone cable-pose sensor for feedback controls of a robot and flexible cable system"
+                    , "Researched, integrated, and programmed stereo depth and SLAM LIDAR units for brachiating robot"
                     , "Processed color and depth video using openCV to identify a thin cable in harsh environmental conditions"
                     , "Implemented ROS (Robot Operating System) to record, communicate, and log robot and sensor state"
-                    , "Developed a standalone cable-pose sensor for feedback controls of a robot and flexible cable system"
                     ]
                   }
               , TaggedExperience
@@ -175,7 +176,7 @@ let content =
                   , dates = { from = "Aug 2016", to = "Dec 2016" }
                   , bullets =
                     [ "Surface modeled an X-Wing, designed to be SLS printed to minimize part count and ease assembly"
-                    , "Performed Geometric Dimensioning and Tolerancing to ensure functionality"
+                    , "Performed Geometric Dimensioning and Tolerancing to ensure fit and function"
                     , "Created manufacturing drawings, assembly diagrams, and sections views for a technical report"
                     , "Final print is used as an example of excellent modeling technique and novel usage of SLS 3D printing"
                     ]
