@@ -1,7 +1,8 @@
 # Main Repository Directories
-SRCDIR = dhall-src
-BUILDDIR = dhall-build
+SRCDIR = src
+BUILDDIR = build
 TESTDIR = test
+APPDIR = $(SRCDIR)/applications
 
 MAKEDIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 LIBDIR = /$(SRCDIR)/texmf/tex/latex
@@ -12,8 +13,10 @@ LATEXMK = latexmk -pdf -cd
 
 export TEXMFHOME=$(MAKEDIR)$(SRCDIR)/texmf
 
-resumes_src = $(shell find $(SRCDIR) -name '*.tex.dhall')
-resumes_pdf = $(patsubst $(SRCDIR)/%.tex.dhall,$(BUILDDIR)/%.pdf,$(resumes_src))
+tex_src = $(shell find $(APPDIR) -name '*.tex')
+dhall_tex_src = $(shell find $(APPDIR) -name '*.tex.dhall')
+tex_pdf = $(patsubst $(SRCDIR)/%.tex,$(BUILDDIR)/%.pdf,$(tex_src))
+dhall_tex_pdf = $(patsubst $(SRCDIR)/%.tex.dhall,$(BUILDDIR)/%.pdf,$(dhall_tex_src))
 
 dhall_src = $(shell find $(SRCDIR) -name '*.dhall')
 dhall_test = $(patsubst $(SRCDIR)/%,$(TESTDIR)/%,$(dhall_src))
@@ -24,10 +27,14 @@ dhall_test = $(patsubst $(SRCDIR)/%,$(TESTDIR)/%,$(dhall_src))
 # Do not delete intermediate files
 .SECONDARY :
 
-all : $(resumes_pdf) FORCE
+all : $(tex_pdf) $(dhall_tex_pdf) FORCE
 
 $(BUILDDIR)/%.pdf : $(BUILDDIR)/%.tex FORCE
 	$(LATEXMK) $<
+
+$(BUILDDIR)/%.tex : $(SRCDIR)/%.tex FORCE
+	mkdir -p $(dir $@)
+	cp $< $@
 
 $(BUILDDIR)/%.tex : $(SRCDIR)/%.tex.dhall FORCE
 	mkdir -p $(dir $@)
