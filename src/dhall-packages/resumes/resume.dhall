@@ -128,8 +128,7 @@ let content =
                   , position = types.Position.Single "Undergraduate Researcher"
                   , dates = { from = "Aug 2018", to = "April 2019" }
                   , bullets =
-                    [
-                    , "Integrated stereo depth and SLAM LIDAR units into a standalone sensor for brachiating robots"
+                    [ "Integrated stereo depth and SLAM LIDAR units into a standalone sensor for brachiating robots"
                     , "Implemented realtime sensing and pose estimation of a flexible cable for feedback control"
                     , "Processed color and depth video using openCV to identify a thin cable in harsh environmental conditions"
                     , "Implemented ROS (Robot Operating System) to record, communicate, and log robot and sensor state"
