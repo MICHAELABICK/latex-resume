@@ -93,9 +93,9 @@ let content =
                         { last = "Undergraduate Assistant", first = "Intern" }
                   , dates = { from = "Apr 2019", to = "Aug 2020" }
                   , bullets =
-                    [ "Implemenented a online, quadratic programming controller in C++ for brachiating robots"
-                    , "Used FEA to design biomimetic, robotic gripper jaws using the compliant mechanism methodology"
-                    , "Developed a novel, bi-stable linkage that improves speed and reduces power usage of robotic grippers"
+                    [ "Implemenented an online, quadratic programming controller in C++ for brachiating robots"
+                    , "Used FEA to design biomimetic, robotic manipulator jaws using the compliant mechanism methodology"
+                    , "Developed a novel, bi-stable linkage that improved and reduced power usage of robotic grippers"
                     , "Applied machine design methodologies using MATLAB to size actuators and optimize chassis strength"
                     , "Work on LQR and SOS controller design will be published in the IROS 2020 robotics conference"
                     , "Awarded the Presidential Undergraduate Research Award for outstanding research"
@@ -129,8 +129,8 @@ let content =
                   , dates = { from = "Aug 2018", to = "April 2019" }
                   , bullets =
                     [
-                    , "Developed a standalone cable-pose sensor for feedback controls of a robot and flexible cable system"
-                    , "Researched, integrated, and programmed stereo depth and SLAM LIDAR units for brachiating robot"
+                    , "Integrated stereo depth and SLAM LIDAR units into a standalone sensor for brachiating robots"
+                    , "Implemented realtime sensing and pose estimation of a flexible cable for feedback control"
                     , "Processed color and depth video using openCV to identify a thin cable in harsh environmental conditions"
                     , "Implemented ROS (Robot Operating System) to record, communicate, and log robot and sensor state"
                     ]
