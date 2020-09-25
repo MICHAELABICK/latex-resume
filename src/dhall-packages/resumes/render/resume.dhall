@@ -123,6 +123,52 @@ let toLaTeX =
                         }
                     ]
 
+        let toProjectLaTeX =
+              λ(p : types.Project.Type) →
+                let showYear = λ(x : dates.Date) → Prelude.Natural.show x.year
+
+                let from = showYear p.dates.from
+
+                let dates =
+                      merge
+                        { Date =
+                            λ(x : dates.Date) →
+                              if    Prelude.Natural.equal
+                                      p.dates.from.year
+                                      x.year
+                              then  from
+                              else  "${from} - ${showYear x}"
+                        , Present = "${from} - Present"
+                        }
+                        p.dates.to
+
+                let arguments =
+                      toKeyvalsArguments
+                        (toMap { name = p.name, dates, summary = p.summary })
+
+                in  [ LaTeX.command
+                        { name = "project", arguments, newline = False }
+                    ]
+
+        let toProjectsLaTeX =
+              λ(projects : List types.Project.Type) →
+                [ LaTeX.command
+                    { name = "titled"
+                    , arguments = [ "Projects" ]
+                    , newline = True
+                    }
+                , LaTeX.environment
+                    { name = "itemize"
+                    , arguments = [] : List Text
+                    , content =
+                        LaTeX.concatMapSep
+                          [ LaTeX.newline ]
+                          types.Project.Type
+                          toProjectLaTeX
+                          projects
+                    }
+                ]
+
         let toSkillGroupLaTeX =
               λ(sg : types.SkillGroup) →
                 let skills = types.Tagged.filter Text matchTags sg.skills
@@ -197,9 +243,7 @@ let toLaTeX =
                         merge
                           { School = toSchoolLaTeX
                           , Experience = toExperience
-                          , Projects =
-                              λ(x : List types.Project.Type) →
-                                [] : List LaTeX.Type
+                          , Projects = toProjectsLaTeX
                           , Skills = toSkills
                           , Awards = toAwards
                           }

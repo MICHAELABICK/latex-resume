@@ -145,6 +145,25 @@
 %   }
 % }
 
+% Commands to help with standalone, smaller projects
+\newcommand{\titled}[1]{
+  \subsection[#1]{
+    \textbf{#1}
+  }
+}
+
+\define@key{project}{name}{\def\prj@name{#1}}
+\define@key{project}{dates}{\def\prj@dates{#1}}
+\define@key{project}{summary}{\def\prj@sum{#1}}
+\DeclareDocumentCommand{\project}{m}{
+  \begingroup
+    % Key Defaults + New Ones
+    \setkeys{project}{name={},dates={},summary={},#1}
+    % Define the macro
+    \item \textbf{\prj@name} (\prj@dates). \prj@sum
+  \endgroup
+}
+
 % Create a environment to list skills
 % https://tex.stackexchange.com/questions/61448/working-with-margins
 % https://tex.stackexchange.com/questions/130097/automatically-set-description-list-labelwidth-based-on-widest-label
