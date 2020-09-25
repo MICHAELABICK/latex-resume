@@ -17,6 +17,7 @@ export TEXMFHOME=$(MAKEDIR)$(SRCDIR)/texmf
 lib_files = $(shell find $(LIBDIR) -name '*')
 
 tex_src = $(shell find $(APPDIR) -name '*.tex')
+tex_build = $(patsubst $(SRCDIR)/%.tex,$(BUILDDIR)/%.tex,$(tex_src))
 tex_pdf = $(patsubst $(SRCDIR)/%.tex,$(BUILDDIR)/%.pdf,$(tex_src))
 
 dhall_tex_src = $(shell find $(APPDIR) -name '*.tex.dhall')
@@ -30,7 +31,7 @@ dhall_test = $(patsubst $(SRCDIR)/%,$(TESTDIR)/%,$(dhall_src))
 .PHONY : all cleanall clean FORCE
 
 # Do not delete intermediate files
-.SECONDARY : $(dhall_tex_build)
+.SECONDARY : $(dhall_tex_build) $(tex_build)
 
 all : $(tex_pdf) $(dhall_tex_pdf)
 
