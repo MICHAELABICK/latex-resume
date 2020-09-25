@@ -1,24 +1,28 @@
 let Prelude = ./Prelude.dhall
 
-let Tags/Type : Type =
-          { old : Bool
-          , cad : Bool
-          , devops : Bool
-          , instruments : Bool
-          , webdev : Bool
-          , reports : Bool
-          }
+let dates = ../dates/package.dhall
+
+let Tags/Type
+    : Type
+    = { old : Bool
+      , cad : Bool
+      , devops : Bool
+      , instruments : Bool
+      , webdev : Bool
+      , reports : Bool
+      }
 
 let Tags =
       { Type = Tags/Type
       , default =
-        { old = False
-        , cad = False
-        , devops = False
-        , instruments = False
-        , webdev = False
-        , reports = False
-        } : Tags/Type
+            { old = False
+            , cad = False
+            , devops = False
+            , instruments = False
+            , webdev = False
+            , reports = False
+            }
+          : Tags/Type
       }
 
 let matchTags
@@ -74,7 +78,10 @@ let work_experience =
           types.Experience::{
           , corporation = "Intuitive Surgical"
           , position = types.Position.Single "Mechanical Engineering Co-op"
-          , dates = { from = "Aug 2019", to = "Present" }
+          , dates =
+            { from = dates.monthDayYear dates.Month.August 1 2019
+            , to = dates.EndDate.Present
+            }
           , bullets =
             [ "Performed verification and validation for surgical robots in the highly regulated medical device industry"
             , "Built an automated fixture using cascaded PID controllers for design verification tests"
@@ -89,7 +96,12 @@ let work_experience =
           , position =
               types.Position.Progression
                 { last = "Undergraduate Assistant", first = "Intern" }
-          , dates = { from = "Apr 2019", to = "Aug 2020" }
+          , dates =
+            { from = dates.monthDayYear dates.Month.April 1 2019
+            , to =
+                dates.EndDate.Date
+                  (dates.monthDayYear dates.Month.August 1 2020)
+            }
           , bullets =
             [ "Implemenented an online, quadratic programming controller in C++ for brachiating robots"
             , "Used FEA to design biomimetic, robotic manipulator jaws using the compliant mechanism methodology"
@@ -105,7 +117,12 @@ let work_experience =
             , position =
                 types.Position.Progression
                   { last = "Lead Sailing Coordinator", first = "Instructor" }
-            , dates = { from = "June 2016", to = "Aug 2018" }
+            , dates =
+              { from = dates.monthDayYear dates.Month.June 1 2016
+              , to =
+                  dates.EndDate.Date
+                    (dates.monthDayYear dates.Month.August 1 2018)
+              }
             , bullets =
               [ "Coordinated the daily plan and goals for 20 co-workers"
               , "Responsible for safety of UCLA sailors on and off the water"
@@ -118,9 +135,13 @@ let work_experience =
 let projects =
       [ TaggedExperience
           types.Experience::{
-          , corporation = "Agricultural Robotics Research Course"
+          , corporation = "Agricultural Robotics Project Course"
           , position = types.Position.Single "Undergraduate Researcher"
-          , dates = { from = "Aug 2018", to = "April 2019" }
+          , dates =
+            { from = dates.monthDayYear dates.Month.August 1 2018
+            , to =
+                dates.EndDate.Date (dates.monthDayYear dates.Month.April 1 2019)
+            }
           , bullets =
             [ "Integrated stereo depth and SLAM LIDAR units into a standalone sensor for brachiating robots"
             , "Implemented realtime sensing and pose estimation of a flexible cable for feedback control"
@@ -132,7 +153,11 @@ let projects =
           types.Experience::{
           , corporation = "Robojackets"
           , position = types.Position.Single "Team Member"
-          , dates = { from = "Aug 2016", to = "April 2017" }
+          , dates =
+            { from = dates.monthDayYear dates.Month.August 1 2016
+            , to =
+                dates.EndDate.Date (dates.monthDayYear dates.Month.April 1 2017)
+            }
           , bullets =
             [ "Lead design of a 3lb combat robot including CAD and Design for Manufacture"
             , "Performed FEA on weapon subsystem to prevent catastrophic and fatigue failure"
@@ -144,7 +169,12 @@ let projects =
             types.Experience::{
             , corporation = "GT Motorsports"
             , position = types.Position.Single "Powertrain Team Member"
-            , dates = { from = "Aug 2016", to = "April 2017" }
+            , dates =
+              { from = dates.monthDayYear dates.Month.August 1 2016
+              , to =
+                  dates.EndDate.Date
+                    (dates.monthDayYear dates.Month.April 1 2017)
+              }
             , bullets =
               [ "Simulated engine dynamics to increase efficiency and low-end torque by lowering power-band"
               , "Designed improved camshaft to match optimal lift profile"
@@ -155,7 +185,11 @@ let projects =
           types.Experience::{
           , corporation = "MilkenKnights FRC Team"
           , position = types.Position.Single "Team Captain"
-          , dates = { from = "Aug 2011", to = "Jun 2016" }
+          , dates =
+            { from = dates.monthDayYear dates.Month.August 1 2011
+            , to =
+                dates.EndDate.Date (dates.monthDayYear dates.Month.June 1 2016)
+            }
           , bullets =
             [ "Used Lean and Six Sigma principles to streamline manufacturing and assembly proccess"
             , "Managed 60 students in rapid prototyping, designing, and manufacturing a robot in six weeks"
@@ -167,7 +201,12 @@ let projects =
       , TaggedExperience
           types.Experience::{
           , corporation = "3D Printing Design Project"
-          , dates = { from = "Aug 2016", to = "Dec 2016" }
+          , dates =
+            { from = dates.monthDayYear dates.Month.August 1 2016
+            , to =
+                dates.EndDate.Date
+                  (dates.monthDayYear dates.Month.December 1 2016)
+            }
           , bullets =
             [ "Surface modeled an X-Wing, designed to be SLS printed to minimize part count and ease assembly"
             , "Performed Geometric Dimensioning and Tolerancing to ensure fit and function"
@@ -178,7 +217,12 @@ let projects =
       , TaggedExperience
           types.Experience::{
           , corporation = "Creative Decisions and Design Competition"
-          , dates = { from = "Aug 2017", to = "Dec 2017" }
+          , dates =
+            { from = dates.monthDayYear dates.Month.August 1 2017
+            , to =
+                dates.EndDate.Date
+                  (dates.monthDayYear dates.Month.December 1 2017)
+            }
           , bullets =
             [ "Utilized CAD and laser cutting techniques to enable rapid prototyping, ideation, and manufacturing"
             , "Wrote technical project reports outlining design process, decisions, and future improvements"
@@ -190,7 +234,12 @@ let projects =
             types.Experience::{
             , corporation = "Conrad Spirit of Innovation"
             , position = types.Position.Single "Mechatronics Lead"
-            , dates = { from = "Sep 2014", to = "Jun 2015" }
+            , dates =
+              { from = dates.monthDayYear dates.Month.September 1 2014
+              , to =
+                  dates.EndDate.Date
+                    (dates.monthDayYear dates.Month.June 1 2015)
+              }
             , bullets =
               [ "Designed a belt than warned the visually-impaired of hazardous obstacles"
               , "Wired and programmed a LIDAR tracking system using an Arduino microcontroller"
@@ -201,7 +250,12 @@ let projects =
             types.Experience::{
             , corporation = "Edge Systems Design"
             , position = types.Position.Single "Mechanical Engineer"
-            , dates = { from = "Jun 2012", to = "Jun 2014" }
+            , dates =
+              { from = dates.monthDayYear dates.Month.June 1 2012
+              , to =
+                  dates.EndDate.Date
+                    (dates.monthDayYear dates.Month.June 1 2014)
+              }
             , bullets =
               [ "Designed base frame and linear motion system for an affordable CNC router"
               , "Helped manage funding and operation of a startup"
@@ -211,7 +265,7 @@ let projects =
       ]
 
 let skills =
-      [ { name = "CAD \\& PDM"
+      [ { name = "CAD"
         , skills =
           [ TaggedText "Solidworks"
           , TaggedText "Windchill"
@@ -271,7 +325,7 @@ let skills =
           , TaggedText "\\LaTeX"
           ]
         }
-      , { name = "Electro-mechanical"
+      , { name = "Mechatronics"
         , skills =
           [ TaggedText "Stereo Depth Camera"
           , TaggedText "SLAM LIDAR"
@@ -302,9 +356,9 @@ let skills =
           , TaggedText "Inkscape"
           , TaggedText "Gimp"
           , TaggedText "Excel"
-          , TaggedText "Word" // { tags = Tags::{ old = True } }
-          , TaggedText "MacOS" // { tags = Tags::{ old = True } }
-          , TaggedText "Windows" // { tags = Tags::{ old = True } }
+          , TaggedText "Word" ⫽ { tags = Tags::{ old = True } }
+          , TaggedText "MacOS" ⫽ { tags = Tags::{ old = True } }
+          , TaggedText "Windows" ⫽ { tags = Tags::{ old = True } }
           ]
         }
       , { name = "Instruments"
@@ -323,11 +377,12 @@ let skills =
           , TaggedText "Lean Manufacturing"
           , TaggedText "Six Sigma"
           , TaggedText "Statistics"
-          , TaggedText "Oral Reports" // { tags = Tags::{ reports = True } }
-          , TaggedText "Technical Reports" // { tags = Tags::{ reports = True } }
+          , TaggedText "Oral Reports" ⫽ { tags = Tags::{ reports = True } }
+          , TaggedText "Technical Reports" ⫽ { tags = Tags::{ reports = True } }
           , TaggedText "Documentation"
-          , TaggedText "Executive Summaries" // { tags = Tags::{ reports = True } }
-          , TaggedText "Progress Reports" // { tags = Tags::{ reports = True } }
+          ,   TaggedText "Executive Summaries"
+            ⫽ { tags = Tags::{ reports = True } }
+          , TaggedText "Progress Reports" ⫽ { tags = Tags::{ reports = True } }
           , TaggedText "5-Whys"
           , TaggedText "DMAIC"
           , TaggedText "Project Management"
@@ -391,22 +446,22 @@ let awards =
               , team_count = 53
               }
           )
-      , TaggedAward
-          ( types.Award.Placed
-              { name = "Conrad Spirit of Innovation Semi-Finalist"
-              , date = "Oct 2014"
-              , place = "International"
-              }
-          )
+      ,   TaggedAward
+            ( types.Award.Placed
+                { name = "Conrad Spirit of Innovation Semi-Finalist"
+                , date = "Oct 2014"
+                , place = "International"
+                }
+            )
         ⫽ { tags = Tags::{ old = True } }
-      , TaggedAward
-          ( toFIRSTAward
-              { regional = "Los Angeles"
-              , date = "Mar 2013"
-              , place = 1
-              , team_count = 65
-              }
-          )
+      ,   TaggedAward
+            ( toFIRSTAward
+                { regional = "Los Angeles"
+                , date = "Mar 2013"
+                , place = 1
+                , team_count = 65
+                }
+            )
         ⫽ { tags = Tags::{ old = True } }
       ,   TaggedAward
             ( toFIRSTAward

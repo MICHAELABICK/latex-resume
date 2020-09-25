@@ -1,5 +1,7 @@
 let Prelude = ../Prelude.dhall
 
+let dates = ../../dates/package.dhall
+
 let Map = Prelude.Map.Type
 
 let Entry = Prelude.Map.Entry
@@ -11,6 +13,27 @@ let List/concatMap = Prelude.List.concatMap
 let Text/default = Prelude.Text.default
 
 let LaTeX = ../../LaTeX/package.dhall
+
+let renderAbbrevMonthYear =
+      λ(date : dates.Date) →
+        let month =
+              merge
+                { January = "Jan"
+                , February = "Feb"
+                , March = "Mar"
+                , April = "Apr"
+                , May = "May"
+                , June = "June"
+                , July = "July"
+                , August = "Aug"
+                , September = "Sept"
+                , October = "Oct"
+                , November = "Nov"
+                , December = "Dec"
+                }
+                date.month
+
+        in  "${month} ${Prelude.Natural.show date.year}"
 
 let toLaTeX =
       λ(Tags : Type) →
@@ -82,8 +105,13 @@ let toLaTeX =
                       toKeyvalsArguments
                         ( toMap
                             { corp = exp.corporation
-                            , from = exp.dates.from
-                            , to = exp.dates.to
+                            , from = renderAbbrevMonthYear exp.dates.from
+                            , to =
+                                merge
+                                  { Date = renderAbbrevMonthYear
+                                  , Present = "to Present"
+                                  }
+                                  exp.dates.to
                             , pos = position
                             }
                         )
