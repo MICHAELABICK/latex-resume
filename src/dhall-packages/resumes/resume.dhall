@@ -238,36 +238,74 @@ let main_projects =
       ]
 
 let side_projects =
-      [ types.Project::{
-        , name = "X-Wing Surface Modeling Project"
-        , dates =
-          { from = dates.monthDayYear dates.Month.August 1 2016
-          , to =
-              dates.EndDate.Date
-                (dates.monthDayYear dates.Month.December 1 2016)
-          }
-        , summary = "test"
-        , bullets =
-          [ "Surface modeled an X-Wing, designed to be SLS printed to minimize part count and ease assembly"
-          , "Performed Geometric Dimensioning and Tolerancing to ensure fit and function"
-          , "Created manufacturing drawings, assembly diagrams, and sections views for a technical report"
-          , "Final print is used as an example of excellent modeling technique and novel usage of SLS 3D printing"
-          ]
-        }
+      [
       , types.Project::{
-        , name = "Robotics Course Project"
+          , name = "Algo-trading"
+          , dates =
+              { from = dates.monthDayYear dates.Month.August 5 2019
+              , to = dates.EndDate.Present
+              }
+          , summary =
+              ''
+              Using algorithmic trading as a platform to study
+              neural networks and reinforcement learning.
+              Implemented in Julia to expose myself to FP
+              and JIT compiled languages.
+              ''
+          }
+      , types.Project::{
+          , name = "Homelab"
+          , dates =
+              { from = dates.monthDayYear dates.Month.October 7 2018
+              , to = dates.EndDate.Present
+              }
+          , summary =
+              ''
+              Repurposed old enterprise hardware.
+              Used as platform for learning mordern devops paradigms
+              such as immutable infra and declarative programming
+              using Docker and Terraform.
+              ''
+          }
+      , types.Project::{
+        , name = "GT Design Competition"
         , dates =
           { from = dates.monthDayYear dates.Month.August 1 2017
           , to =
               dates.EndDate.Date
                 (dates.monthDayYear dates.Month.December 1 2017)
           }
-        , summary = "test"
+        , summary =
+            ''
+            Utilized CAD and rapid prototyping techniques, including laser cutting and 3D printing,
+            to be 1/60 teams to accomplish hardest design challenge.
+            Placed 7\textsuperscript{th} overall.
+            ''
         , bullets =
           [ "Utilized CAD and laser cutting techniques to enable rapid prototyping, ideation, and manufacturing"
           , "Wrote technical project reports outlining design process, decisions, and future improvements"
           , "Presented our machine, design decisions, and proccess to a panel of qualified judges"
           , "Programmed a NI myRio to execute a system of automated tasks using LabView"
+          ]
+        }
+      , types.Project::{
+        , name = "GT CAD Course: X-Wing"
+        , dates =
+          { from = dates.monthDayYear dates.Month.August 1 2016
+          , to =
+              dates.EndDate.Date
+                (dates.monthDayYear dates.Month.December 1 2016)
+          }
+        , summary =
+            ''
+            Exceeded expectations by self-learning surface modeling techniques in Solidworks.
+            Result is used as course example of novel usage of SLS 3D printing technology.
+            ''
+        , bullets =
+          [ "Surface modeled an X-Wing, designed to be SLS printed to minimize part count and ease assembly"
+          , "Performed Geometric Dimensioning and Tolerancing to ensure fit and function"
+          , "Created manufacturing drawings, assembly diagrams, and sections views for a technical report"
+          , "Final print is used as an example of excellent modeling technique and novel usage of SLS 3D printing"
           ]
         }
       ]
