@@ -83,7 +83,9 @@ let toLaTeX =
                             }
                         )
 
-                in  LaTeX.command { name = "school", arguments, newline = True }
+                in  [ LaTeX.command
+                        { name = "school", arguments, newline = True }
+                    ]
 
         let toExperienceLaTeX =
               λ(exp : types.Experience.Type) →
@@ -193,7 +195,8 @@ let toLaTeX =
                 let toItem =
                       λ(item : types.SectionItem) →
                         merge
-                          { Experience = toExperience
+                          { School = toSchoolLaTeX
+                          , Experience = toExperience
                           , Projects =
                               λ(x : List types.Project.Type) →
                                 [] : List LaTeX.Type
@@ -203,16 +206,10 @@ let toLaTeX =
                           item
 
                 let data =
-                      merge
-                        { Education =
-                            λ(x : types.School) →
-                              [ toSchoolLaTeX x, LaTeX.newline ]
-                        , Items =
-                            Prelude.List.concatMap
-                              types.SectionItem
-                              LaTeX.Type
-                              toItem
-                        }
+                      Prelude.List.concatMap
+                        types.SectionItem
+                        LaTeX.Type
+                        toItem
                         section.data
 
                 in    [ LaTeX.command

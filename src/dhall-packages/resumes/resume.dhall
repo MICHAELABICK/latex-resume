@@ -63,18 +63,20 @@ let toFIRSTAward =
           }
 
 let education =
-      { gpa = 3.60
-      , name = "Georgia Institute of Technology"
-      , location = "Atlanta, GA"
-      , dates =
-        { from = dates.monthDayYear dates.Month.August 21 2016
-        , to = dates.monthDayYear dates.Month.June 1 2020
-        }
-      , major = "Bachelors of Science: Mechanical Engineering"
-      , minor = Some "Robotics"
-      , graduated = False
-      , awards = "Studied abroad at Georgia Tech Lorraine in Metz, France"
-      }
+      [ types.SectionItem.School
+          { gpa = 3.60
+          , name = "Georgia Institute of Technology"
+          , location = "Atlanta, GA"
+          , dates =
+            { from = dates.monthDayYear dates.Month.August 21 2016
+            , to = dates.monthDayYear dates.Month.June 1 2020
+            }
+          , major = "Bachelors of Science: Mechanical Engineering"
+          , minor = Some "Robotics"
+          , graduated = False
+          , awards = "Studied abroad at Georgia Tech Lorraine in Metz, France"
+          }
+      ]
 
 let work_experience =
       [ TaggedExperience
@@ -488,22 +490,19 @@ let toSectionItems =
           exps
 
 let content =
-      [ { title = "Education", data = types.SectionData.Education education }
-      , { title = "Work Experience"
-        , data = types.SectionData.Items (toSectionItems work_experience)
-        }
+      [ { title = "Education", data = education }
+      , { title = "Work Experience", data = toSectionItems work_experience }
       , { title = "Academic Leadership Projects"
-        , data = types.SectionData.Items (toSectionItems projects)
+        , data = toSectionItems projects
         }
       , { title = "Technical Skills"
         , data =
-            types.SectionData.Items
-              [ types.SectionItem.Skills
-                  { groups = skills, longest_group_title = "Programming" }
-              ]
+          [ types.SectionItem.Skills
+              { groups = skills, longest_group_title = "Programming" }
+          ]
         }
       , { title = "Awards \\& Honors"
-        , data = types.SectionData.Items [ types.SectionItem.Awards awards ]
+        , data = [ types.SectionItem.Awards awards ]
         }
       ]
 
