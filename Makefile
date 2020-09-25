@@ -5,13 +5,15 @@ TESTDIR = test
 APPDIR = $(SRCDIR)/applications
 
 MAKEDIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
-LIBDIR = /$(SRCDIR)/texmf/tex/latex
+LIBDIR = $(SRCDIR)/texmf/tex/latex
 
 # Compile commands and files
 # LATEXMK = latexmk -pdf -cd -use-make
 LATEXMK = latexmk -pdf -cd
 
 export TEXMFHOME=$(MAKEDIR)$(SRCDIR)/texmf
+
+lib_files = $(shell find $(LIBDIR) -name '*')
 
 tex_src = $(shell find $(APPDIR) -name '*.tex')
 dhall_tex_src = $(shell find $(APPDIR) -name '*.tex.dhall')
@@ -29,7 +31,7 @@ dhall_test = $(patsubst $(SRCDIR)/%,$(TESTDIR)/%,$(dhall_src))
 
 all : $(tex_pdf) $(dhall_tex_pdf) FORCE
 
-$(BUILDDIR)/%.pdf : $(BUILDDIR)/%.tex FORCE
+$(BUILDDIR)/%.pdf : $(BUILDDIR)/%.tex $(lib_files)
 	$(LATEXMK) $<
 
 $(BUILDDIR)/%.tex : $(SRCDIR)/%.tex FORCE
