@@ -147,18 +147,10 @@ let toLaTeX =
                         (toMap { name = p.name, dates, summary = p.summary })
 
                 in  [ LaTeX.command
-                        { name = "project", arguments, newline = False }
-                    ]
+                        { name = "project", arguments, newline = False } ]
 
         let toProjectsLaTeX =
               λ(projects : List types.Project.Type) →
-                let bullets =
-                      Prelude.List.map
-                        types.Project.Type
-                        Text
-                        toProjectLaTeX
-                        projects
-
                 in  [ LaTeX.command
                         { name = "titled"
                         , arguments = [ "Projects" ]
@@ -167,7 +159,12 @@ let toLaTeX =
                     , LaTeX.environment
                         { name = "itemize"
                         , arguments = [] : List Text
-                        , content = toItemize bullets
+                        , content =
+                                    LaTeX.concatMapSep
+                                      [ LaTeX.newline ]
+                                      types.Project.Type
+                                      toProjectLaTeX
+                                      projects
                         }
                     ]
 
