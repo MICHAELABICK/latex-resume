@@ -66,7 +66,10 @@ let education =
       { gpa = 3.60
       , name = "Georgia Institute of Technology"
       , location = "Atlanta, GA"
-      , dates = { from = "Aug 2016", to = "June 2020" }
+      , dates =
+        { from = dates.monthDayYear dates.Month.August 21 2016
+        , to = dates.monthDayYear dates.Month.June 1 2020
+        }
       , major = "Bachelors of Science: Mechanical Engineering"
       , minor = Some "Robotics"
       , graduated = False

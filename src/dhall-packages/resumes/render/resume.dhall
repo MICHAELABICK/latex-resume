@@ -69,20 +69,16 @@ let toLaTeX =
 
         let toSchoolLaTeX =
               λ(school : types.School) →
-                let graduated =
-                      Bool/fold school.graduated Text "" school.dates.to
-
                 let arguments =
                       toKeyvalsArguments
                         ( toMap
                             { name = school.name
                             , gpa = "${Double/show school.gpa}/4.0"
                             , loc = school.location
-                            , from = school.dates.from
-                            , to = school.dates.to
+                            , from = renderAbbrevMonthYear school.dates.from
+                            , to = renderAbbrevMonthYear school.dates.to
                             , major = school.major
                             , minor = Text/default school.minor
-                            , grad = graduated
                             , awards = school.awards
                             }
                         )
