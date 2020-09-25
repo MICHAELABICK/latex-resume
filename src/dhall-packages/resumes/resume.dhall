@@ -88,9 +88,10 @@ let work_experience =
             , to = dates.EndDate.Present
             }
           , bullets =
-            [ "Performed verification and validation for surgical robots in the highly regulated medical device industry"
+            [
             , "Built an automated fixture using cascaded PID controllers for design verification tests"
             , "Acted as project manager for manufacturing, re-manufacturing, and sustaining engineering projects"
+            , "Exposed to verification and validation for surgical robots in the highly regulated medical device industry"
             , "Performed FEA failure analysis and DFM on sheet metal and thermoformed plastic parts"
             , "Performed engineering change orders and drawing updates in Agile PLM and Windchill PDM"
             ]
@@ -238,35 +239,34 @@ let main_projects =
       ]
 
 let side_projects =
-      [
-      , types.Project::{
-          , name = "Algo-trading"
-          , dates =
-              { from = dates.monthDayYear dates.Month.August 5 2019
-              , to = dates.EndDate.Present
-              }
-          , summary =
-              ''
-              Using algorithmic trading as a platform to study
-              neural networks and reinforcement learning.
-              Implemented in Julia to expose myself to FP
-              and JIT compiled languages.
-              ''
+      [ types.Project::{
+        , name = "Algo-trading"
+        , dates =
+          { from = dates.monthDayYear dates.Month.August 5 2019
+          , to = dates.EndDate.Present
           }
+        , summary =
+            ''
+            Using algorithmic trading as a platform to study
+            neural networks and reinforcement learning.
+            Implemented in Julia to expose myself to FP
+            and JIT compiled languages.
+            ''
+        }
       , types.Project::{
-          , name = "Homelab"
-          , dates =
-              { from = dates.monthDayYear dates.Month.October 7 2018
-              , to = dates.EndDate.Present
-              }
-          , summary =
-              ''
-              Repurposed old enterprise hardware.
-              Used as platform for learning mordern devops paradigms
-              such as immutable infra and declarative programming
-              using Docker and Terraform.
-              ''
+        , name = "Homelab"
+        , dates =
+          { from = dates.monthDayYear dates.Month.October 7 2018
+          , to = dates.EndDate.Present
           }
+        , summary =
+            ''
+            Repurposed old enterprise hardware.
+            Used as platform for learning mordern devops paradigms
+            such as immutable infra and declarative programming
+            using Docker and Terraform.
+            ''
+        }
       , types.Project::{
         , name = "GT Design Competition"
         , dates =
