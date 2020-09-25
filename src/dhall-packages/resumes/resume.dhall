@@ -477,20 +477,34 @@ let awards =
         ⫽ { tags = Tags::{ old = True } }
       ]
 
+let toSectionItems =
+      λ(exps : List (types.Tagged.Type types.Experience.Type)) →
+        Prelude.List.map
+          (types.Tagged.Type types.Experience.Type)
+          types.SectionItem
+          ( λ(x : types.Tagged.Type types.Experience.Type) →
+              types.SectionItem.Experience x
+          )
+          exps
+
 let content =
       [ { title = "Education", data = types.SectionData.Education education }
       , { title = "Work Experience"
-        , data = types.SectionData.Experiences work_experience
+        , data = types.SectionData.Items (toSectionItems work_experience)
         }
       , { title = "Academic Leadership Projects"
-        , data = types.SectionData.Experiences projects
+        , data = types.SectionData.Items (toSectionItems projects)
         }
       , { title = "Technical Skills"
         , data =
-            types.SectionData.Skills
-              { groups = skills, longest_group_title = "Programming" }
+            types.SectionData.Items
+              [ types.SectionItem.Skills
+                  { groups = skills, longest_group_title = "Programming" }
+              ]
         }
-      , { title = "Awards \\& Honors", data = types.SectionData.Awards awards }
+      , { title = "Awards \\& Honors"
+        , data = types.SectionData.Items [ types.SectionItem.Awards awards ]
+        }
       ]
 
 in  { content, Tags = Tags.Type, matchTags }

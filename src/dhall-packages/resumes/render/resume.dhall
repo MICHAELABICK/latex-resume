@@ -105,7 +105,7 @@ let toLaTeX =
                             , to =
                                 merge
                                   { Date = renderAbbrevMonthYear
-                                  , Present = "to Present"
+                                  , Present = "Present"
                                   }
                                   exp.dates.to
                             , pos = position
@@ -153,19 +153,11 @@ let toLaTeX =
 
         let toSectionLaTeX =
               λ(section : types.Section) →
-                let toExperiences =
-                      λ(x : List (types.Tagged.Type types.Experience.Type)) →
-                        let filtered =
-                              types.Tagged.filter
-                                types.Experience.Type
-                                matchTags
-                                x
-
-                        in  Prelude.List.concatMap
-                              types.Experience.Type
-                              LaTeX.Type
-                              toExperienceLaTeX
-                              filtered
+                let toExperience =
+                      λ(x : types.Tagged.Type types.Experience.Type) →
+                        if    matchTags x.tags
+                        then  toExperienceLaTeX x.item
+                        else  [] : List LaTeX.Type
 
                 let toSkills =
                       λ(x : types.SkillSectionData) →
@@ -198,14 +190,28 @@ let toLaTeX =
                                 }
                             ]
 
+                let toItem =
+                      λ(item : types.SectionItem) →
+                        merge
+                          { Experience = toExperience
+                          , Projects =
+                              λ(x : List types.Project.Type) →
+                                [] : List LaTeX.Type
+                          , Skills = toSkills
+                          , Awards = toAwards
+                          }
+                          item
+
                 let data =
                       merge
                         { Education =
                             λ(x : types.School) →
                               [ toSchoolLaTeX x, LaTeX.newline ]
-                        , Experiences = toExperiences
-                        , Skills = toSkills
-                        , Awards = toAwards
+                        , Items =
+                            Prelude.List.concatMap
+                              types.SectionItem
+                              LaTeX.Type
+                              toItem
                         }
                         section.data
 

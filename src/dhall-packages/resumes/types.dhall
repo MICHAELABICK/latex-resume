@@ -4,8 +4,10 @@ let types =
       λ(Tags : Type) →
         { Section = ./types/Section.dhall Tags
         , SectionData = ./types/SectionData.dhall Tags
+        , SectionItem = ./types/SectionItem.dhall Tags
         , School = ./types/School.dhall
         , Experience = ./types/Experience.dhall
+        , Project = ./types/Project.dhall
         , SkillSectionData = ./types/SkillSectionData.dhall Tags
         , SkillGroup = ./types/SkillGroup.dhall Tags
         , Award = ./types/Award.dhall
