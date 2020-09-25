@@ -60,7 +60,7 @@ let content =
               { gpa = 3.60
               , name = "Georgia Institute of Technology"
               , location = "Atlanta, GA"
-              , dates = { from = "Aug 2016", to = "June 2020" }
+              , dates = { from = "Aug 2016", to = "May 2021" }
               , major = "Bachelors of Science: Mechanical Engineering"
               , minor = Some "Robotics"
               , graduated = False
