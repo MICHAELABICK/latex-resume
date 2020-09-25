@@ -69,7 +69,7 @@ let education =
           , location = "Atlanta, GA"
           , dates =
             { from = dates.monthDayYear dates.Month.August 21 2016
-            , to = dates.monthDayYear dates.Month.June 1 2020
+            , to = dates.monthDayYear dates.Month.May 5 2021
             }
           , major = "Bachelors of Science: Mechanical Engineering"
           , minor = Some "Robotics"
@@ -137,7 +137,7 @@ let work_experience =
         ⫽ { tags = Tags::{ old = True } }
       ]
 
-let projects =
+let main_projects =
       [ TaggedExperience
           types.Experience::{
           , corporation = "Agricultural Robotics Project Course"
@@ -203,38 +203,6 @@ let projects =
             , "Trained students in CAD and operating precision machinery including a mill, lathe, and CNC router"
             ]
           }
-      , TaggedExperience
-          types.Experience::{
-          , corporation = "3D Printing Design Project"
-          , dates =
-            { from = dates.monthDayYear dates.Month.August 1 2016
-            , to =
-                dates.EndDate.Date
-                  (dates.monthDayYear dates.Month.December 1 2016)
-            }
-          , bullets =
-            [ "Surface modeled an X-Wing, designed to be SLS printed to minimize part count and ease assembly"
-            , "Performed Geometric Dimensioning and Tolerancing to ensure fit and function"
-            , "Created manufacturing drawings, assembly diagrams, and sections views for a technical report"
-            , "Final print is used as an example of excellent modeling technique and novel usage of SLS 3D printing"
-            ]
-          }
-      , TaggedExperience
-          types.Experience::{
-          , corporation = "Creative Decisions and Design Competition"
-          , dates =
-            { from = dates.monthDayYear dates.Month.August 1 2017
-            , to =
-                dates.EndDate.Date
-                  (dates.monthDayYear dates.Month.December 1 2017)
-            }
-          , bullets =
-            [ "Utilized CAD and laser cutting techniques to enable rapid prototyping, ideation, and manufacturing"
-            , "Wrote technical project reports outlining design process, decisions, and future improvements"
-            , "Presented our machine, design decisions, and proccess to a panel of qualified judges"
-            , "Programmed a NI myRio to execute a system of automated tasks using LabView"
-            ]
-          }
       ,   TaggedExperience
             types.Experience::{
             , corporation = "Conrad Spirit of Innovation"
@@ -267,6 +235,41 @@ let projects =
               ]
             }
         ⫽ { tags = Tags::{ old = True } }
+      ]
+
+let side_projects =
+      [ types.Project::{
+        , name = "X-Wing Surface Modeling Project"
+        , dates =
+          { from = dates.monthDayYear dates.Month.August 1 2016
+          , to =
+              dates.EndDate.Date
+                (dates.monthDayYear dates.Month.December 1 2016)
+          }
+        , summary = "test"
+        , bullets =
+          [ "Surface modeled an X-Wing, designed to be SLS printed to minimize part count and ease assembly"
+          , "Performed Geometric Dimensioning and Tolerancing to ensure fit and function"
+          , "Created manufacturing drawings, assembly diagrams, and sections views for a technical report"
+          , "Final print is used as an example of excellent modeling technique and novel usage of SLS 3D printing"
+          ]
+        }
+      , types.Project::{
+        , name = "Robotics Course Project"
+        , dates =
+          { from = dates.monthDayYear dates.Month.August 1 2017
+          , to =
+              dates.EndDate.Date
+                (dates.monthDayYear dates.Month.December 1 2017)
+          }
+        , summary = "test"
+        , bullets =
+          [ "Utilized CAD and laser cutting techniques to enable rapid prototyping, ideation, and manufacturing"
+          , "Wrote technical project reports outlining design process, decisions, and future improvements"
+          , "Presented our machine, design decisions, and proccess to a panel of qualified judges"
+          , "Programmed a NI myRio to execute a system of automated tasks using LabView"
+          ]
+        }
       ]
 
 let skills =
@@ -493,7 +496,9 @@ let content =
       [ { title = "Education", data = education }
       , { title = "Work Experience", data = toSectionItems work_experience }
       , { title = "Academic Leadership Projects"
-        , data = toSectionItems projects
+        , data =
+              toSectionItems main_projects
+            # [ types.SectionItem.Projects side_projects ]
         }
       , { title = "Technical Skills"
         , data =
