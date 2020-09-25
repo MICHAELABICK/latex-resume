@@ -1,7 +1,6 @@
 let Prelude = ./Prelude.dhall
 
-let Tags =
-      { Type =
+let Tags/Type : Type =
           { old : Bool
           , cad : Bool
           , devops : Bool
@@ -9,6 +8,9 @@ let Tags =
           , webdev : Bool
           , reports : Bool
           }
+
+let Tags =
+      { Type = Tags/Type
       , default =
         { old = False
         , cad = False
@@ -16,7 +18,7 @@ let Tags =
         , instruments = False
         , webdev = False
         , reports = False
-        }
+        } : Tags/Type
       }
 
 let matchTags
@@ -27,6 +29,7 @@ let matchTags
         &&  Prelude.Bool.not tags.devops
         &&  Prelude.Bool.not tags.instruments
         &&  Prelude.Bool.not tags.webdev
+        &&  Prelude.Bool.not tags.reports
 
 let types = ./types.dhall Tags.Type
 
