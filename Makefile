@@ -10,14 +10,17 @@ LIBDIR = $(SRCDIR)/texmf/tex/latex
 # Compile commands and files
 # LATEXMK = latexmk -pdf -cd -use-make
 LATEXMK = latexmk -pdf -cd
+RSYNC = rsync --checksum
 
 export TEXMFHOME=$(MAKEDIR)$(SRCDIR)/texmf
 
 lib_files = $(shell find $(LIBDIR) -name '*')
 
 tex_src = $(shell find $(APPDIR) -name '*.tex')
-dhall_tex_src = $(shell find $(APPDIR) -name '*.tex.dhall')
 tex_pdf = $(patsubst $(SRCDIR)/%.tex,$(BUILDDIR)/%.pdf,$(tex_src))
+
+dhall_tex_src = $(shell find $(APPDIR) -name '*.tex.dhall')
+dhall_tex_build = $(patsubst $(SRCDIR)/%.tex.dhall,$(BUILDDIR)/%.tex,$(dhall_tex_src))
 dhall_tex_pdf = $(patsubst $(SRCDIR)/%.tex.dhall,$(BUILDDIR)/%.pdf,$(dhall_tex_src))
 
 dhall_src = $(shell find $(SRCDIR) -name '*.dhall')
@@ -27,18 +30,21 @@ dhall_test = $(patsubst $(SRCDIR)/%,$(TESTDIR)/%,$(dhall_src))
 .PHONY : all cleanall clean FORCE
 
 # Do not delete intermediate files
-.SECONDARY :
+.SECONDARY : $(dhall_tex_build)
 
-all : $(tex_pdf) $(dhall_tex_pdf) FORCE
+all : $(tex_pdf) $(dhall_tex_pdf)
 
 $(BUILDDIR)/%.pdf : $(BUILDDIR)/%.tex $(lib_files)
 	$(LATEXMK) $<
 
 $(BUILDDIR)/%.tex : $(SRCDIR)/%.tex FORCE
 	mkdir -p $(dir $@)
-	cp $< $@
+	$(RSYNC) $< $@
 
-$(BUILDDIR)/%.tex : $(SRCDIR)/%.tex.dhall FORCE
+$(BUILDDIR)/%.tex : $(BUILDDIR)/%.temp.tex
+	$(RSYNC) $< $@
+
+$(BUILDDIR)/%.temp.tex : $(SRCDIR)/%.tex.dhall FORCE
 	mkdir -p $(dir $@)
 	dhall text --file $< --output $@
 
