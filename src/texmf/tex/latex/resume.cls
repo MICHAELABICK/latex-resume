@@ -158,7 +158,7 @@
 \DeclareDocumentCommand{\project}{m}{
   \begingroup
     % Key Defaults + New Ones
-    \setkeys{project}{name={},dates={},sum={}#1}
+    \setkeys{project}{name={},dates={},summary={},#1}
     % Define the macro
     \item \textbf{\prj@name} (\prj@dates). \prj@sum
   \endgroup

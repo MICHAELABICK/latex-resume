@@ -147,26 +147,27 @@ let toLaTeX =
                         (toMap { name = p.name, dates, summary = p.summary })
 
                 in  [ LaTeX.command
-                        { name = "project", arguments, newline = False } ]
+                        { name = "project", arguments, newline = False }
+                    ]
 
         let toProjectsLaTeX =
               λ(projects : List types.Project.Type) →
-                in  [ LaTeX.command
-                        { name = "titled"
-                        , arguments = [ "Projects" ]
-                        , newline = True
-                        }
-                    , LaTeX.environment
-                        { name = "itemize"
-                        , arguments = [] : List Text
-                        , content =
-                                    LaTeX.concatMapSep
-                                      [ LaTeX.newline ]
-                                      types.Project.Type
-                                      toProjectLaTeX
-                                      projects
-                        }
-                    ]
+                [ LaTeX.command
+                    { name = "titled"
+                    , arguments = [ "Projects" ]
+                    , newline = True
+                    }
+                , LaTeX.environment
+                    { name = "itemize"
+                    , arguments = [] : List Text
+                    , content =
+                        LaTeX.concatMapSep
+                          [ LaTeX.newline ]
+                          types.Project.Type
+                          toProjectLaTeX
+                          projects
+                    }
+                ]
 
         let toSkillGroupLaTeX =
               λ(sg : types.SkillGroup) →
