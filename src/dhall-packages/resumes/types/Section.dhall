@@ -1,3 +1,4 @@
-let Section = λ(Tags : Type) → { title : Text, data : ./SectionData.dhall Tags }
+let Section =
+      λ(Tags : Type) → { title : Text, data : List (./SectionItem.dhall Tags) }
 
 in  Section

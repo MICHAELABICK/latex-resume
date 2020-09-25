@@ -1,5 +1,7 @@
 let Prelude = ../Prelude.dhall
 
+let dates = ../../dates/package.dhall
+
 let Map = Prelude.Map.Type
 
 let Entry = Prelude.Map.Entry
@@ -11,6 +13,27 @@ let List/concatMap = Prelude.List.concatMap
 let Text/default = Prelude.Text.default
 
 let LaTeX = ../../LaTeX/package.dhall
+
+let renderAbbrevMonthYear =
+      λ(date : dates.Date) →
+        let month =
+              merge
+                { January = "Jan"
+                , February = "Feb"
+                , March = "Mar"
+                , April = "Apr"
+                , May = "May"
+                , June = "June"
+                , July = "July"
+                , August = "Aug"
+                , September = "Sept"
+                , October = "Oct"
+                , November = "Nov"
+                , December = "Dec"
+                }
+                date.month
+
+        in  "${month} ${Prelude.Natural.show date.year}"
 
 let toLaTeX =
       λ(Tags : Type) →
@@ -46,25 +69,23 @@ let toLaTeX =
 
         let toSchoolLaTeX =
               λ(school : types.School) →
-                let graduated =
-                      Bool/fold school.graduated Text "" school.dates.to
-
                 let arguments =
                       toKeyvalsArguments
                         ( toMap
                             { name = school.name
                             , gpa = "${Double/show school.gpa}/4.0"
                             , loc = school.location
-                            , from = school.dates.from
-                            , to = school.dates.to
+                            , from = renderAbbrevMonthYear school.dates.from
+                            , to = renderAbbrevMonthYear school.dates.to
                             , major = school.major
                             , minor = Text/default school.minor
-                            , grad = graduated
                             , awards = school.awards
                             }
                         )
 
-                in  LaTeX.command { name = "school", arguments, newline = True }
+                in  [ LaTeX.command
+                        { name = "school", arguments, newline = True }
+                    ]
 
         let toExperienceLaTeX =
               λ(exp : types.Experience.Type) →
@@ -82,8 +103,13 @@ let toLaTeX =
                       toKeyvalsArguments
                         ( toMap
                             { corp = exp.corporation
-                            , from = exp.dates.from
-                            , to = exp.dates.to
+                            , from = renderAbbrevMonthYear exp.dates.from
+                            , to =
+                                merge
+                                  { Date = renderAbbrevMonthYear
+                                  , Present = "Present"
+                                  }
+                                  exp.dates.to
                             , pos = position
                             }
                         )
@@ -129,19 +155,11 @@ let toLaTeX =
 
         let toSectionLaTeX =
               λ(section : types.Section) →
-                let toExperiences =
-                      λ(x : List (types.Tagged.Type types.Experience.Type)) →
-                        let filtered =
-                              types.Tagged.filter
-                                types.Experience.Type
-                                matchTags
-                                x
-
-                        in  Prelude.List.concatMap
-                              types.Experience.Type
-                              LaTeX.Type
-                              toExperienceLaTeX
-                              filtered
+                let toExperience =
+                      λ(x : types.Tagged.Type types.Experience.Type) →
+                        if    matchTags x.tags
+                        then  toExperienceLaTeX x.item
+                        else  [] : List LaTeX.Type
 
                 let toSkills =
                       λ(x : types.SkillSectionData) →
@@ -174,15 +192,24 @@ let toLaTeX =
                                 }
                             ]
 
+                let toItem =
+                      λ(item : types.SectionItem) →
+                        merge
+                          { School = toSchoolLaTeX
+                          , Experience = toExperience
+                          , Projects =
+                              λ(x : List types.Project.Type) →
+                                [] : List LaTeX.Type
+                          , Skills = toSkills
+                          , Awards = toAwards
+                          }
+                          item
+
                 let data =
-                      merge
-                        { Education =
-                            λ(x : types.School) →
-                              [ toSchoolLaTeX x, LaTeX.newline ]
-                        , Experiences = toExperiences
-                        , Skills = toSkills
-                        , Awards = toAwards
-                        }
+                      Prelude.List.concatMap
+                        types.SectionItem
+                        LaTeX.Type
+                        toItem
                         section.data
 
                 in    [ LaTeX.command

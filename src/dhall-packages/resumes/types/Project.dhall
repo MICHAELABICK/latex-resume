@@ -1,15 +1,13 @@
 let dates = ../../dates/package.dhall
 
-let Position = ./Position.dhall
-
-let Experience =
+let Project =
       { Type =
-          { corporation : Text
-          , position : Position
+          { name : Text
           , dates : { from : dates.Date, to : dates.EndDate }
+          , summary : Text
           , bullets : List Text
           }
-      , default.position = Position.None
+      , default.bullets = [] : List Text
       }
 
-in  Experience
+in  Project
