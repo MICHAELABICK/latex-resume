@@ -1,3 +1,1 @@
-{ first : Text
-, last : Text
-}
+{ first : Text, last : Text }

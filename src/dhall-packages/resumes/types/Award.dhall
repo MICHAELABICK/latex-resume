@@ -1,6 +1,1 @@
-<
-| Placed :
-    ./PlacedAward.dhall
-| TimePeriod :
-    ./TimePeriodAward.dhall
->
+< Placed : ./PlacedAward.dhall | TimePeriod : ./TimePeriodAward.dhall >

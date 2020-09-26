@@ -4,10 +4,10 @@ let package =
 let resume = package.resumes.resume
 
 let matchTags =
-      \(tags : resume.Tags) ->
+      λ(tags : resume.Tags) →
         let default = resume.matchTags tags
 
-        in default || ( tags.old == False && default == False )
+        in  default || tags.old == False && default == False
 
 let latex = package.resumes.toResume resume.Tags matchTags resume.content
 

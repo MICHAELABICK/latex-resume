@@ -1,8 +1,1 @@
-{
-, Type =
-    ./Type.dhall
-, tagText =
-    ./tagText.dhall
-, filter =
-    ./filter.dhall
-}
+{ Type = ./Type.dhall, tagText = ./tagText.dhall, filter = ./filter.dhall }

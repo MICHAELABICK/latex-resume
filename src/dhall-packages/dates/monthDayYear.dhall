@@ -8,10 +8,8 @@ let Month = types.Month
 
 let Year = types.Year
 
-let monthDayYear : Month -> Day -> Year -> Date =
-      \(month : Month) ->
-      \(day : Day) ->
-      \(year : Year) ->
-        { day = day, month = month, year = year }
+let monthDayYear
+    : Month → Day → Year → Date
+    = λ(month : Month) → λ(day : Day) → λ(year : Year) → { day, month, year }
 
-in monthDayYear
+in  monthDayYear
