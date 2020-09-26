@@ -2,6 +2,7 @@
 SRCDIR = src
 BUILDDIR = build
 TESTDIR = test
+FORMAT = format
 APPDIR = $(SRCDIR)/applications
 
 MAKEDIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
@@ -26,6 +27,7 @@ dhall_tex_pdf = $(patsubst $(SRCDIR)/%.tex.dhall,$(BUILDDIR)/%.pdf,$(dhall_tex_s
 
 dhall_src = $(shell find $(SRCDIR) -name '*.dhall')
 dhall_test = $(patsubst $(SRCDIR)/%,$(TESTDIR)/%,$(dhall_src))
+dhall_format = $(patsubst $(SRCDIR)/%,$(FORMATDIR)/%,$(dhall_src))
 
 
 .PHONY : all cleanall clean FORCE
@@ -53,6 +55,11 @@ test : $(dhall_test)
 
 $(TESTDIR)/%.dhall : $(SRCDIR)/%.dhall FORCE
 	dhall type --file $< --quiet
+
+format : $(dhall_format)
+
+$(FORMATDIR)/%.dhall : $(SRCDIR)/%.dhall FORCE
+	dhall format --inplace $<
 
 cleanall :
 	rm -rf $(BUILDDIR)
