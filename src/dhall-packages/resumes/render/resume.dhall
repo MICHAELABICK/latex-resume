@@ -173,12 +173,17 @@ let toLaTeX =
               λ(sg : types.SkillGroup) →
                 let skills = types.Tagged.filter Text matchTags sg.skills
 
-                in  [ LaTeX.environment
-                        { name = "groupitem"
-                        , arguments = [ sg.name ]
-                        , content = toItemize skills
-                        }
-                    ]
+                let latex =
+                      [ LaTeX.environment
+                          { name = "groupitem"
+                          , arguments = [ sg.name ]
+                          , content = toItemize skills
+                          }
+                      ]
+
+                in  if    Prelude.List.null Text skills
+                    then  [] : List LaTeX.Type
+                    else  latex
 
         let toAwardLaTeX =
               λ(awd : types.Award) →

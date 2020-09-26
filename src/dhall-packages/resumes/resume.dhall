@@ -4,40 +4,52 @@ let dates = ../dates/package.dhall
 
 let Tags/Type
     : Type
-    = { old : Bool
+    = { default : Bool
+      , keyword : Bool
       , cad : Bool
       , devops : Bool
       , instruments : Bool
       , webdev : Bool
       , reports : Bool
+      , cloud : Bool
+      , robotics : Bool
+      , vision : Bool
+      , functional_programming : Bool
+      , documentation : Bool
+      , sensor : Bool
+      , chart : Bool
       }
 
 let Tags =
       { Type = Tags/Type
       , default =
-            { old = False
+            { default = False
+            , keyword = False
             , cad = False
             , devops = False
             , instruments = False
             , webdev = False
             , reports = False
+            , cloud = False
+            , robotics = False
+            , vision = False
+            , functional_programming = False
+            , documentation = False
+            , sensor = False
+            , chart = False
             }
           : Tags/Type
       }
 
 let matchTags
     : Tags.Type → Bool
-    = λ(tags : Tags.Type) →
-            Prelude.Bool.not tags.old
-        &&  Prelude.Bool.not tags.cad
-        &&  Prelude.Bool.not tags.devops
-        &&  Prelude.Bool.not tags.instruments
-        &&  Prelude.Bool.not tags.webdev
-        &&  Prelude.Bool.not tags.reports
+    = λ(tags : Tags.Type) → tags.default
 
 let types = ./types.dhall Tags.Type
 
-let tagItem = λ(Item : Type) → λ(item : Item) → { item, tags = Tags.default }
+let default_tags = Tags.default ⫽ { default = True }
+
+let tagItem = λ(Item : Type) → λ(item : Item) → { item, tags = default_tags }
 
 let TaggedExperience
     : types.Experience.Type → types.Tagged.Type types.Experience.Type
@@ -49,7 +61,7 @@ let TaggedAward
 
 let TaggedText
     : Text → types.Tagged.Type Text
-    = types.Tagged.tagText Tags.default
+    = types.Tagged.tagText default_tags
 
 let FIRSTAward =
       { regional : Text, place : Natural, team_count : Natural, date : Text }
@@ -88,8 +100,7 @@ let work_experience =
             , to = dates.EndDate.Present
             }
           , bullets =
-            [
-            , "Built an automated fixture using cascaded PID controllers for design verification tests"
+            [ "Built an automated fixture using cascaded PID controllers for design verification tests"
             , "Acted as project manager for manufacturing, re-manufacturing, and sustaining engineering projects"
             , "Exposed to verification and validation for surgical robots in the highly regulated medical device industry"
             , "Performed FEA failure analysis and DFM on sheet metal and thermoformed plastic parts"
@@ -135,7 +146,7 @@ let work_experience =
               , "Taught sailors with skill levels ranging from beginner to advanced"
               ]
             }
-        ⫽ { tags = Tags::{ old = True } }
+        ⫽ { tags = Tags::{ default = False } }
       ]
 
 let main_projects =
@@ -149,8 +160,8 @@ let main_projects =
                 dates.EndDate.Date (dates.monthDayYear dates.Month.April 1 2019)
             }
           , bullets =
-            [ "Integrated stereo depth and SLAM LIDAR units into a standalone sensor for brachiating robots"
-            , "Implemented realtime sensing and pose estimation of a flexible cable for feedback control"
+            [ "Integrated stereo depth and SLAM LIDAR units into a standalone hardware for brachiating robots"
+            , "Implemented real-time sensing and pose estimation of a flexible cable for feedback control"
             , "Processed color and depth video using openCV to identify a thin cable in harsh environmental conditions"
             , "Implemented ROS (Robot Operating System) to record, communicate, and log robot and sensor state"
             ]
@@ -186,7 +197,7 @@ let main_projects =
               , "Designed improved camshaft to match optimal lift profile"
               ]
             }
-        ⫽ { tags = Tags::{ old = True } }
+        ⫽ { tags = Tags::{ default = False } }
       , TaggedExperience
           types.Experience::{
           , corporation = "MilkenKnights FRC Team"
@@ -219,7 +230,7 @@ let main_projects =
               , "Wired and programmed a LIDAR tracking system using an Arduino microcontroller"
               ]
             }
-        ⫽ { tags = Tags::{ old = True } }
+        ⫽ { tags = Tags::{ default = False } }
       ,   TaggedExperience
             types.Experience::{
             , corporation = "Edge Systems Design"
@@ -235,7 +246,7 @@ let main_projects =
               , "Helped manage funding and operation of a startup"
               ]
             }
-        ⫽ { tags = Tags::{ old = True } }
+        ⫽ { tags = Tags::{ default = False } }
       ]
 
 let side_projects =
@@ -247,10 +258,9 @@ let side_projects =
           }
         , summary =
             ''
-            Using algorithmic trading as a platform to study
-            neural networks and reinforcement learning.
-            Implemented in Julia to expose myself to FP
-            and JIT compiled languages.
+            Utilized Python PyTorch deep learning framework
+            to create a neural network for algorithmic trading strategies.
+            Experimented with reinforcement learning in Julia.
             ''
         }
       , types.Project::{
@@ -262,9 +272,9 @@ let side_projects =
         , summary =
             ''
             Repurposed old enterprise hardware.
-            Used as platform for learning mordern devops paradigms
-            such as immutable infra and declarative programming
-            using Docker and Terraform.
+            Using Docker, Terraform and Kubernetes
+            to practice mordern devops paradigms
+            including declarative and immutable infra.
             ''
         }
       , types.Project::{
@@ -346,65 +356,85 @@ let skills =
           , TaggedText "Soldering Iron"
           ]
         }
-      , { name = "Programming"
+      , { name = "Proficient"
         , skills =
           [ TaggedText "MATLAB"
           , TaggedText "Python"
           , TaggedText "Julia"
-          , TaggedText "C"
-          , TaggedText "C++"
-          , TaggedText "Java"
           , TaggedText "Git"
-          , TaggedText "Amazon Web Services~(AWS)"
-          , TaggedText "Google Cloud"
+          ,   TaggedText "Robot Operating System~(ROS)"
+            ⫽ { tags = Tags::{ robotics = True } }
           , TaggedText "Terraform" ⫽ { tags = Tags::{ devops = True } }
           , TaggedText "Ansible" ⫽ { tags = Tags::{ devops = True } }
-          , TaggedText "Robot Operating System~(ROS)"
-          , TaggedText "OpenCV"
+          ,   TaggedText "OpenCV"
+            ⫽ { tags = Tags::{ robotics = True, vision = True } }
           , TaggedText "Bash"
-          , TaggedText "LabView"
-          , TaggedText "Android"
-          , TaggedText "Dhall"
+          ,   TaggedText "Dhall"
+            ⫽ { tags = Tags::{ functional_programming = True } }
+          , TaggedText "\\LaTeX"
+          ]
+        }
+      , { name = "Familiar"
+        , skills =
+          [ TaggedText "C"
+          , TaggedText "C++"
+          , TaggedText "Java"
+          ,   TaggedText "Amazon Web Services~(AWS)"
+            ⫽ { tags = Tags::{ cloud = True } }
+          , TaggedText "Google Cloud" ⫽ { tags = Tags::{ cloud = True } }
+          , TaggedText "LabView" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Android" ⫽ { tags = Tags::{ default = False } }
           , TaggedText "HTML" ⫽ { tags = Tags::{ webdev = True } }
           , TaggedText "CSS" ⫽ { tags = Tags::{ webdev = True } }
           , TaggedText "SASS" ⫽ { tags = Tags::{ webdev = True } }
-          , TaggedText "\\LaTeX"
           ]
         }
       , { name = "Mechatronics"
         , skills =
-          [ TaggedText "Stereo Depth Camera"
-          , TaggedText "SLAM LIDAR"
-          , TaggedText "NI~cRio/myRio/roboRio"
-          , TaggedText "Festo Actuators and Drives"
-          , TaggedText "Arduino"
-          , TaggedText "Brushless Servos"
-          , TaggedText "Brushed Servos"
-          , TaggedText "Hall~Effect"
-          , TaggedText "Pneumatic Actuators"
-          , TaggedText "Encoders"
-          , TaggedText "Solenoids"
-          , TaggedText "Motors"
-          , TaggedText "IR~Sensors" ⫽ { tags = Tags::{ old = True } }
-          , TaggedText "Sonar" ⫽ { tags = Tags::{ old = True } }
-          , TaggedText "Wire Harness" ⫽ { tags = Tags::{ old = True } }
+          [   TaggedText "Stereo Depth Camera"
+            ⫽ { tags = Tags::{ robotics = True, vision = True } }
+          ,   TaggedText "SLAM LIDAR"
+            ⫽ { tags = Tags::{ robotics = True, vision = True } }
+          ,   TaggedText "NI~cRio/myRio/roboRio"
+            ⫽ { tags = Tags::{ robotics = True } }
+          ,   TaggedText "Festo Actuators and Drives"
+            ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Arduino" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Brushless Servos" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Brushed Servos" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Direct Drive" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Hall~Effect" ⫽ { tags = Tags::{ sensor = True } }
+          ,   TaggedText "Pneumatic Actuators"
+            ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Encoders" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Solenoids" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Motors" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Mechatroics" ⫽ { tags = Tags::{ keyword = True } }
+          ,   TaggedText "Electro-mechanical"
+            ⫽ { tags = Tags::{ keyword = True } }
+          , TaggedText "Debug" ⫽ { tags = Tags::{ keyword = True } }
+          ,   TaggedText "IR~Sensors"
+            ⫽ { tags = Tags::{ default = False, sensor = True } }
+          ,   TaggedText "Sonar"
+            ⫽ { tags = Tags::{ default = False, sensor = True } }
           ]
         }
       , { name = "Software"
         , skills =
           [ TaggedText "Agile PLM"
           , TaggedText "SAP"
-          , TaggedText "Adobe Illustrator"
           , TaggedText "Linux"
-          , TaggedText "Ubuntu"
-          , TaggedText "Emacs"
-          , TaggedText "Vim"
-          , TaggedText "Inkscape"
-          , TaggedText "Gimp"
-          , TaggedText "Excel"
-          , TaggedText "Word" ⫽ { tags = Tags::{ old = True } }
-          , TaggedText "MacOS" ⫽ { tags = Tags::{ old = True } }
-          , TaggedText "Windows" ⫽ { tags = Tags::{ old = True } }
+          ,   TaggedText "Adobe Illustrator"
+            ⫽ { tags = Tags::{ documentation = True } }
+          , TaggedText "Ubuntu" ⫽ { tags = Tags::{ default = False } }
+          , TaggedText "Emacs" ⫽ { tags = Tags::{ default = False } }
+          , TaggedText "Vim" ⫽ { tags = Tags::{ default = False } }
+          , TaggedText "Inkscape" ⫽ { tags = Tags::{ documentation = True } }
+          , TaggedText "Gimp" ⫽ { tags = Tags::{ documentation = True } }
+          , TaggedText "Excel" ⫽ { tags = Tags::{ default = False } }
+          , TaggedText "Word" ⫽ { tags = Tags::{ default = False } }
+          , TaggedText "MacOS" ⫽ { tags = Tags::{ default = False } }
+          , TaggedText "Windows" ⫽ { tags = Tags::{ default = False } }
           ]
         }
       , { name = "Instruments"
@@ -416,7 +446,7 @@ let skills =
           , TaggedText "Voltmeter" ⫽ { tags = Tags::{ instruments = True } }
           ]
         }
-      , { name = "Planning"
+      , { name = "Process"
         , skills =
           [ TaggedText "Investigation"
           , TaggedText "Root Cause Analysis"
@@ -435,13 +465,13 @@ let skills =
           , TaggedText "First Pronciples"
           , TaggedText "Problem Solving"
           ,   TaggedText "Bill of Materials~(BOM)"
-            ⫽ { tags = Tags::{ old = True } }
-          , TaggedText "House of Quality" ⫽ { tags = Tags::{ old = True } }
-          , TaggedText "Specification Sheet" ⫽ { tags = Tags::{ old = True } }
-          , TaggedText "Morph Chart" ⫽ { tags = Tags::{ old = True } }
-          , TaggedText "Function Tree" ⫽ { tags = Tags::{ old = True } }
-          , TaggedText "Gantt Chart" ⫽ { tags = Tags::{ old = True } }
-          , TaggedText "Evaulation Matrix" ⫽ { tags = Tags::{ old = True } }
+            ⫽ { tags = Tags::{ chart = True } }
+          , TaggedText "House of Quality" ⫽ { tags = Tags::{ chart = True } }
+          , TaggedText "Specification Sheet" ⫽ { tags = Tags::{ chart = True } }
+          , TaggedText "Morph Chart" ⫽ { tags = Tags::{ chart = True } }
+          , TaggedText "Function Tree" ⫽ { tags = Tags::{ chart = True } }
+          , TaggedText "Gantt Chart" ⫽ { tags = Tags::{ chart = True } }
+          , TaggedText "Evaulation Matrix" ⫽ { tags = Tags::{ chart = True } }
           ]
         }
       ]
@@ -499,7 +529,7 @@ let awards =
                 , place = "International"
                 }
             )
-        ⫽ { tags = Tags::{ old = True } }
+        ⫽ { tags = Tags::{ default = False } }
       ,   TaggedAward
             ( toFIRSTAward
                 { regional = "Los Angeles"
@@ -508,7 +538,7 @@ let awards =
                 , team_count = 65
                 }
             )
-        ⫽ { tags = Tags::{ old = True } }
+        ⫽ { tags = Tags::{ default = False } }
       ,   TaggedAward
             ( toFIRSTAward
                 { regional = "Los Angeles"
@@ -517,7 +547,7 @@ let awards =
                 , team_count = 66
                 }
             )
-        ⫽ { tags = Tags::{ old = True } }
+        ⫽ { tags = Tags::{ default = False } }
       ]
 
 let toSectionItems =
@@ -549,4 +579,4 @@ let content =
         }
       ]
 
-in  { content, Tags = Tags.Type, matchTags }
+in  { content, Tags, matchTags }
