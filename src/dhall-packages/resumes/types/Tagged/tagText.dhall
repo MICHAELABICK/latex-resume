@@ -1,9 +1,4 @@
 let tagText =
-      \(Tags : Type) ->
-      \(tags : Tags) ->
-      \(text : Text) ->
-        { item = text
-        , tags = tags
-        }
+      λ(Tags : Type) → λ(tags : Tags) → λ(text : Text) → { item = text, tags }
 
-in tagText
+in  tagText

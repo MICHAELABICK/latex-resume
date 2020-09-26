@@ -1,5 +1,1 @@
-< Progression :
-    ./ProgressionPosition.dhall
-| Single : Text
-| None
->
+< Progression : ./ProgressionPosition.dhall | Single : Text | None >

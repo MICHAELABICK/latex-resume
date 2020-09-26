@@ -1,4 +1,1 @@
-{ day : ./Day.dhall
-, month : ./Month.dhall
-, year : ./Year.dhall
-}
+{ day : ./Day.dhall, month : ./Month.dhall, year : ./Year.dhall }

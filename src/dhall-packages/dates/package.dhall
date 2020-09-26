@@ -1,5 +1,1 @@
-let types = ./types.dhall
-
-let utils = ./utils.dhall
-
-in types // utils
+let types = ./types.dhall let utils = ./utils.dhall in types ⫽ utils

@@ -1,5 +1,4 @@
-<
-| January
+< January
 | February
 | March
 | April

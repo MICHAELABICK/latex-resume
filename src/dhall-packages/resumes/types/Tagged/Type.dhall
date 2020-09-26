@@ -1,8 +1,3 @@
-let Tagged =
-      \(Tags : Type) ->
-      \(Item : Type) ->
-        { item : Item
-        , tags : Tags
-        }
+let Tagged = λ(Tags : Type) → λ(Item : Type) → { item : Item, tags : Tags }
 
-in Tagged
+in  Tagged

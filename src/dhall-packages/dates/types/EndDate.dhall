@@ -1,4 +1,1 @@
-<
-| Date : ./Date.dhall
-| Present
->
+< Date : ./Date.dhall | Present >

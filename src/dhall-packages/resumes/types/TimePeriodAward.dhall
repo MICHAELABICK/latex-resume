@@ -1,5 +1,1 @@
-{
-, name : Text
-, from : Text
-, to : Text
-}
+{ name : Text, from : Text, to : Text }

@@ -15,11 +15,10 @@ let types =
         , Position = ./types/Position.dhall
         , ProgressionPosition = ./types/ProgressionPosition.dhall
         , Tagged =
-            {
-            , Type = Tagged.Type Tags
-            , tagText = Tagged.tagText Tags
-            , filter = Tagged.filter Tags
-            }
+          { Type = Tagged.Type Tags
+          , tagText = Tagged.tagText Tags
+          , filter = Tagged.filter Tags
+          }
         }
 
 in  types

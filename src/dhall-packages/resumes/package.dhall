@@ -1,6 +1,1 @@
-{
-, resume =
-    ./resume.dhall
-, toResume =
-    ./toResume.dhall
-}
+{ resume = ./resume.dhall, toResume = ./toResume.dhall }
