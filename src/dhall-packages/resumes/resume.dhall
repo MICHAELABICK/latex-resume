@@ -7,12 +7,14 @@ let Tags/Type
     = { default : Bool
       , keyword : Bool
       , cad : Bool
-      , devops : Bool
+      , mechanical : Bool
       , instruments : Bool
       , webdev : Bool
       , reports : Bool
       , cloud : Bool
+      , devops : Bool
       , robotics : Bool
+      , machine_learning : Bool
       , vision : Bool
       , functional_programming : Bool
       , documentation : Bool
@@ -26,12 +28,14 @@ let Tags =
             { default = False
             , keyword = False
             , cad = False
-            , devops = False
+            , mechanical = False
             , instruments = False
             , webdev = False
             , reports = False
             , cloud = False
+            , devops = False
             , robotics = False
+            , machine_learning = False
             , vision = False
             , functional_programming = False
             , documentation = False
@@ -46,6 +50,8 @@ let matchTags
     = λ(tags : Tags.Type) → tags.default
 
 let types = ./types.dhall Tags.Type
+
+let Keywords = Tags with default.keyword = True
 
 let default_tags = Tags.default ⫽ { default = True }
 
@@ -120,7 +126,7 @@ let work_experience =
                   (dates.monthDayYear dates.Month.August 1 2020)
             }
           , bullets =
-            [ "Implemenented an online, quadratic programming controller in C++ for brachiating robots"
+            [ "Implemenented an online, robust QP controller in C++ for brachiating robots"
             , "Used FEA to design biomimetic, robotic manipulator jaws using the compliant mechanism methodology"
             , "Developed a novel, bi-stable linkage that improved and reduced power usage of robotic grippers"
             , "Applied machine design methodologies using MATLAB to size actuators and optimize chassis strength"
@@ -321,12 +327,97 @@ let side_projects =
       ]
 
 let skills =
-      [ { name = "CAD"
+      [
+      , { name = "Proficient"
         , skills =
-          [ TaggedText "Solidworks"
+          [ TaggedText "MATLAB"
+          , TaggedText "Python"
+          , TaggedText "Julia"
+          , TaggedText "Git"
+          ,   TaggedText "PyTorch"
+            ⫽ { tags = Tags::{ machine_learning = True, robotics = True } }
+          ,   TaggedText "Robot Operating System~(ROS)"
+            ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Docker" ⫽ { tags = Tags::{ devops = True } }
+          , TaggedText "Terraform" ⫽ { tags = Tags::{ devops = True } }
+          ,   TaggedText "OpenCV"
+            ⫽ { tags = Tags::{ robotics = True, vision = True } }
+          , TaggedText "Bash"
+          , TaggedText "GNU Make" ⫽ { tags = Tags::{ devops = True } }
+          , TaggedText "Packer" ⫽ { tags = Tags::{ devops = True } }
+          , TaggedText "Ansible" ⫽ { tags = Tags::{ devops = True } }
+          ,   TaggedText "Dhall"
+            ⫽ { tags = Tags::{ functional_programming = True } }
+          , TaggedText "\\LaTeX"
+          ]
+        }
+      , { name = "Familiar"
+        , skills =
+          [ TaggedText "C"
+          , TaggedText "C++"
+          , TaggedText "Java"
+          ,   TaggedText "Amazon Web Services~(AWS)"
+            ⫽ { tags = Tags::{ default = True, cloud = True } }
+          ,   TaggedText "Google Cloud"
+            ⫽ { tags = Tags::{ default = True, cloud = True } }
+          , TaggedText "Kubernetes" ⫽ { tags = Tags::{ devops = True } }
+          , TaggedText "LabView" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Android" ⫽ { tags = Tags::{ default = False } }
+          , TaggedText "HTML" ⫽ { tags = Tags::{ webdev = True } }
+          , TaggedText "CSS" ⫽ { tags = Tags::{ webdev = True } }
+          , TaggedText "SASS" ⫽ { tags = Tags::{ webdev = True } }
+          ]
+        }
+      , { name = "Software"
+        , skills =
+          [ TaggedText "Linux"
+          , TaggedText "Solidworks"
+          , TaggedText "Agile PLM"
+          , TaggedText "SAP"
           , TaggedText "Windchill"
           , TaggedText "Solidworks Enterprise PDM~(EPDM)"
           , TaggedText "Autodesk Inventor"
+          ,   TaggedText "Adobe Illustrator"
+            ⫽ { tags = Tags::{ documentation = True } }
+          , TaggedText "Ubuntu" ⫽ { tags = Tags::{ devops = True } }
+          , TaggedText "Emacs" ⫽ { tags = Tags::{ devops = True } }
+          , TaggedText "Vim" ⫽ { tags = Tags::{ devops = True } }
+          , TaggedText "Inkscape" ⫽ { tags = Tags::{ documentation = True } }
+          , TaggedText "Gimp" ⫽ { tags = Tags::{ documentation = True } }
+          , TaggedText "Excel"
+          ]
+        }
+      , { name = "Robotics"
+        , skills =
+          [   TaggedText "Stereo Depth Camera"
+            ⫽ { tags = Tags::{ robotics = True, vision = True } }
+          ,   TaggedText "SLAM LIDAR"
+            ⫽ { tags = Tags::{ robotics = True, vision = True } }
+          ,   TaggedText "NI~cRio/myRio/roboRio"
+            ⫽ { tags = Tags::{ robotics = True } }
+          ,   TaggedText "Festo Actuators and Drives"
+            ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Arduino" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Brushless Servos" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Brushed Servos" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Direct Drive" ⫽ { tags = Tags::{ robotics = True } }
+          ,   TaggedText "Pneumatic Actuators"
+            ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Encoders" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Solenoids" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Motors" ⫽ { tags = Tags::{ robotics = True } }
+          , TaggedText "Mechatroics" ⫽ { tags = Keywords::{ robotics = True } }
+          ,   TaggedText "Electro-mechanical"
+            ⫽ { tags = Keywords::{ robotics = True } }
+          , TaggedText "Debug" ⫽ { tags = Keywords::{ robotics = True } }
+          , TaggedText "Hall~Effect" ⫽ { tags = Tags::{ sensor = True } }
+          , TaggedText "IR~Sensors" ⫽ { tags = Tags::{ sensor = True } }
+          , TaggedText "Sonar" ⫽ { tags = Tags::{ sensor = True } }
+          ]
+        }
+      , { name = "CAD"
+        , skills =
+          [
           , TaggedText "Master Model" ⫽ { tags = Tags::{ cad = True } }
           , TaggedText "Top-down Design" ⫽ { tags = Tags::{ cad = True } }
           , TaggedText "Parametric Design" ⫽ { tags = Tags::{ cad = True } }
@@ -337,8 +428,9 @@ let skills =
           , TaggedText "Design for Manufacture~(DFM)"
           , TaggedText "Design for Assembly~(DFA)"
           , TaggedText "Finite Element Analysis~(FEA)"
-          , TaggedText "Simulation"
-          , TaggedText "3D Modeling"
+          , TaggedText "Simulation" ⫽ { tags = Keywords::{ mechanical = True } }
+          ,   TaggedText "3D Modeling"
+            ⫽ { tags = Keywords::{ mechanical = True } }
           ]
         }
       , { name = "Fabrication"
@@ -356,93 +448,12 @@ let skills =
           , TaggedText "Soldering Iron"
           ]
         }
-      , { name = "Proficient"
-        , skills =
-          [ TaggedText "MATLAB"
-          , TaggedText "Python"
-          , TaggedText "Julia"
-          , TaggedText "Git"
-          ,   TaggedText "Robot Operating System~(ROS)"
-            ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Terraform" ⫽ { tags = Tags::{ devops = True } }
-          , TaggedText "Ansible" ⫽ { tags = Tags::{ devops = True } }
-          ,   TaggedText "OpenCV"
-            ⫽ { tags = Tags::{ robotics = True, vision = True } }
-          , TaggedText "Bash"
-          ,   TaggedText "Dhall"
-            ⫽ { tags = Tags::{ functional_programming = True } }
-          , TaggedText "\\LaTeX"
-          ]
-        }
-      , { name = "Familiar"
-        , skills =
-          [ TaggedText "C"
-          , TaggedText "C++"
-          , TaggedText "Java"
-          ,   TaggedText "Amazon Web Services~(AWS)"
-            ⫽ { tags = Tags::{ cloud = True } }
-          , TaggedText "Google Cloud" ⫽ { tags = Tags::{ cloud = True } }
-          , TaggedText "LabView" ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Android" ⫽ { tags = Tags::{ default = False } }
-          , TaggedText "HTML" ⫽ { tags = Tags::{ webdev = True } }
-          , TaggedText "CSS" ⫽ { tags = Tags::{ webdev = True } }
-          , TaggedText "SASS" ⫽ { tags = Tags::{ webdev = True } }
-          ]
-        }
-      , { name = "Mechatronics"
-        , skills =
-          [   TaggedText "Stereo Depth Camera"
-            ⫽ { tags = Tags::{ robotics = True, vision = True } }
-          ,   TaggedText "SLAM LIDAR"
-            ⫽ { tags = Tags::{ robotics = True, vision = True } }
-          ,   TaggedText "NI~cRio/myRio/roboRio"
-            ⫽ { tags = Tags::{ robotics = True } }
-          ,   TaggedText "Festo Actuators and Drives"
-            ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Arduino" ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Brushless Servos" ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Brushed Servos" ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Direct Drive" ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Hall~Effect" ⫽ { tags = Tags::{ sensor = True } }
-          ,   TaggedText "Pneumatic Actuators"
-            ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Encoders" ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Solenoids" ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Motors" ⫽ { tags = Tags::{ robotics = True } }
-          , TaggedText "Mechatroics" ⫽ { tags = Tags::{ keyword = True } }
-          ,   TaggedText "Electro-mechanical"
-            ⫽ { tags = Tags::{ keyword = True } }
-          , TaggedText "Debug" ⫽ { tags = Tags::{ keyword = True } }
-          ,   TaggedText "IR~Sensors"
-            ⫽ { tags = Tags::{ default = False, sensor = True } }
-          ,   TaggedText "Sonar"
-            ⫽ { tags = Tags::{ default = False, sensor = True } }
-          ]
-        }
-      , { name = "Software"
-        , skills =
-          [ TaggedText "Agile PLM"
-          , TaggedText "SAP"
-          , TaggedText "Linux"
-          ,   TaggedText "Adobe Illustrator"
-            ⫽ { tags = Tags::{ documentation = True } }
-          , TaggedText "Ubuntu" ⫽ { tags = Tags::{ default = False } }
-          , TaggedText "Emacs" ⫽ { tags = Tags::{ default = False } }
-          , TaggedText "Vim" ⫽ { tags = Tags::{ default = False } }
-          , TaggedText "Inkscape" ⫽ { tags = Tags::{ documentation = True } }
-          , TaggedText "Gimp" ⫽ { tags = Tags::{ documentation = True } }
-          , TaggedText "Excel" ⫽ { tags = Tags::{ default = False } }
-          , TaggedText "Word" ⫽ { tags = Tags::{ default = False } }
-          , TaggedText "MacOS" ⫽ { tags = Tags::{ default = False } }
-          , TaggedText "Windows" ⫽ { tags = Tags::{ default = False } }
-          ]
-        }
       , { name = "Instruments"
         , skills =
-          [ TaggedText "Micrometer"
-          , TaggedText "Caliper"
-          , TaggedText "Ocilloscope"
-          , TaggedText "Multimeter"
+          [ TaggedText "Micrometer" ⫽ { tags = Tags::{ instruments = True } }
+          , TaggedText "Caliper" ⫽ { tags = Tags::{ instruments = True } }
+          , TaggedText "Ocilloscope" ⫽ { tags = Tags::{ instruments = True } }
+          , TaggedText "Multimeter" ⫽ { tags = Tags::{ instruments = True } }
           , TaggedText "Voltmeter" ⫽ { tags = Tags::{ instruments = True } }
           ]
         }
@@ -571,7 +582,7 @@ let content =
       , { title = "Technical Skills"
         , data =
           [ types.SectionItem.Skills
-              { groups = skills, longest_group_title = "Programming" }
+              { groups = skills, longest_group_title = "Fabrication" }
           ]
         }
       , { title = "Awards \\& Honors"
