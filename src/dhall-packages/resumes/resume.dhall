@@ -253,8 +253,7 @@ let main_projects =
                 dates.EndDate.Date (dates.monthDayYear dates.Month.June 1 2016)
             }
           , bullets =
-            [
-            , "Managed 60 students in rapid prototyping, designing, and manufacturing a robot in six weeks"
+            [ "Managed 60 students in rapid prototyping, designing, and manufacturing a robot in six weeks"
             , "Managed a short development time project schedule while nurturing collaboration"
             , "Created top-down Solidworks models of transmissions, manipulators, and complex linkages"
             , "Implemented position PID, velocity PID, vision tracking, motion profiles, and path following"
