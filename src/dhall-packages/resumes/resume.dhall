@@ -388,6 +388,10 @@ let skills =
           ,   TaggedText "Dhall"
             ⫽ { tags = Tags::{ functional_programming = True } }
           , TaggedText "\\LaTeX"
+          ,   TaggedText "Machine Learning (ML)"
+            ⫽ { tags = Keywords::{ machine_learning = True } }
+          ,   TaggedText "Artificial Intelligence (AI)"
+            ⫽ { tags = Keywords::{ machine_learning = True } }
           ,   TaggedText "Data Structures"
             ⫽ { tags = Keywords::{ programming = True } }
           ,   TaggedText "Algorithms"
