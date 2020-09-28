@@ -1,5 +1,5 @@
 let package =
-      https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v1.4.0/src/dhall-packages/package.dhall sha256:262543ce3edc1da741b8f1abc0c2ba87f838eeacfe4d6464cae2361bf2589780
+      https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v1.5.0/src/dhall-packages/package.dhall
 
 let resume = package.resumes.resume
 
@@ -8,10 +8,7 @@ let matchTags =
         let default = resume.matchTags tags
 
         let any =
-                  tags.cloud
-              ||  tags.machine_learning
-              ||  tags.vision
-              ||  tags.devops
+              tags.cloud || tags.machine_learning || tags.vision || tags.devops
 
         let keyworded =
                   tags.keyword == True
