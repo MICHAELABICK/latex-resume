@@ -124,7 +124,7 @@ let education =
           , location = "Atlanta, GA"
           , dates =
             { from = dates.monthDayYear dates.Month.August 21 2016
-            , to = dates.monthDayYear dates.Month.May 5 2021
+            , to = dates.monthDayYear dates.Month.May 8 2021
             }
           , major = "Bachelors of Science: Mechanical Engineering"
           , minor = Some "Robotics"
@@ -139,8 +139,10 @@ let work_experience =
           , corporation = "Intuitive Surgical"
           , position = types.Position.Single "Mechanical Engineering Co-op"
           , dates =
-            { from = dates.monthDayYear dates.Month.August 1 2019
-            , to = dates.EndDate.Present
+            { from = dates.monthDayYear dates.Month.August 12 2019
+            , to =
+                dates.EndDate.Date
+                  (dates.monthDayYear dates.Month.December 18 2020)
             }
           , bullets =
             [ "Built an automated fixture using cascaded PID controllers for 8-week design verification tests"
@@ -157,10 +159,10 @@ let work_experience =
               types.Position.Progression
                 { last = "Undergraduate Assistant", first = "Intern" }
           , dates =
-            { from = dates.monthDayYear dates.Month.April 1 2019
+            { from = dates.monthDayYear dates.Month.April 20 2019
             , to =
                 dates.EndDate.Date
-                  (dates.monthDayYear dates.Month.August 1 2020)
+                  (dates.monthDayYear dates.Month.July 31 2020)
             }
           , bullets =
             [ "Implemented an online, optimal, robust controller with MATLAB C/C++ code generation"
