@@ -8,15 +8,15 @@ let matchTags =
         let default = resume.matchTags tags
 
         let any =
-                 tags.cad
-              || tags.mechanical
-              || tags.instruments
-              || tags.manufacturing
-              || tags.sensor
-              || tags.cloud
-              || tags.robotics
-              || tags.machine_learning
-              || tags.programming
+                  tags.cad
+              ||  tags.mechanical
+              ||  tags.instruments
+              ||  tags.manufacturing
+              ||  tags.sensor
+              ||  tags.cloud
+              ||  tags.robotics
+              ||  tags.machine_learning
+              ||  tags.programming
 
         let keyworded =
                   tags.keyword == True

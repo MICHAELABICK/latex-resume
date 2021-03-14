@@ -4,6 +4,8 @@
 
 \input{pro_letterhead}
 
+\setlength{\intextsep}{10cm}
+
 \RequirePackage{keyval}
 \RequirePackage{xparse}
 \RequirePackage{etoolbox}
@@ -39,18 +41,10 @@
 % Reformat sections
 \titleformat{\section}{\Large\scshape}{}{0em}{}
   [\titlerule]
-\titlespacing*{\section}{0em}{1em}{.2em}
+\titlespacing*{\section}{0em}{0em}{.3em}
 
 \titleformat{\subsection}{\large\scshape}{}{0em}{}
 \titlespacing*{\subsection}{0em}{0em}{.2em}
-
-% Create command for dated sections
-\newcommand{\datedsection}[2]{
-  \section[#1]{#1 \hfill #2}
-}
-\newcommand{\datedsubsection}[2]{
-  \subsection[#1]{#1 \hfill #2}
-}
 
 % % Schools Environment
 % % Create a environment to list schools
@@ -111,8 +105,8 @@
       \textbf{\sch@name}, \sch@loc\newline
       \sch@minor{} Minor\newline
       \sch@awards &
-      \textsc{\sch@from} - \textsc{\sch@to}\par
-      GPA \sch@gpa\\
+      \sch@from{} - \sch@to\par
+      GPA: \sch@gpa\\
     \end{tabularx}
   \endgroup
 }
@@ -130,10 +124,10 @@
     \setkeys{experience}{corp={},pos={},from={},to={},#1}
     % Define the macro
     \subsection[\exp@corp]{
-      \hfill \exp@from{} - \exp@to\\
       \ifdefempty{\exp@pos}
         {\textbf{\exp@corp}}
-        { \textbf{\exp@corp{} \textbar} \exp@pos}
+        {\textbf{\exp@corp{} \textbar} \textit{\exp@pos}}
+      \hfill \textnormal{\normalsize{\exp@from{} - \exp@to}}
     }
   \endgroup
 }
