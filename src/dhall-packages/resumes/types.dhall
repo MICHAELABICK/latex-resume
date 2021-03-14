@@ -1,24 +1,16 @@
-let Tagged = ./types/Tagged/package.dhall
-
 let types =
-      λ(Tags : Type) →
-        { Section = ./types/Section.dhall Tags
-        , SectionItem = ./types/SectionItem.dhall Tags
-        , School = ./types/School.dhall
-        , Experience = ./types/Experience.dhall
-        , Project = ./types/Project.dhall
-        , SkillSectionData = ./types/SkillSectionData.dhall Tags
-        , SkillGroup = ./types/SkillGroup.dhall Tags
-        , Award = ./types/Award.dhall
-        , PlacedAward = ./types/PlacedAward.dhall
-        , TimePeriodAward = ./types/TimePeriodAward.dhall
-        , Position = ./types/Position.dhall
-        , ProgressionPosition = ./types/ProgressionPosition.dhall
-        , Tagged =
-          { Type = Tagged.Type Tags
-          , tagText = Tagged.tagText Tags
-          , filter = Tagged.filter Tags
-          }
-        }
+      { Section = ./types/Section.dhall
+      , SectionItem = ./types/SectionItem.dhall
+      , School = ./types/School.dhall
+      , Experience = ./types/Experience.dhall
+      , Project = ./types/Project.dhall
+      , SkillSectionData = ./types/SkillSectionData.dhall
+      , SkillGroup = ./types/SkillGroup.dhall
+      , Award = ./types/Award.dhall
+      , PlacedAward = ./types/PlacedAward.dhall
+      , TimePeriodAward = ./types/TimePeriodAward.dhall
+      , Position = ./types/Position.dhall
+      , ProgressionPosition = ./types/ProgressionPosition.dhall
+      }
 
 in  types
