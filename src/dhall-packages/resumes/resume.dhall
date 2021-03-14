@@ -112,7 +112,7 @@ let toFIRSTAward =
       λ(fa : FIRSTAward) →
         types.Award.Placed
           { name = "FIRST Robotics ${fa.regional} Regional"
-          , place = "${Natural/show fa.place}/${Natural/show fa.team_count}"
+          , place = "\\nth{${Natural/show fa.place}}/${Natural/show fa.team_count}"
           , date = fa.date
           }
 
@@ -172,7 +172,7 @@ let side_projects =
             ''
             Utilized CAD and rapid prototyping techniques, including laser cutting and 3D printing,
             to be 1/60 teams to accomplish hardest design challenge.
-            Placed 7\textsuperscript{th} overall.
+            Placed \nth{7} overall.
             ''
         , bullets =
           [ "Utilized CAD and laser cutting techniques to enable rapid prototyping, ideation, and manufacturing"
@@ -272,7 +272,7 @@ let content =
                     , "Developed a novel, bi-stable linkage that improved and reduced power usage of robotic grippers"
                     , "Applied machine design methodologies to size actuators and optimize chassis strength"
                     , "LQR and SOS controller design and experimentation published in the IROS 2020 robotics conference"
-                    , "Won the Presidential Undergraduate Research Award for outstanding research"
+                    , "Won the GT Presidential Undergraduate Research Award for outstanding research"
                     ]
                   }
               , TaggedExperience
@@ -784,7 +784,7 @@ let content =
                     ( types.Award.Placed
                         { name = "Georgia Tech ME2110 Design Competition"
                         , date = "Nov 2017"
-                        , place = "7th/60"
+                        , place = "\\nth{7}/60"
                         }
                     )
                 , Some
