@@ -1,4 +1,5 @@
-let package = ../../dhall-packages/package.dhall
+let package =
+      https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.0.0/src/dhall-packages/package.dhall
 
 let resume = package.resumes.resume
 
@@ -15,6 +16,7 @@ let latex =
             , vision = True
             , devops = True
             , programming = True
+            , problem_solving = True
             }
         )
 
