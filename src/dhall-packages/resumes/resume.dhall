@@ -191,7 +191,7 @@ let side_projects =
           }
         , summary =
             ''
-            Exceeded expectations by self-learning surface modeling techniques in Solidworks.
+            Exceeded expectations by self-learning surface modeling techniques in SolidWorks.
             Result is used as course example of novel usage of SLS 3D printing technology.
             ''
         , bullets =
@@ -266,8 +266,8 @@ let content =
                           (dates.monthDayYear dates.Month.July 31 2020)
                     }
                   , bullets =
-                    [ "Implemented an online, optimal, robust controller with MATLAB C/C++ code generation"
-                    , "Improved MATLAB 4-state system ID convergence and runtime (95\\%, 9 hrs) using parallel computing"
+                    [ "Implemented a online, optimal, robust controller in C++ on an embedded system"
+                    , "Improved 4-state system ID convergence and runtime (95\\%, 9 hrs) using parallel computing in C++ and MATLAB"
                     , "Designed biomimetic, robotic manipulator jaws using FEA and the compliant mechanism methodology"
                     , "Developed a novel, bi-stable linkage that improved and reduced power usage of robotic grippers"
                     , "Applied machine design methodologies to size actuators and optimize chassis strength"
@@ -310,10 +310,10 @@ let content =
                           (dates.monthDayYear dates.Month.April 1 2019)
                     }
                   , bullets =
-                    [ "Integrated stereo depth and SLAM LIDAR units into a standalone hardware for brachiating robots"
-                    , "Implemented real-time sensing and pose estimation of a flexible cable for feedback control"
-                    , "Processed color and depth video using openCV to identify a thin cable in harsh environmental conditions"
+                    [ "Implemented real-time sensing and pose estimation of a flexible cable for feedback control"
+                    , "Processed color and depth video using OpenCV to identify small features in harsh environmental conditions"
                     , "Implemented ROS (Robot Operating System) to record, communicate, and log robot and sensor state"
+                    , "Integrated stereo depth and SLAM LIDAR units into a standalone hardware for brachiating robots"
                     , "Lead team of 8 students in developing experimental methods and statistical analysis"
                     ]
                   }
@@ -363,7 +363,7 @@ let content =
                   , bullets =
                     [ "Managed 60 students in rapid prototyping, designing, and manufacturing a robot in six weeks"
                     , "Managed a short development time project schedule while nurturing collaboration"
-                    , "Created top-down Solidworks models of transmissions, manipulators, and complex linkages"
+                    , "Created top-down SolidWorks models of transmissions, manipulators, and complex linkages"
                     , "Implemented position PID, velocity PID, vision tracking, motion profiles, and path following"
                     , "Used Lean and Six Sigma principles to streamline manufacturing and assembly proccess"
                     , "Trained students in CAD and operating precision machinery including a mill, lathe, and CNC router"
@@ -442,7 +442,6 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.functional_programming ])
                           "Dhall"
-                      , Some "\\LaTeX"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.machine_learning ])
                           "Machine Learning (ML)"
@@ -455,6 +454,7 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.programming ])
                           "Algorithms"
+                      , Some "\\LaTeX"
                       ]
                 }
               , { name = "Familiar"
@@ -492,11 +492,11 @@ let content =
                     Prelude.List.unpackOptionals
                       Text
                       [ Some "Linux"
-                      , Some "Solidworks"
+                      , Some "SolidWorks"
                       , Some "Agile PLM"
                       , Some "SAP"
                       , Some "Windchill"
-                      , Some "Solidworks Enterprise PDM~(EPDM)"
+                      , Some "SolidWorks Enterprise PDM~(EPDM)"
                       , Some "Autodesk Inventor"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.documentation ])
@@ -550,13 +550,13 @@ let content =
                           "Pneumatic Actuators"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.robotics ])
+                          "Motors"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.robotics ])
                           "Encoders"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.robotics ])
                           "Solenoids"
-                      , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
-                          "Motors"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.robotics ])
                           "Mechatronics"
@@ -572,6 +572,9 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.sensor ])
                           "Sonar"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.sensor ])
+                          "Sensors"
                       ]
                 }
               , { name = "3D CAD"
@@ -609,7 +612,9 @@ let content =
                 , skills =
                     Prelude.List.unpackOptionals
                       Text
-                      (   [ Some "G-Code"
+                      (   [ Some "Rapid Developemnt"
+                          , Some "Prototyping"
+                          , Some "G-Code"
                           , Some "CNC Mill"
                           , Some "Manual Mill"
                           , Some "Manual Lathe"
@@ -629,7 +634,11 @@ let content =
                             , "Drill Press"
                             , "Bandsaw"
                             , "Soldering Iron"
+                            , "Sheet Metal"
+                            , "Casting"
+                            , "Molding"
                             , "Manufacturing Proccesses"
+                            , "Machining"
                             ]
                       )
                 }
@@ -701,8 +710,20 @@ let content =
                           (λ(tl : TagList.Type) → [ tl.communication ])
                           "Cooperative"
                       , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.communication ])
+                          "Team Environment"
+                      , TaggedText
+                          (\(tl : TagList.Type) -> [ tl.communication, tl.problem_solving ])
+                          "Independent"
+                      , TaggedText
+                          (\(tl : TagList.Type) -> [ tl.communication, tl.problem_solving ])
+                          "Learning"
+                      , TaggedText
                           (λ(tl : TagList.Type) → [ tl.problem_solving ])
                           "Debugging"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.problem_solving ])
+                          "Troubleshooting"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.conflict_resolution ])
                           "Negotiation"
@@ -725,6 +746,9 @@ let content =
                           (λ(tl : TagList.Type) → [ tl.reports ])
                           "Technical Reports"
                       , Some "Documentation"
+                      , TaggedText
+                          (\(tl : TagList.Type) -> [ tl.documentation ])
+                          "Engineering Change Order~(ECO)"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.reports ])
                           "Executive Summaries"
