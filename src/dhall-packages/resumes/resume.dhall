@@ -246,11 +246,11 @@ let content =
                           (dates.monthDayYear dates.Month.December 18 2020)
                     }
                   , bullets =
-                    [ "Built an automated fixture using cascaded PID controllers for 8-week design verification tests"
+                    [ "Performed verification and validation of engineering changes for surgical robots in the highly regulated medical device industry"
+                    , "Built an automated fixture using cascaded PID controllers for 8-week design verification tests"
                     , "Acted as project manager for manufacturing, re-manufacturing, and sustaining engineering projects"
                     , "Performed FEA and DFM on sheet metal and thermoformed plastic parts for new product development"
-                    , "Exposed to verification and validation for surgical robots in the highly regulated medical device industry"
-                    , "Performed engineering change orders and drawing updates in Agile PLM and Windchill PDM"
+                    , "Implemented engineering change orders and drawing updates in Agile PLM and Windchill PDM"
                     ]
                   }
               , Some
@@ -667,6 +667,8 @@ let content =
                     Prelude.List.unpackOptionals
                       Text
                       [ Some "Investigation"
+                      , Some "Design Review"
+                      , Some "Failure Mode \\& Effects Analysis~(FMEA)"
                       , Some "Root Cause Analysis"
                       , Some "Statistics"
                       , Some "Project Management"
