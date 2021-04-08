@@ -246,7 +246,7 @@ let content =
                           (dates.monthDayYear dates.Month.December 18 2020)
                     }
                   , bullets =
-                    [ "Performed verification and validation of engineering changes for surgical robots in the highly regulated medical device industry"
+                    [ "Performed verification and validation of engineering changes to surgical robots in the medical device industry"
                     , "Built an automated fixture using cascaded PID controllers for 8-week design verification tests"
                     , "Acted as project manager for manufacturing, re-manufacturing, and sustaining engineering projects"
                     , "Performed FEA and DFM on sheet metal and thermoformed plastic parts for new product development"
