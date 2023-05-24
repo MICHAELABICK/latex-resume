@@ -181,9 +181,9 @@
 \newenvironment{awards}
   {}
   {
-    \begin{tabular}{rll}
+    \begin{tabularx}{\textwidth}{rlX}
       \awardrows
-    \end{tabular}
+    \end{tabularx}
   }
 
 % Tables are weird. We will gather all the contents, and then

@@ -882,7 +882,7 @@ let content =
                 , Some
                     ( types.Award.Placed
                         { name =
-                            "S. Farzan, A. Hu, M. Bick and J. Rogers, \"Robust Control Synthesis and Verification for Wire-Borne Underactuated Brachiating Robots Using Sum-of-Squares Optimization,\" 2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), pp. 7744-7751, doi: 10.1109/IROS45743.2020.9341348."
+                            "S. Farzan, A. Hu, M. Bick and J. Rogers, \"Robust Control Synthesis and Verification for Wire-Borne Underactuated Brachiating Robots Using Sum-of-Squares Optimization,\" \\emph{2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}."
                         , date = "Oct 2020"
                         , place = ""
                         }
