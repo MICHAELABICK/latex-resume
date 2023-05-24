@@ -222,6 +222,8 @@ let toSectionItems =
           (λ(x : types.Experience.Type) → types.SectionItem.Experience x)
           (Prelude.List.unpackOptionals types.Experience.Type exps)
 
+let intuitive_surgical = "Intuitive Surgical"
+
 let content =
       λ(tag_list : TagList.Type) →
         let Tagged =
@@ -244,10 +246,28 @@ let content =
 
         let TaggedText = Tagged Text
 
-        let work_experience =
+        let professional_experience =
               [ Some
                   types.Experience::{
-                  , corporation = "Intuitive Surgical"
+                  , corporation = intuitive_surgical
+                  , position =
+                      types.Position.Single "NPI Manufacturing Engineer"
+                  , dates =
+                    { from = dates.monthDayYear dates.Month.August 2 2021
+                    , to = dates.EndDate.Present
+                    }
+                  , bullets =
+                    [ "Lead cross-functional team in an 8D root cause investigation to sucessful completion during product development"
+                    , "Prototyped, designed, and documented fixtures to error-proof the manual assembly of tiny robotic surgical instruments"
+                    , "Created detailed engineering assemblies, components, and drawings in Solidworks"
+                    , "Automated reports to analyze robotic device performance and manufacturing process capability"
+                    , "Released engineering change orders in Agile PLM and CAD in Windchill PDM to get an NPI line V\\&V capable"
+                    , "Lead code review and release of multiple manufacturing software updates"
+                    ]
+                  }
+              , Some
+                  types.Experience::{
+                  , corporation = intuitive_surgical
                   , position =
                       types.Position.Single "Mechanical Engineering Co-op"
                   , dates =
@@ -259,9 +279,7 @@ let content =
                   , bullets =
                     [ "Performed verification and validation of engineering changes to surgical robots in the medical device industry"
                     , "Built an automated fixture using cascaded PID controllers for 8-week design verification tests"
-                    , "Acted as project manager for manufacturing, re-manufacturing, and sustaining engineering projects"
                     , "Performed FEA and DFM on sheet metal and thermoformed plastic parts for new product development"
-                    , "Implemented engineering change orders and drawing updates in Agile PLM and Windchill PDM"
                     ]
                   }
               , Some
@@ -320,8 +338,8 @@ let content =
                     }
                   , bullets =
                     [ "Managed 60 students in rapid prototyping, designing, and manufacturing a robot in six weeks"
-                    , "Managed a short development time project schedule while nurturing collaboration"
-                    , "Created top-down SolidWorks models of transmissions, manipulators, and complex linkages"
+                    , "Lead the 6-week hardware development sprint of a robotic system"
+                    , "Modeled, analyzed, and verified the oscillatory modes of a muli-DoF arm using Solidworks FEA"
                     , "Implemented position PID, velocity PID, vision tracking, motion profiles, and path following"
                     , "Used Lean and Six Sigma principles to streamline manufacturing and assembly proccess"
                     , "Trained students in CAD and operating precision machinery including a mill, lathe, and CNC router"
@@ -443,45 +461,53 @@ let content =
                       , Some "Git"
                       , TaggedText
                           ( λ(tl : TagList.Type) →
-                              [ tl.machine_learning, tl.robotics ]
+                              [ tl.full, tl.machine_learning, tl.robotics ]
                           )
                           "PyTorch"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Robot Operating System~(ROS)"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.devops ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
                           "Docker"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.devops ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
                           "Terraform"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics, tl.vision ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.robotics, tl.vision ]
+                          )
                           "OpenCV"
                       , Some "Bash"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.devops ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
                           "GNU Make"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.devops ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
                           "Packer"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.devops ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
                           "Ansible"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.functional_programming ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.functional_programming ]
+                          )
                           "Dhall"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.machine_learning ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.machine_learning ]
+                          )
                           "Machine Learning (ML)"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.machine_learning ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.machine_learning ]
+                          )
                           "Artificial Intelligence (AI)"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.programming ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
                           "Data Structures"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.programming ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
                           "Algorithms"
                       , Some "\\LaTeX"
                       ]
@@ -494,26 +520,32 @@ let content =
                       , Some "C++"
                       , Some "Java"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.cloud ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.cloud ])
                           "Amazon Web Services~(AWS)"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.cloud ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.cloud ])
                           "Google Cloud"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.devops ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
                           "Kubernetes"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.cloud ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.cloud ])
                           "Cloud Infrastructure"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "LabView"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.apps ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.apps ])
                           "Android"
-                      , TaggedText (λ(tl : TagList.Type) → [ tl.webdev ]) "HTML"
-                      , TaggedText (λ(tl : TagList.Type) → [ tl.webdev ]) "CSS"
-                      , TaggedText (λ(tl : TagList.Type) → [ tl.webdev ]) "SASS"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.webdev ])
+                          "HTML"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.webdev ])
+                          "CSS"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.webdev ])
+                          "SASS"
                       ]
                 }
               , { name = "Software"
@@ -528,20 +560,22 @@ let content =
                       , Some "SolidWorks Enterprise PDM~(EPDM)"
                       , Some "Autodesk Inventor"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.documentation ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.documentation ])
                           "Adobe Illustrator"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.devops ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
                           "Ubuntu"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.devops ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
                           "Emacs"
-                      , TaggedText (λ(tl : TagList.Type) → [ tl.devops ]) "Vim"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.documentation ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
+                          "Vim"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.documentation ])
                           "Inkscape"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.documentation ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.documentation ])
                           "Gimp"
                       , Some "Excel"
                       ]
@@ -551,58 +585,62 @@ let content =
                     Prelude.List.unpackOptionals
                       Text
                       [ TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics, tl.vision ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.robotics, tl.vision ]
+                          )
                           "Stereo Depth Camera"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics, tl.vision ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.robotics, tl.vision ]
+                          )
                           "SLAM LIDAR"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "NI~cRio/myRio/roboRio"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Festo Actuators and Drives"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Arduino"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Brushless Servos"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Brushed Servos"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Direct Drive"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Pneumatic Actuators"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Motors"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Encoders"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Solenoids"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Mechatronics"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.robotics ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Electro-mechanical"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.sensor ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.sensor ])
                           "Hall~Effect"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.sensor ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.sensor ])
                           "IR~Sensors"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.sensor ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.sensor ])
                           "Sonar"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.sensor ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.sensor ])
                           "Sensors"
                       ]
                 }
@@ -611,29 +649,29 @@ let content =
                     Prelude.List.unpackOptionals
                       Text
                       [ TaggedText
-                          (λ(tl : TagList.Type) → [ tl.cad ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.cad ])
                           "Master Model"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.cad ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.cad ])
                           "Top-down Design"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.cad ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.cad ])
                           "Parametric Design"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.cad ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.cad ])
                           "Surface Modeling"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.cad ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.cad ])
                           "2D~\\&~3D Manufacturing/Installation Drawings"
                       , Some "Geometric Design~\\& Tolerancing"
                       , Some "Design for Manufacture~(DFM)"
                       , Some "Design for Assembly~(DFA)"
                       , Some "Finite Element Analysis~(FEA)"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.mechanical ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.mechanical ])
                           "Simulation"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.mechanical ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.mechanical ])
                           "3D Modeling"
                       ]
                 }
@@ -656,7 +694,9 @@ let content =
                             (Optional Text)
                             ( λ(item : Text) →
                                 TaggedText
-                                  (λ(tl : TagList.Type) → [ tl.manufacturing ])
+                                  ( λ(tl : TagList.Type) →
+                                      [ tl.full, tl.manufacturing ]
+                                  )
                                   item
                             )
                             [ "Selective Laser Sintering~(SLS)"
@@ -680,7 +720,9 @@ let content =
                           (Optional Text)
                           ( λ(item : Text) →
                               TaggedText
-                                (λ(tl : TagList.Type) → [ tl.instruments ])
+                                ( λ(tl : TagList.Type) →
+                                    [ tl.full, tl.instruments ]
+                                )
                                 item
                           )
                           [ "Micrometer"
@@ -702,120 +744,137 @@ let content =
                       , Some "Statistics"
                       , Some "Project Management"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.problem_solving ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.problem_solving ]
+                          )
                           "First Principles"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.problem_solving ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.problem_solving ]
+                          )
                           "Problem Solving"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.manufacturing ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.manufacturing ])
                           "Lean Manufacturing"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.manufacturing ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.manufacturing ])
                           "Six Sigma"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.planning ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.planning ])
+                          "8D"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.planning ])
+                          "5-Whys"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.planning ])
+                          "DMAIC"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.planning ])
                           "Planning"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.planning ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.planning ])
                           "Customer Expectations"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.planning ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.planning ])
                           "Project Schedule"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.planning ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.planning ])
                           "Product Cycle"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.planning ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.planning ])
                           "Feature Definition"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.creative ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.creative ])
                           "Creative"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.creative ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.creative ])
                           "Innovative"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.communication ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.communication ])
                           "Collaborative"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.communication ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.communication ])
                           "Cooperative"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.communication ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.communication ])
                           "Team Environment"
                       , TaggedText
                           ( λ(tl : TagList.Type) →
-                              [ tl.communication, tl.problem_solving ]
+                              [ tl.full, tl.communication, tl.problem_solving ]
                           )
                           "Independent"
                       , TaggedText
                           ( λ(tl : TagList.Type) →
-                              [ tl.communication, tl.problem_solving ]
+                              [ tl.full, tl.communication, tl.problem_solving ]
                           )
                           "Learning"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.problem_solving ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.problem_solving ]
+                          )
                           "Debugging"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.problem_solving ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.problem_solving ]
+                          )
                           "Troubleshooting"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.conflict_resolution ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.conflict_resolution ]
+                          )
                           "Negotiation"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.conflict_resolution ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.conflict_resolution ]
+                          )
                           "Conflict Mangement"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.conflict_resolution ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.conflict_resolution ]
+                          )
                           "Conflict Resolution"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.communication ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.communication ])
                           "Verbal Communication"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.communication ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.communication ])
                           "Written Communication"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.reports ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.reports ])
                           "Oral Reports"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.reports ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.reports ])
                           "Technical Reports"
                       , Some "Documentation"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.documentation ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.documentation ])
                           "Engineering Change Order~(ECO)"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.reports ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.reports ])
                           "Executive Summaries"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.reports ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.reports ])
                           "Progress Reports"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.planning ])
-                          "5-Whys"
-                      , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.planning ])
-                          "DMAIC"
-                      , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.chart ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.chart ])
                           "Bill of Materials~(BOM)"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.chart ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.chart ])
                           "House of Quality"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.chart ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.chart ])
                           "Specification Sheet"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.chart ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.chart ])
                           "Morph Chart"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.chart ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.chart ])
                           "Function Tree"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.chart ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.chart ])
                           "Gantt Chart"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.chart ])
+                          (λ(tl : TagList.Type) → [ tl.full, tl.chart ])
                           "Evaulation Matrix"
                       ]
                 }
@@ -954,8 +1013,8 @@ let content =
                     )
                 ]
 
-        in  [ { title = "Work Experience"
-              , data = toSectionItems work_experience
+        in  [ { title = "Professional Experience"
+              , data = toSectionItems professional_experience
               }
             , { title = "Education", data = education }
             , { title = "Technical Leadership Projects"
