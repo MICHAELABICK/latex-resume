@@ -105,14 +105,25 @@ let TagList = Tags Bool False
 
 let types = ./types.dhall
 
+let FIRSTEvent = < Regional : Text | ChampionshipDivision : Text >
+
 let FIRSTAward =
-      { regional : Text, place : Natural, team_count : Natural, date : Text }
+      { event : FIRSTEvent, place : Natural, team_count : Natural, date : Text }
 
 let toFIRSTAward =
       λ(fa : FIRSTAward) →
         types.Award.Placed
-          { name = "FIRST Robotics ${fa.regional} Regional"
-          , place = "\\nth{${Natural/show fa.place}}/${Natural/show fa.team_count}"
+          { name =
+              merge
+                { Regional =
+                    λ(regional : Text) → "FIRST Robotics ${regional} Regional"
+                , ChampionshipDivision =
+                    λ(division : Text) →
+                      "FIRST Robotics World Championship: ${division} Division"
+                }
+                fa.event
+          , place =
+              "\\nth{${Natural/show fa.place}}/${Natural/show fa.team_count}"
           , date = fa.date
           }
 
@@ -267,7 +278,7 @@ let content =
                     }
                   , bullets =
                     [ "Implemented a online, optimal, robust controller in C++ on an embedded system"
-                    , "Improved 4-state system ID convergence and runtime (95\\%, 9 hrs) using parallel computing in C++ and MATLAB"
+                    , "Improved 4-state system ID convergence and runtime (20x, 9 hrs) using parallel computing in C++ and MATLAB"
                     , "Designed biomimetic, robotic manipulator jaws using FEA and the compliant mechanism methodology"
                     , "Developed a novel, bi-stable linkage that improved and reduced power usage of robotic grippers"
                     , "Applied machine design methodologies to size actuators and optimize chassis strength"
@@ -300,6 +311,23 @@ let content =
 
         let main_projects =
               [ Some
+                  types.Experience::{
+                  , corporation = "FRC Team 971: Spartan"
+                  , position = types.Position.Single "Mentor"
+                  , dates =
+                    { from = dates.monthDayYear dates.Month.October 24 2021
+                    , to = dates.EndDate.Present
+                    }
+                  , bullets =
+                    [ "Managed 60 students in rapid prototyping, designing, and manufacturing a robot in six weeks"
+                    , "Managed a short development time project schedule while nurturing collaboration"
+                    , "Created top-down SolidWorks models of transmissions, manipulators, and complex linkages"
+                    , "Implemented position PID, velocity PID, vision tracking, motion profiles, and path following"
+                    , "Used Lean and Six Sigma principles to streamline manufacturing and assembly proccess"
+                    , "Trained students in CAD and operating precision machinery including a mill, lathe, and CNC router"
+                    ]
+                  }
+              , Some
                   types.Experience::{
                   , corporation = "Agricultural Robotics Lab"
                   , position = types.Position.Single "Undergraduate Researcher"
@@ -350,9 +378,10 @@ let content =
                     , "Designed improved camshaft to match optimal lift profile"
                     ]
                   }
-              , Some
+              , TaggedExperience
+                  (λ(tl : TagList.Type) → [ tl.full ])
                   types.Experience::{
-                  , corporation = "MilkenKnights FRC Team"
+                  , corporation = "FRC Team 1836: MilkenKnights"
                   , position = types.Position.Single "Team Captain"
                   , dates =
                     { from = dates.monthDayYear dates.Month.August 1 2011
@@ -715,10 +744,14 @@ let content =
                           (λ(tl : TagList.Type) → [ tl.communication ])
                           "Team Environment"
                       , TaggedText
-                          (\(tl : TagList.Type) -> [ tl.communication, tl.problem_solving ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.communication, tl.problem_solving ]
+                          )
                           "Independent"
                       , TaggedText
-                          (\(tl : TagList.Type) -> [ tl.communication, tl.problem_solving ])
+                          ( λ(tl : TagList.Type) →
+                              [ tl.communication, tl.problem_solving ]
+                          )
                           "Learning"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.problem_solving ])
@@ -749,7 +782,7 @@ let content =
                           "Technical Reports"
                       , Some "Documentation"
                       , TaggedText
-                          (\(tl : TagList.Type) -> [ tl.documentation ])
+                          (λ(tl : TagList.Type) → [ tl.documentation ])
                           "Engineering Change Order~(ECO)"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.reports ])
@@ -792,10 +825,66 @@ let content =
               Prelude.List.unpackOptionals
                 types.Award
                 [ Some
+                    ( toFIRSTAward
+                        { event = FIRSTEvent.Regional "Monterey Bay"
+                        , date = "April 2023"
+                        , place = 2
+                        , team_count = 36
+                        }
+                    )
+                , Some
+                    ( toFIRSTAward
+                        { event = FIRSTEvent.Regional "San Francisco"
+                        , date = "Mar 2023"
+                        , place = 1
+                        , team_count = 42
+                        }
+                    )
+                , Some
+                    ( toFIRSTAward
+                        { event = FIRSTEvent.ChampionshipDivision "Turing"
+                        , date = "April 2022"
+                        , place = 2
+                        , team_count = 75
+                        }
+                    )
+                , Some
+                    ( toFIRSTAward
+                        { event = FIRSTEvent.Regional "Silcon Valley"
+                        , date = "April 2022"
+                        , place = 2
+                        , team_count = 59
+                        }
+                    )
+                , Some
+                    ( toFIRSTAward
+                        { event = FIRSTEvent.Regional "Monterey Bay"
+                        , date = "April 2023"
+                        , place = 2
+                        , team_count = 36
+                        }
+                    )
+                , Some
+                    ( toFIRSTAward
+                        { event = FIRSTEvent.Regional "San Francisco"
+                        , date = "Mar 2022"
+                        , place = 2
+                        , team_count = 41
+                        }
+                    )
+                , Some
                     ( types.Award.TimePeriod
                         { name = "Georgia Tech Dean's List"
                         , from = "Dec 2016"
-                        , to = "to Present"
+                        , to = "to May 2021"
+                        }
+                    )
+                , Some
+                    ( types.Award.Placed
+                        { name =
+                            "S. Farzan, A. Hu, M. Bick and J. Rogers, \"Robust Control Synthesis and Verification for Wire-Borne Underactuated Brachiating Robots Using Sum-of-Squares Optimization,\" 2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), pp. 7744-7751, doi: 10.1109/IROS45743.2020.9341348."
+                        , date = "Oct 2020"
+                        , place = ""
                         }
                     )
                 , Some
@@ -815,7 +904,7 @@ let content =
                     )
                 , Some
                     ( toFIRSTAward
-                        { regional = "Orange County"
+                        { event = FIRSTEvent.Regional "Orange County"
                         , date = "Apr 2016"
                         , place = 2
                         , team_count = 42
@@ -823,7 +912,7 @@ let content =
                     )
                 , Some
                     ( toFIRSTAward
-                        { regional = "Ventura"
+                        { event = FIRSTEvent.Regional "Ventura"
                         , date = "Mar 2015"
                         , place = 3
                         , team_count = 41
@@ -831,7 +920,7 @@ let content =
                     )
                 , Some
                     ( toFIRSTAward
-                        { regional = "Utah"
+                        { event = FIRSTEvent.Regional "Utah"
                         , date = "Mar 2015"
                         , place = 3
                         , team_count = 53
@@ -848,7 +937,7 @@ let content =
                 , TaggedAward
                     (λ(tl : TagList.Type) → [ tl.full ])
                     ( toFIRSTAward
-                        { regional = "Los Angeles"
+                        { event = FIRSTEvent.Regional "Los Angeles"
                         , date = "Mar 2013"
                         , place = 1
                         , team_count = 65
@@ -857,7 +946,7 @@ let content =
                 , TaggedAward
                     (λ(tl : TagList.Type) → [ tl.full ])
                     ( toFIRSTAward
-                        { regional = "Los Angeles"
+                        { event = FIRSTEvent.Regional "Los Angeles"
                         , date = "Mar 2012"
                         , place = 2
                         , team_count = 66
@@ -865,23 +954,23 @@ let content =
                     )
                 ]
 
-        in  [ { title = "Education", data = education }
-            , { title = "Work Experience"
+        in  [ { title = "Work Experience"
               , data = toSectionItems work_experience
               }
-            , { title = "Academic Leadership Projects"
+            , { title = "Education", data = education }
+            , { title = "Technical Leadership Projects"
               , data =
                     toSectionItems main_projects
                   # [ types.SectionItem.Projects side_projects ]
+              }
+            , { title = "Publications, Awards, \\& Honors"
+              , data = [ types.SectionItem.Awards awards ]
               }
             , { title = "Technical Skills"
               , data =
                 [ types.SectionItem.Skills
                     { groups = skills, longest_group_title = "Fabrication" }
                 ]
-              }
-            , { title = "Awards \\& Honors"
-              , data = [ types.SectionItem.Awards awards ]
               }
             ]
 
