@@ -1,5 +1,4 @@
-let package =
-      https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v1.5.0/src/dhall-packages/package.dhall sha256:819d400b9bc82efda713e91283386cea28e58335ecd1cc669383782c86030fd8
+let package = (../packages.dhall).`latex-resume-1.5`
 
 let resume = package.resumes.resume
 

@@ -1,3 +1,7 @@
+-- FIXME: Dhall now has a Date type,
+-- because there is actually overlap in the namespaces
+-- this is preventing us from using a new Dhall version.
+-- Therefor, we need to backport this as a patched or minor semver
 let types = ./types.dhall
 
 let Date = types.Date

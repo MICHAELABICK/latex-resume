@@ -1,5 +1,4 @@
-let package =
-      https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.0.0/src/dhall-packages/package.dhall
+let package = (../packages.dhall).`latex-resume-2.0`
 
 let resume = package.resumes.resume
 

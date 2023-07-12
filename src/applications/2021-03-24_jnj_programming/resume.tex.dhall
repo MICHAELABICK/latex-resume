@@ -1,7 +1,5 @@
 -- This is a special resume for Johnson & Johnson that emphasizes my programming skills
-
-let package =
-      https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.0.0/src/dhall-packages/package.dhall
+let package = (../packages.dhall).`latex-resume-2.0`
 
 let Prelude =
       https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.0.0/src/dhall-packages/Prelude.dhall
@@ -119,7 +117,8 @@ let toFIRSTAward =
       λ(fa : FIRSTAward) →
         types.Award.Placed
           { name = "FIRST Robotics ${fa.regional} Regional"
-          , place = "\\nth{${Natural/show fa.place}}/${Natural/show fa.team_count}"
+          , place =
+              "\\nth{${Natural/show fa.place}}/${Natural/show fa.team_count}"
           , date = fa.date
           }
 
@@ -317,8 +316,7 @@ let content =
                           (dates.monthDayYear dates.Month.April 1 2019)
                     }
                   , bullets =
-                    [
-                    , "Processed color and depth video using openCV C++ to identify a thin cable in harsh environmental conditions"
+                    [ "Processed color and depth video using openCV C++ to identify a thin cable in harsh environmental conditions"
                     , "Implemented ROS (Robot Operating System) to record, communicate, and log robot and sensor state"
                     , "Implemented real-time, embedded sensing and pose estimation in C++ of a flexible cable for feedback control"
                     , "Integrated stereo depth and SLAM LIDAR units into a standalone hardware for brachiating robots"
@@ -369,8 +367,7 @@ let content =
                           (dates.monthDayYear dates.Month.June 1 2016)
                     }
                   , bullets =
-                    [
-                    , "Developed algorithms for embedded control, vision tracking, motion profiling, and path following"
+                    [ "Developed algorithms for embedded control, vision tracking, motion profiling, and path following"
                     , "Used Lean and Six Sigma principles to streamline manufacturing and assembly proccess"
                     , "Managed 60 students in rapid prototyping, designing, and manufacturing a robot in six weeks"
                     , "Managed a short development time project schedule while nurturing collaboration"
