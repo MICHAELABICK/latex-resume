@@ -640,7 +640,13 @@ let content =
                           "Control"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Kalman~Filter"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Manipulation"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Navigation"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Real-Time"
@@ -650,16 +656,16 @@ let content =
                           )
                           "Stereo Depth Camera"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
-                          "ARM"
-                      , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
-                          "CAN"
-                      , TaggedText
                           ( λ(tl : TagList.Type) →
                               [ tl.full, tl.robotics, tl.vision ]
                           )
                           "SLAM LIDAR"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "CAN"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "ARM"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "NI~cRio/myRio/roboRio"
@@ -717,6 +723,9 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Autonomous"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Probability~Theory"
                       ]
                 }
               , { name = "3D CAD"
