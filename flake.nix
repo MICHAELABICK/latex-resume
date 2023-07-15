@@ -18,6 +18,7 @@
           packages = [
             pkgs.gnumake
             pkgs.dhall
+            pkgs.dhall-bash
             pkgs.rsync
 
             # TODO: This downloades *every* TexLive packages

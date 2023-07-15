@@ -9,4 +9,4 @@ freeze:
     dhall freeze --cache --inplace src/applications/packages.dhall
 
 just git-tag
-     . git-tag
+    source ./git-tag
