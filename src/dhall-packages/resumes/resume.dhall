@@ -460,6 +460,8 @@ let content =
                       Text
                       [ Some "MATLAB"
                       , Some "Python"
+                      , Some "C"
+                      , Some "C++"
                       , Some "Julia"
                       , TaggedText
                           ( λ(tl : TagList.Type) →
@@ -512,10 +514,16 @@ let content =
                           (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
                           "Algorithms"
                       , Some "Git"
-                      , Some "Unit~Testing"
-                      , Some "Agile"
-                      , Some "CI"
-                      , Some "CD"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
+                          "Unit~Testing"
+                      , Some "Code~Review"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
+                          "CI"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
+                          "CD"
                       , Some "\\LaTeX"
                       ]
                 }
@@ -523,9 +531,7 @@ let content =
                 , skills =
                     Prelude.List.unpackOptionals
                       Text
-                      [ Some "C"
-                      , Some "C++"
-                      , Some "Java"
+                      [ Some "Java"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.cloud ])
                           "Amazon Web Services~(AWS)"
@@ -556,6 +562,18 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.webdev ])
                           "SASS"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
+                          "Agile"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
+                          "Architecture"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
+                          "High~Performance"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
+                          "Latency"
                       ]
                 }
               , { name = "Software"
@@ -571,8 +589,8 @@ let content =
                       , Some "SolidWorks Enterprise PDM~(EPDM)"
                       , Some "Autodesk Inventor"
                       , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.full, tl.documentation ])
-                          "Adobe Illustrator"
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
+                          "Jira"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
                           "Ubuntu"
@@ -582,6 +600,9 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
                           "Vim"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.documentation ])
+                          "Adobe Illustrator"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.documentation ])
                           "Inkscape"
@@ -619,7 +640,10 @@ let content =
                           "Control"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
-                          "High~Performance Real-Time"
+                          "Manipulation"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Real-Time"
                       , TaggedText
                           ( λ(tl : TagList.Type) →
                               [ tl.full, tl.robotics, tl.vision ]

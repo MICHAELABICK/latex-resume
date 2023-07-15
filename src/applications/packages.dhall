@@ -38,6 +38,8 @@ let `latex-resume-2.2` =
         https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.2.0/src/dhall-packages/package.dhall sha256:21321d2a4cdcb646aebea6568c9015e2ae46975c734c440329dd947754b6a13d
       ? https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.2.0/src/dhall-packages/package.dhall
 
+let `latex-resume-2.3` = latex-resume
+
 in  { latex-resume
     , `latex-resume-1.0`
     , `latex-resume-1.1`
@@ -48,4 +50,5 @@ in  { latex-resume
     , `latex-resume-2.0`
     , `latex-resume-2.1`
     , `latex-resume-2.2`
+    , `latex-resume-2.3`
     }
