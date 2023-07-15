@@ -8,5 +8,5 @@ open TARGET:
 freeze:
     dhall freeze --cache --inplace src/applications/packages.dhall
 
-just git-tag
-    source ./git-tag
+git-tag:
+    ./bin/git-tag
