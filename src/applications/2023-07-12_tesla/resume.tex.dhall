@@ -1,4 +1,4 @@
-let package = (../packages.dhall).`latex-resume-2.1`
+let package = (../packages.dhall).`latex-resume-2.2`
 
 let resume = package.resumes.resume
 
@@ -7,14 +7,14 @@ let latex =
         ( resume.content
             (   { cad = True
                 , mechanical = True
-                , instruments = True
+                , instruments = False
                 , manufacturing = True
                 , sensor = True
-                , cloud = False
+                , cloud = True
                 , robotics = True
                 , machine_learning = True
                 , vision = True
-                , devops = False
+                , devops = True
                 , functional_programming = False
                 , programming = True
                 , apps = False
@@ -23,9 +23,9 @@ let latex =
                 , creative = False
                 , communication = True
                 , reports = False
-                , documentation = True
+                , documentation = False
                 , chart = False
-                , planning = True
+                , planning = False
                 , conflict_resolution = False
                 , full = False
                 , sailing = False

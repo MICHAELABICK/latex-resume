@@ -32,6 +32,9 @@
             # includes the latexmk package
             pkgs.texlive.combined.scheme-full
 
+            # PDF Reader
+            pkgs.evince
+
             # Misc dependencies
             pkgs.just
           ];

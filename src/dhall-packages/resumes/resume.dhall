@@ -165,10 +165,11 @@ let side_projects =
           }
         , summary =
             ''
-            Repurposed old enterprise hardware.
-            Using Docker, Terraform and Kubernetes
-            to practice mordern devops paradigms
-            including declarative and immutable infra.
+            Developed custom tooling and infrastructure stack to
+            repurposed enterprise hardware.
+            Using Docker, Terraform, and Kubernetes
+            to practice devops paradigms
+            of declarative and immutable deployments.
             ''
         }
       , types.Project::{
@@ -258,7 +259,8 @@ let content =
                     }
                   , bullets =
                     [ "Lead cross-functional team in an 8D root cause investigation to sucessful completion during product development"
-                    , "Prototyped, designed, and documented fixtures to error-proof the manual assembly of tiny robotic surgical instruments"
+                    , "Prototyped, designed, and documented fixtures \\& equipment for the assembly of tiny robotic surgical instruments"
+                    , "Performed GD\\&T tolerance analysis to determine impact of assembly fits and backlash"
                     , "Created detailed engineering assemblies, components, and drawings in Solidworks"
                     , "Automated reports to analyze robotic device performance and manufacturing process capability"
                     , "Released engineering change orders in Agile PLM and CAD in Windchill PDM to get an NPI line V\\&V capable"
@@ -297,9 +299,9 @@ let content =
                   , bullets =
                     [ "Implemented a online, optimal, robust controller in C++ on an embedded system"
                     , "Improved 4-state system ID convergence and runtime (20x, 9 hrs) using parallel computing in C++ and MATLAB"
-                    , "Designed biomimetic, robotic manipulator jaws using FEA and the compliant mechanism methodology"
+                    , "Optimized biomimetic, robotic manipulator jaws using FEA and the compliant mechanism methodology"
                     , "Developed a novel, bi-stable linkage that improved and reduced power usage of robotic grippers"
-                    , "Applied machine design methodologies to size actuators and optimize chassis strength"
+                    , "Applied analytical machine design methodologies to size actuators and optimize chassis mass, stiffness, and cost"
                     , "LQR and SOS controller design and experimentation published in the IROS 2020 robotics conference"
                     , "Won the GT Presidential Undergraduate Research Award for outstanding research"
                     ]
@@ -331,17 +333,18 @@ let content =
               [ Some
                   types.Experience::{
                   , corporation = "FRC Team 971: Spartan"
-                  , position = types.Position.Single "Mentor"
+                  , position = types.Position.Single "Lead Mechanical Mentor"
                   , dates =
                     { from = dates.monthDayYear dates.Month.October 24 2021
                     , to = dates.EndDate.Present
                     }
                   , bullets =
-                    [ "Managed 60 students in rapid prototyping, designing, and manufacturing a robot in six weeks"
+                    [ "Modeled, analyzed, and verified the oscillatory modes of a muli-DoF arm using Solidworks FEA"
+                    , "Implemented Python, state-space, physics models for a robotic drivetrain with 18 states and state-of-the-art tire models"
+                    , "Determined performace of path planning and full state feedback control algorithms in simulation"
                     , "Lead the 6-week hardware development sprint of a robotic system"
-                    , "Modeled, analyzed, and verified the oscillatory modes of a muli-DoF arm using Solidworks FEA"
-                    , "Implemented position PID, velocity PID, vision tracking, motion profiles, and path following"
-                    , "Used Lean and Six Sigma principles to streamline manufacturing and assembly proccess"
+                    , "Managed 60 students in rapid prototyping, designing, and manufacturing a robot in six weeks"
+                    , "Streamlined manufacturability, assemblability, and serviceability using Lean and Six Sigma principles"
                     , "Trained students in CAD and operating precision machinery including a mill, lathe, and CNC router"
                     ]
                   }
@@ -359,7 +362,7 @@ let content =
                     [ "Implemented real-time sensing and pose estimation of a flexible cable for feedback control"
                     , "Processed color and depth video using OpenCV to identify small features in harsh environmental conditions"
                     , "Implemented ROS (Robot Operating System) to record, communicate, and log robot and sensor state"
-                    , "Integrated stereo depth and SLAM LIDAR units into a standalone hardware for brachiating robots"
+                    , "Integrated stereo depth and SLAM LIDAR units into standalone hardware for brachiating robots"
                     , "Lead team of 8 students in developing experimental methods and statistical analysis"
                     ]
                   }
@@ -458,7 +461,6 @@ let content =
                       [ Some "MATLAB"
                       , Some "Python"
                       , Some "Julia"
-                      , Some "Git"
                       , TaggedText
                           ( λ(tl : TagList.Type) →
                               [ tl.full, tl.machine_learning, tl.robotics ]
@@ -509,6 +511,11 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
                           "Algorithms"
+                      , Some "Git"
+                      , Some "Unit~Testing"
+                      , Some "Agile"
+                      , Some "CI"
+                      , Some "CD"
                       , Some "\\LaTeX"
                       ]
                 }
@@ -531,6 +538,9 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.cloud ])
                           "Cloud Infrastructure"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.devops ])
+                          "Tooling"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "LabView"
@@ -556,6 +566,7 @@ let content =
                       , Some "SolidWorks"
                       , Some "Agile PLM"
                       , Some "SAP"
+                      , Some "Polarion"
                       , Some "Windchill"
                       , Some "SolidWorks Enterprise PDM~(EPDM)"
                       , Some "Autodesk Inventor"
@@ -585,10 +596,41 @@ let content =
                     Prelude.List.unpackOptionals
                       Text
                       [ TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Behavior~Planning"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Motion~Planning"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Decision~Making"
+                      , TaggedText
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.robotics, tl.machine_learning ]
+                          )
+                          "Search"
+                      , TaggedText
+                          ( λ(tl : TagList.Type) →
+                              [ tl.full, tl.robotics, tl.machine_learning ]
+                          )
+                          "Prediction"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Control"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "High~Performance Real-Time"
+                      , TaggedText
                           ( λ(tl : TagList.Type) →
                               [ tl.full, tl.robotics, tl.vision ]
                           )
                           "Stereo Depth Camera"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "ARM"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "CAN"
                       , TaggedText
                           ( λ(tl : TagList.Type) →
                               [ tl.full, tl.robotics, tl.vision ]
@@ -602,6 +644,9 @@ let content =
                           "Festo Actuators and Drives"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Raspberry Pi"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Arduino"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
@@ -611,10 +656,13 @@ let content =
                           "Brushed Servos"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
-                          "Direct Drive"
+                          "Direct~Drive"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
-                          "Pneumatic Actuators"
+                          "Harmonic~Drive"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Pneumatic~Actuators"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Motors"
@@ -642,6 +690,9 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.sensor ])
                           "Sensors"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Autonomous"
                       ]
                 }
               , { name = "3D CAD"
