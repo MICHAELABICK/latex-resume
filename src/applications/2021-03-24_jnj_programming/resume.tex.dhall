@@ -2,7 +2,8 @@
 let package = (../packages.dhall).`latex-resume-2.0`
 
 let Prelude =
-      https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.0.0/src/dhall-packages/Prelude.dhall
+        https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.0.0/src/dhall-packages/Prelude.dhall sha256:2086c6a2e7ce8ee371858036ab60d24d045969defadb4bc9d87639921ec2e028
+      ? https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.0.0/src/dhall-packages/Prelude.dhall
 
 let dates = package.dates
 
@@ -108,7 +109,8 @@ let Tags =
 let TagList = Tags Bool False
 
 let types =
-      https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.0.0/src/dhall-packages/resumes/types.dhall
+        https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.0.0/src/dhall-packages/resumes/types.dhall sha256:5e882050382d652748fdda606455d2a5fe0a5db5d0609fec8b878777b7b5aba7
+      ? https://raw.githubusercontent.com/MICHAELABICK/latex-resume/resume-v2.0.0/src/dhall-packages/resumes/types.dhall
 
 let FIRSTAward =
       { regional : Text, place : Natural, team_count : Natural, date : Text }
