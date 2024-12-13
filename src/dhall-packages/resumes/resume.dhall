@@ -524,6 +524,9 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
                           "CD"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.programming ])
+                          "Version~Control"
                       , Some "\\LaTeX"
                       ]
                 }
@@ -618,10 +621,25 @@ let content =
                       Text
                       [ TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Control"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Kalman~Filter"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Model~Predictive~Control~(MPC)"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Trajectory~Optimization"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Behavior~Planning"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Motion~Planning"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Path~Planning"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Decision~Making"
@@ -635,12 +653,6 @@ let content =
                               [ tl.full, tl.robotics, tl.machine_learning ]
                           )
                           "Prediction"
-                      , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
-                          "Control"
-                      , TaggedText
-                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
-                          "Kalman~Filter"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Manipulation"
@@ -723,6 +735,9 @@ let content =
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Autonomous"
+                      , TaggedText
+                          (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
+                          "Uncertainty"
                       , TaggedText
                           (λ(tl : TagList.Type) → [ tl.full, tl.robotics ])
                           "Probability~Theory"
